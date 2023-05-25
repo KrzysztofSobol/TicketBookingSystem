@@ -97,12 +97,12 @@ public class Main {
     public static void wypiszLoty() {
         for (int i = 0; i < loty.size(); i++) {
             Lot lot = loty.get(i);
-            //if(lot.getLotnisko_p().getNazwa().equals("Berlin")&&lot.getLotnisko_k().getNazwa().equals("Warszawa")){
+            if(lot.getLotnisko_p().getNazwa().equals("Berlin")&&lot.getLotnisko_k().getNazwa().equals("Warszawa")){
                 System.out.println((i + 1) + ". " + lot.getLotnisko_p().getNazwa() + " -> " + lot.getLotnisko_k().getNazwa());
                 System.out.println("    Samolot: " + lot.getSamolot().getNazwa());
                 System.out.println("    Dnia: " + lot.getDzien() + " o godzinie: " + lot.getGodzina_odlotu());
                 System.out.println();
-           //}
+            }
         }
     }
 }
