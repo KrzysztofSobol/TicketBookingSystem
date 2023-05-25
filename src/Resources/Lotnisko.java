@@ -8,7 +8,6 @@ public class Lotnisko {
     private final String nazwa, lokalizacja;
     private final double x, y;
     ArrayList<Samolot> flota = new ArrayList<>();
-    //ArrayList<Lot> loty = new ArrayList<>();
 
     public Lotnisko(String nazwa, String lokalizacja, double x, double y){
         this.nazwa = nazwa;
