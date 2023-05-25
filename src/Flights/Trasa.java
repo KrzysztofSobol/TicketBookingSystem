@@ -22,4 +22,12 @@ public class Trasa {
     public double getDistance() {
         return distance;
     }
+
+    public Lotnisko getLotnisko_p() {
+        return lotnisko_p;
+    }
+
+    public Lotnisko getLotnisko_k() {
+        return lotnisko_k;
+    }
 }
