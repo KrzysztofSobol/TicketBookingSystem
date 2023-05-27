@@ -5,6 +5,7 @@ import Resources.SamolotTyp.Typ1;
 import Resources.SamolotTyp.Typ2;
 import Resources.SamolotTyp.Typ3;
 
+import java.time.DayOfWeek;
 import java.time.LocalTime;
 import java.util.*;
 import java.text.DateFormatSymbols;
@@ -15,7 +16,6 @@ public class Main {
     static ArrayList<Lotnisko> lotniska = new ArrayList<>();
     static ArrayList<Lot> loty = new ArrayList<>();
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
         Lotnisko lotnisko1 = new Lotnisko("Warszawa", "Warszawa", 1, 1);
         Lotnisko lotnisko2 = new Lotnisko("Berlin", "Berlin", 1, 4);
         Lotnisko lotnisko3 = new Lotnisko("Paryz", "Paryz", 1, 20);
@@ -53,7 +53,7 @@ public class Main {
     }
 
     public static void generujLot(){
-        DateFormatSymbols symbols = new DateFormatSymbols(new Locale("pl", "PL"));
+        DateFormatSymbols symbols = new DateFormatSymbols(new Locale("en", "US"));
         String[] daysOfWeek = symbols.getWeekdays();
         Random random = new Random();
         for (Lotnisko lotnisko_p : lotniska) {
@@ -62,14 +62,21 @@ public class Main {
                     if (lotnisko_k.equals(lotnisko_p)) {
                         continue;
                     }
-                    int hour = random.nextInt(24); // Losowa godzina (0-23)
-                    int minute = random.nextInt(60); // Losowa minuta (0-59)
-                    LocalTime losowaGodzina = LocalTime.of(hour, minute, 00);
+                    int hour = random.nextInt(24);
+                    int minute = random.nextInt(60);
+                    LocalTime losowaGodzina = LocalTime.of(hour, minute);
                     Samolot samolot = PrzydzielSamolot(lotnisko_p, lotnisko_k);
 
-                    Lot lot = new Lot(losowaGodzina, daysOfWeek[i], samolot, lotnisko_p, lotnisko_k);
-                    LocalTime losowaGodzina2 = losowaGodzina.plusHours(1);
-                    Lot lot2 = new Lot(losowaGodzina2, daysOfWeek[i], samolot, lotnisko_k, lotnisko_p);
+                    DayOfWeek dzien_odlotu = DayOfWeek.valueOf(daysOfWeek[i].toUpperCase(Locale.ENGLISH));
+                    DayOfWeek nowy_dzien_odlotu = dzien_odlotu;
+
+                    Lot lot = new Lot(losowaGodzina, dzien_odlotu, samolot, lotnisko_p, lotnisko_k);
+                    LocalTime losowaGodzina2 = losowaGodzina.plusHours(3);
+                    if (losowaGodzina2.isAfter(LocalTime.MIDNIGHT) && losowaGodzina2.isBefore(losowaGodzina)) {
+                        nowy_dzien_odlotu = dzien_odlotu.plus(1);
+                    }
+
+                    Lot lot2 = new Lot(losowaGodzina2, nowy_dzien_odlotu, samolot, lotnisko_k, lotnisko_p);
                     loty.add(lot);
                     loty.add(lot2);
                 }
@@ -97,12 +104,12 @@ public class Main {
     public static void wypiszLoty() {
         for (int i = 0; i < loty.size(); i++) {
             Lot lot = loty.get(i);
-            if(lot.getLotnisko_p().getNazwa().equals("Berlin")&&lot.getLotnisko_k().getNazwa().equals("Warszawa")){
+            //if(lot.getLotnisko_p().getNazwa().equals("Berlin")&&lot.getLotnisko_k().getNazwa().equals("Warszawa")){
                 System.out.println((i + 1) + ". " + lot.getLotnisko_p().getNazwa() + " -> " + lot.getLotnisko_k().getNazwa());
                 System.out.println("    Samolot: " + lot.getSamolot().getNazwa());
                 System.out.println("    Dnia: " + lot.getDzien() + " o godzinie: " + lot.getGodzina_odlotu());
                 System.out.println();
-            }
+            //}
         }
     }
 }

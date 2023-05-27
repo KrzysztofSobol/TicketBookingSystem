@@ -2,15 +2,17 @@ package Flights;
 
 import Resources.Lotnisko;
 import Resources.Samolot;
+
+import java.time.DayOfWeek;
 import java.time.LocalTime;
 
 public class Lot {
     private LocalTime godzina_odlotu;
-    private String dzien;
+    private DayOfWeek dzien;
     private Samolot samolot;
     private Lotnisko lotnisko_p, lotnisko_k;
 
-    public Lot(LocalTime godzina_odlotu, String dzien, Samolot samolot, Lotnisko lotnisko_p, Lotnisko lotnisko_k){
+    public Lot(LocalTime godzina_odlotu, DayOfWeek dzien, Samolot samolot, Lotnisko lotnisko_p, Lotnisko lotnisko_k){
         this.godzina_odlotu = godzina_odlotu; //will be random
         this.dzien = dzien; // pon - niedz
         this.samolot = samolot;
@@ -26,7 +28,7 @@ public class Lot {
 
     public Samolot getSamolot() { return samolot; }
 
-    public String getDzien() { return dzien; }
+    public DayOfWeek getDzien() { return dzien; }
 
     public LocalTime getGodzina_odlotu() { return godzina_odlotu; }
 }
