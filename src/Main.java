@@ -17,9 +17,9 @@ public class Main {
     static ArrayList<Lot> loty = new ArrayList<>();
     public static void main(String[] args) {
         Lotnisko lotnisko1 = new Lotnisko("Warszawa", "Warszawa", 1, 1);
-        Lotnisko lotnisko2 = new Lotnisko("Berlin", "Berlin", 1, 20);
-        Lotnisko lotnisko3 = new Lotnisko("Paryz", "Paryz", 1, 100);
-        Lotnisko lotnisko4 = new Lotnisko("HongKong", "HongKong", 1, 1000);
+        Lotnisko lotnisko2 = new Lotnisko("Berlin", "Berlin", 1, 1);
+        Lotnisko lotnisko3 = new Lotnisko("Paryz", "Paryz", 1, 1);
+        Lotnisko lotnisko4 = new Lotnisko("HongKong", "HongKong", 1, 1);
 
         lotniska.add(lotnisko1);
         lotniska.add(lotnisko2);
@@ -68,11 +68,9 @@ public class Main {
         DateFormatSymbols symbols = new DateFormatSymbols(new Locale("en", "US"));
         String[] daysOfWeek = symbols.getWeekdays();
         Random random = new Random();
-        for (int j = 0; j < lotniska.size(); j++) {
+        for (Lotnisko lotnisko_p : lotniska) {
             for (int i = 2; i <= 7; i++) {
-                Lotnisko lotnisko_p = lotniska.get(j);
-                for (int k = 0; k < lotniska.size(); k++) {
-                    Lotnisko lotnisko_k = lotniska.get(k);
+                for (Lotnisko lotnisko_k : lotniska) {
                     if (lotnisko_k.equals(lotnisko_p)) {
                         continue;
                     }
@@ -82,7 +80,7 @@ public class Main {
                     DayOfWeek dzien_odlotu = DayOfWeek.valueOf(daysOfWeek[i].toUpperCase(Locale.ENGLISH));
                     DayOfWeek nowy_dzien_odlotu = dzien_odlotu;
                     Samolot samolot = PrzydzielSamolot(lotnisko_p, lotnisko_k, losowaGodzina);
-                    if(samolot==null){
+                    if (samolot == null) {
                         continue;
                     }
 
@@ -107,15 +105,15 @@ public class Main {
             if (samolot.getZasieg() >= odleglosc && samolot.getIloscMiejsc() > 0) {
                 Lot lot = ZnajdzOstatniLot(samolot, lotnisko_p, lotnisko_k);
                 if (lot != null && (lot.getGodzina_odlotu().plusHours(3)).isBefore(Godzina)) {
-                    System.out.println("zdążył wrócić");
+                    //System.out.println("zdążył wrócić");
                     return samolot;
                 }
                 else if (lot != null && (lot.getGodzina_odlotu().plusHours(3)).isAfter(Godzina)) {
-                    System.out.println("nałożył sie");
+                    //System.out.println("nałożył sie");
                     return null;
                 }
                 else{
-                    System.out.println("nie było takiego lotu");
+                    //System.out.println("nie było takiego lotu");
                     return samolot;
                 }
             }
