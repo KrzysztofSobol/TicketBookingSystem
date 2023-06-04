@@ -27,19 +27,19 @@ public class Main {
         lotniska.add(lotnisko4);
 
         /// Testy
-        Typ1 krotko_dystansowiec = new Typ1("Mini Majk", 1000, 20);
+        Typ1 krotko_dystansowiec = new Typ1("Mini Majk", 1500, 20);
         Typ2 srednio_dystansowiec = new Typ2("Mid John", 5000, 30);
         Typ3 daleko_dystansowiec = new Typ3("Long Ben", 100000, 20);
 
-        Typ1 krotko_dystansowiec2 = new Typ1("Mini Majk2", 1000, 20);
+        Typ1 krotko_dystansowiec2 = new Typ1("Mini Majk2", 1500, 20);
         Typ2 srednio_dystansowiec2 = new Typ2("Mid John2", 5000, 30);
         Typ3 daleko_dystansowiec2 = new Typ3("Long Ben2", 100000, 20);
 
-        Typ1 krotko_dystansowiec3 = new Typ1("Mini Majk3", 1000, 20);
+        Typ1 krotko_dystansowiec3 = new Typ1("Mini Majk3", 1500, 20);
         Typ2 srednio_dystansowiec3 = new Typ2("Mid John3", 5000, 30);
         Typ3 daleko_dystansowiec3 = new Typ3("Long Ben3", 100000, 20);
 
-        Typ1 krotko_dystansowiec4 = new Typ1("Mini Majk4", 1000, 20);
+        Typ1 krotko_dystansowiec4 = new Typ1("Mini Majk4", 1500, 20);
         Typ2 srednio_dystansowiec4 = new Typ2("Mid John4", 5000, 30);
         Typ3 daleko_dystansowiec4 = new Typ3("Long Ben4", 100000, 20);
 
@@ -65,8 +65,8 @@ public class Main {
     }
 
     public static void generujLot() {
-        DateFormatSymbols symbols = new DateFormatSymbols(new Locale("en", "US"));
-        String[] daysOfWeek = symbols.getWeekdays();
+        DateFormatSymbols dni = new DateFormatSymbols(new Locale("en", "US"));
+        String[] daysOfWeek = dni.getWeekdays();
         Random random = new Random();
         for (Lotnisko lotnisko_p : lotniska) {
             for (int i = 2; i <= 7; i++) {
@@ -79,7 +79,7 @@ public class Main {
                     LocalTime losowaGodzina = LocalTime.of(hour, minute);
                     DayOfWeek dzien_odlotu = DayOfWeek.valueOf(daysOfWeek[i].toUpperCase(Locale.ENGLISH));
                     DayOfWeek nowy_dzien_odlotu = dzien_odlotu;
-                    Samolot samolot = PrzydzielSamolot(lotnisko_p, lotnisko_k, losowaGodzina);
+                    Samolot samolot = PrzydzielSamolot(lotnisko_p, lotnisko_k, losowaGodzina, dzien_odlotu);
                     if (samolot == null) {
                         continue;
                     }
@@ -99,21 +99,11 @@ public class Main {
     }
 
 
-    public static Samolot PrzydzielSamolot(Lotnisko lotnisko_p, Lotnisko lotnisko_k, LocalTime Godzina) {
+    public static Samolot PrzydzielSamolot(Lotnisko lotnisko_p, Lotnisko lotnisko_k, LocalTime godzina, DayOfWeek dzien) {
         double odleglosc = Odleglosc(lotnisko_p, lotnisko_k);
         for (Samolot samolot : lotnisko_p.getFlota()) {
             if (samolot.getZasieg() >= odleglosc && samolot.getIloscMiejsc() > 0) {
-                Lot lot = ZnajdzOstatniLot(samolot, lotnisko_p, lotnisko_k);
-                if (lot != null && (lot.getGodzina_odlotu().plusHours(3)).isBefore(Godzina)) {
-                    //System.out.println("zdążył wrócić");
-                    return samolot;
-                }
-                else if (lot != null && (lot.getGodzina_odlotu().plusHours(3)).isAfter(Godzina)) {
-                    //System.out.println("nałożył sie");
-                    return null;
-                }
-                else{
-                    //System.out.println("nie było takiego lotu");
+                if(!Overlap(samolot, lotnisko_p, godzina, dzien)){
                     return samolot;
                 }
             }
@@ -122,16 +112,18 @@ public class Main {
     }
 
 
-    public static Lot ZnajdzOstatniLot(Samolot samolot, Lotnisko lotnisko_p, Lotnisko lotnisko_k) {
+    public static Boolean Overlap(Samolot samolot, Lotnisko lotnisko_p, LocalTime godzina, DayOfWeek dzien) {
         if (!loty.isEmpty()) {
             for (int i = loty.size() - 1; i >= 0; i--) {
                 Lot lot = loty.get(i);
-                if (lot.getSamolot() == samolot && lot.getLotnisko_p() == lotnisko_p && lot.getLotnisko_k() == lotnisko_k) {
-                    return lot;
+                if (lot.getSamolot() == samolot && lot.getLotnisko_p() == lotnisko_p) {
+                    if(!godzina.isBefore(lot.getGodzina_odlotu()) && !godzina.plusHours(3).isBefore(lot.getGodzina_odlotu()) && dzien.equals(lot.getDzien()) || !godzina.isAfter(lot.getGodzina_odlotu().plusHours(3)) && dzien.equals(lot.getDzien())){
+                        return true;
+                    }
                 }
             }
         }
-        return null;
+        return false;
     }
 
 
@@ -144,12 +136,12 @@ public class Main {
     public static void wypiszLoty() {
         for (int i = 0; i < loty.size(); i++) {
             Lot lot = loty.get(i);
-            //if(lot.getLotnisko_p().getNazwa().equals("Berlin")&&lot.getLotnisko_k().getNazwa().equals("Warszawa")){
+            if(lot.getLotnisko_p().getNazwa().equals("Berlin")&&lot.getLotnisko_k().getNazwa().equals("Warszawa")){
                 System.out.println((i + 1) + ". " + lot.getLotnisko_p().getNazwa() + " -> " + lot.getLotnisko_k().getNazwa());
                 System.out.println("    Samolot: " + lot.getSamolot().getNazwa());
                 System.out.println("    Dnia: " + lot.getDzien() + " o godzinie: " + lot.getGodzina_odlotu());
                 System.out.println();
-            //}
+            }
         }
     }
 }
