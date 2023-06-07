@@ -1,4 +1,5 @@
 import Clients.Klient;
+import Clients.Types.Osoba;
 import Flights.Lot;
 import Reservation.*;
 import Resources.Lotnisko;
@@ -7,6 +8,7 @@ import Resources.SamolotTyp.Typ1;
 import Resources.SamolotTyp.Typ2;
 import Resources.SamolotTyp.Typ3;
 
+import javax.swing.text.html.HTMLEditorKit;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
 import java.util.*;
@@ -45,6 +47,9 @@ public class Main {
         Typ2 srednio_dystansowiec4 = new Typ2("Mid John4", 5000, 30);
         Typ3 daleko_dystansowiec4 = new Typ3("Long Ben4", 100000, 20);
 
+        Osoba osoba = new Osoba("Jan","Kowalski");
+
+
         lotnisko1.dodajSamolot(krotko_dystansowiec);
         lotnisko1.dodajSamolot(srednio_dystansowiec);
         lotnisko1.dodajSamolot(daleko_dystansowiec);
@@ -64,6 +69,8 @@ public class Main {
         System.out.println("Loty z Berlina do WWA \n");
         generujLot();
         wypiszLoty();
+        rezerwacjaBiletu(osoba,loty.get(2) );
+        wyswietlanieBiletu(osoba);
     }
 
     public static void generujLot() {
@@ -157,7 +164,12 @@ public class Main {
     }
 
     public static void wyswietlanieBiletu(Klient klient){
-        klient.getBilety(klient);
+
+        List<Ticket>BiletyKlienta = klient.getBilety();
+        for(Ticket ticket : BiletyKlienta){
+            System.out.println("Miejsce docelowe to: " + ticket.getLot().getLotnisko_k());
+        }
+
     }
 
 }

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Osoba extends Klient {
-    public List<Ticket> Bilety = new ArrayList<>();
+    //public List<Ticket> Bilety = new ArrayList<>();
     private final String imie, nazwisko;
     public Osoba(String Imie, String Nazwisko){
         this.imie = Imie;

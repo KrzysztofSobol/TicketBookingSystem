@@ -23,7 +23,7 @@ public abstract class   Klient {
         Bilety.add(ticket);
     }
 
-    public List getBilety(Klient klient){
+    public List<Ticket> getBilety(){
         return Bilety;
     }
 

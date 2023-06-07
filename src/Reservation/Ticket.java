@@ -21,7 +21,7 @@ public class Ticket {
         else {
             lot.kupowanieBiletu();
             //klient.Bilety.add(ticket); TO CHYBA DO MAINA IDK
-            System.out.println("Kupiono bilet o numerze" + klient.Bilety.indexOf(lot) +" na lot z lotniska " + lot.getLotnisko_p() +" do" + lot.getLotnisko_k() + " dnia" + lot.getDzien() + " o godzinie: " + lot.getGodzina_odlotu());
+            System.out.println("Kupiono bilet o numerze: " + klient.Bilety.indexOf(lot) +" na lot z lotniska " + lot.getLotnisko_p() +" do" + lot.getLotnisko_k() + " dnia" + lot.getDzien() + " o godzinie: " + lot.getGodzina_odlotu());
         }
     }
 
