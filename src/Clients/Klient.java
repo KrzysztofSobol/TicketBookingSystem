@@ -27,9 +27,6 @@ public abstract class   Klient {
         return Bilety;
     }
 
-    public List getBilet(Klient klient, Lot lot){
-        if()
-    }
 
    /* public void kupBilet(Lot lot){
         if(lot.getDostepne_bilety()<1){

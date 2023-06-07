@@ -39,12 +39,12 @@ public class Lot {
         return dostepne_bilety;
     }
 
-    public void kupowanieBiletu(int dostepne_bilety){ //setter
-        this.dostepne_bilety=dostepne_bilety-1;
+    public void kupowanieBiletu(){ //setter
+        this.dostepne_bilety-=1;
     }
 
-    public void odwolywanieBiletu(int dostepne_bilety){ //setter
-        this.dostepne_bilety=dostepne_bilety+1;
+    public void odwolywanieBiletu(){ //setter
+        this.dostepne_bilety+=1;
     }
 
 }

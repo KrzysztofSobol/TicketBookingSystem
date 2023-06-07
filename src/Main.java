@@ -153,7 +153,12 @@ public class Main {
     }
 
     public static void odwolywanieBiletu(Klient klient, Ticket ticket){
-        ticket.usunBilet();
+        ticket.getLot().odwolywanieBiletu();
     }
+
+    public static void wyswietlanieBiletu(Klient klient){
+        klient.getBilety(klient);
+    }
+
 }
 

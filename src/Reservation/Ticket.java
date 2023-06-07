@@ -19,16 +19,20 @@ public class Ticket {
             System.out.println("Brak dostepnych meijsc na lot");
         }
         else {
-            lot.kupowanieBiletu(lot.getDostepne_bilety());
+            lot.kupowanieBiletu();
             //klient.Bilety.add(ticket); TO CHYBA DO MAINA IDK
             System.out.println("Kupiono bilet o numerze" + klient.Bilety.indexOf(lot) +" na lot z lotniska " + lot.getLotnisko_p() +" do" + lot.getLotnisko_k() + " dnia" + lot.getDzien() + " o godzinie: " + lot.getGodzina_odlotu());
         }
     }
 
     public void usunBilet(Ticket ticket, Klient klient, Lot lot){
-        lot.odwolywanieBiletu(lot.getDostepne_bilety());
+        lot.odwolywanieBiletu();
         System.out.println("Odwoloano rezerwacje biletu o numerze" +klient.Bilety.indexOf(lot));
         klient.Bilety.remove(lot);
+    }
+
+    public Lot getLot(){
+        return lot;
     }
 
     /*public void wyswietlBilety(){
