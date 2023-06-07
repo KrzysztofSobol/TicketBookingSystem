@@ -1,4 +1,6 @@
+import Clients.Klient;
 import Flights.Lot;
+import Reservation.*;
 import Resources.Lotnisko;
 import Resources.Samolot;
 import Resources.SamolotTyp.Typ1;
@@ -144,4 +146,14 @@ public class Main {
             }
         }
     }
+    public static void rezerwacjaBiletu(Klient klient, Lot lot){
+        Ticket ticket = new Ticket(1,lot);
+        ticket.kupBilet(lot,klient);
+        klient.dodajBilet(ticket);
+    }
+
+    public static void odwolywanieBiletu(Klient klient, Ticket ticket){
+        ticket.usunBilet();
+    }
 }
+

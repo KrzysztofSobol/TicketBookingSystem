@@ -1,5 +1,6 @@
 package Clients;
 import Flights.Lot;
+import Reservation.Ticket;
 import Resources.Lotnisko;
 
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
@@ -8,7 +9,7 @@ import java.util.List;
 
 public abstract class   Klient {
     public List<Klient> klienci = new ArrayList<>();
-    public List<Lot> Bilety = new ArrayList<>();
+    public List<Ticket> Bilety = new ArrayList<>();
 
     public void dodajKlienta(Klient klient){
         klienci.add(klient);
@@ -18,7 +19,19 @@ public abstract class   Klient {
         klienci.remove(klient);
     }
 
-    public void kupBilet(Lot lot){
+    public void dodajBilet(Ticket ticket){
+        Bilety.add(ticket);
+    }
+
+    public List getBilety(Klient klient){
+        return Bilety;
+    }
+
+    public List getBilet(Klient klient, Lot lot){
+        if()
+    }
+
+   /* public void kupBilet(Lot lot){
         if(lot.getDostepne_bilety()<1){
             System.out.println("Brak dostepnych meijsc na lot");
         }
@@ -39,5 +52,5 @@ public abstract class   Klient {
         System.out.println("Bilety klienta" + imie);
         for()
     }
-
+    */
 }
