@@ -6,7 +6,7 @@ import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class   Klient {
+public abstract class Klient {
     public List<Klient> klienci = new ArrayList<>();
     public List<Lot> Bilety = new ArrayList<>();
 

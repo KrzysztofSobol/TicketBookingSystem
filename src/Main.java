@@ -16,10 +16,10 @@ public class Main {
     static ArrayList<Lotnisko> lotniska = new ArrayList<>();
     static ArrayList<Lot> loty = new ArrayList<>();
     public static void main(String[] args) {
-        Lotnisko lotnisko1 = new Lotnisko("Warszawa", "Warszawa", 1, 1);
-        Lotnisko lotnisko2 = new Lotnisko("Berlin", "Berlin", 1, 1);
-        Lotnisko lotnisko3 = new Lotnisko("Paryz", "Paryz", 1, 1);
-        Lotnisko lotnisko4 = new Lotnisko("HongKong", "HongKong", 1, 1);
+        Lotnisko lotnisko1 = new Lotnisko("Warszawa", "Warszawa", 1, 100);
+        Lotnisko lotnisko2 = new Lotnisko("Berlin", "Berlin", 1, 20);
+        Lotnisko lotnisko3 = new Lotnisko("Paryz", "Paryz", 1, 3);
+        Lotnisko lotnisko4 = new Lotnisko("HongKong", "HongKong", 1, 25);
 
         lotniska.add(lotnisko1);
         lotniska.add(lotnisko2);
@@ -27,21 +27,21 @@ public class Main {
         lotniska.add(lotnisko4);
 
         /// Testy
-        Typ1 krotko_dystansowiec = new Typ1("Mini Majk", 1500, 40, 100);
-        Typ2 srednio_dystansowiec = new Typ2("Mid John", 5000, 30, 150);
-        Typ3 daleko_dystansowiec = new Typ3("Long Ben", 100000, 20, 200);
+        Typ1 krotko_dystansowiec = new Typ1("Mini Majk", 1500, 40, 20);
+        Typ2 srednio_dystansowiec = new Typ2("Mid John", 5000, 30, 30);
+        Typ3 daleko_dystansowiec = new Typ3("Long Ben", 100000, 20, 70);
 
-        Typ1 krotko_dystansowiec2 = new Typ1("Mini Majk2", 1500, 20, 100);
-        Typ2 srednio_dystansowiec2 = new Typ2("Mid John2", 5000, 30, 150);
-        Typ3 daleko_dystansowiec2 = new Typ3("Long Ben2", 100000, 20, 200);
+        Typ1 krotko_dystansowiec2 = new Typ1("Mini Majk2", 1500, 20, 20);
+        Typ2 srednio_dystansowiec2 = new Typ2("Mid John2", 5000, 30, 35);
+        Typ3 daleko_dystansowiec2 = new Typ3("Long Ben2", 100000, 20, 80);
 
-        Typ1 krotko_dystansowiec3 = new Typ1("Mini Majk3", 1500, 20, 100);
-        Typ2 srednio_dystansowiec3 = new Typ2("Mid John3", 5000, 30, 150);
-        Typ3 daleko_dystansowiec3 = new Typ3("Long Ben3", 100000, 20, 200);
+        Typ1 krotko_dystansowiec3 = new Typ1("Mini Majk3", 1500, 20, 20);
+        Typ2 srednio_dystansowiec3 = new Typ2("Mid John3", 5000, 30, 40);
+        Typ3 daleko_dystansowiec3 = new Typ3("Long Ben3", 100000, 20, 90);
 
-        Typ1 krotko_dystansowiec4 = new Typ1("Mini Majk4", 1500, 20, 100);
-        Typ2 srednio_dystansowiec4 = new Typ2("Mid John4", 5000, 30, 150);
-        Typ3 daleko_dystansowiec4 = new Typ3("Long Ben4", 100000, 20, 200);
+        Typ1 krotko_dystansowiec4 = new Typ1("Mini Majk4", 1500, 20, 23);
+        Typ2 srednio_dystansowiec4 = new Typ2("Mid John4", 5000, 30, 42);
+        Typ3 daleko_dystansowiec4 = new Typ3("Long Ben4", 100000, 20, 65);
 
         lotnisko1.dodajSamolot(krotko_dystansowiec);
         lotnisko1.dodajSamolot(srednio_dystansowiec);
@@ -73,17 +73,20 @@ public class Main {
                     if (lotnisko_k.equals(lotnisko_p)) {
                         continue;
                     }
+
                     double odleglosc = Odleglosc(lotnisko_p, lotnisko_k);
                     LocalTime godzinaOdlotu = RandomHour();
                     DayOfWeek dzienOdlotu = DayOfWeek.valueOf(daysOfWeek[i].toUpperCase(Locale.ENGLISH));
-                    Samolot samolot = PrzydzielSamolot(lotnisko_p, godzinaOdlotu, dzienOdlotu, odleglosc);
 
+                    Samolot samolot = PrzydzielSamolot(lotnisko_p, godzinaOdlotu, dzienOdlotu, odleglosc);
                     if (samolot == null) {
                         continue;
                     }
-                    Lot lot_out = new Lot(godzinaOdlotu, dzienOdlotu, samolot, lotnisko_p, lotnisko_k);
 
-                    LocalTime godzinaPrzylotu = godzinaOdlotu.plusHours();
+                    Lot lot_out = new Lot(godzinaOdlotu, dzienOdlotu, samolot, lotnisko_p, lotnisko_k);
+                    LocalTime godzinaPrzylotu = GodzinaPrzylotu(godzinaOdlotu, odleglosc, samolot);
+
+                    godzinaOdlotu = godzinaOdlotu.plusMinutes(TravelTimeMinutes(odleglosc, samolot.getPredkosc()));
                     if (godzinaPrzylotu.isAfter(LocalTime.MIDNIGHT) && godzinaPrzylotu.isBefore(godzinaOdlotu)) {
                         dzienOdlotu = dzienOdlotu.plus(1);
                     }
@@ -100,7 +103,7 @@ public class Main {
     public static Samolot PrzydzielSamolot(Lotnisko lotnisko_p, LocalTime godzina, DayOfWeek dzien, double odleglosc) {
         for (Samolot samolot : lotnisko_p.getFlota()) {
             if (samolot.getZasieg() >= odleglosc && samolot.getIloscMiejsc() > 0) {
-                if(!Overlap(samolot, lotnisko_p, godzina, dzien)){
+                if(!Overlap(samolot, lotnisko_p, godzina, dzien, odleglosc)){
                     return samolot;
                 }
             }
@@ -109,12 +112,12 @@ public class Main {
     }
 
 
-    public static Boolean Overlap(Samolot samolot, Lotnisko lotnisko_p, LocalTime godzina, DayOfWeek dzien) {
+    public static Boolean Overlap(Samolot samolot, Lotnisko lotnisko_p, LocalTime godzina, DayOfWeek dzien, double odleglosc) {
         if (!loty.isEmpty()) {
             for (int i = loty.size() - 1; i >= 0; i--) {
                 Lot lot = loty.get(i);
                 if (lot.getSamolot() == samolot && lot.getLotnisko_p() == lotnisko_p) {
-                    if(!godzina.isBefore(lot.getGodzina_odlotu()) && !godzina.plusHours(3).isBefore(lot.getGodzina_odlotu()) && dzien.equals(lot.getDzien()) || !godzina.isAfter(lot.getGodzina_odlotu().plusHours(3)) && dzien.equals(lot.getDzien())){
+                    if(!godzina.isBefore(lot.getGodzina_odlotu()) && GodzinaPrzylotu(godzina, odleglosc, samolot).isBefore(lot.getGodzina_odlotu()) && dzien.equals(lot.getDzien()) || !godzina.isAfter(lot.getGodzina_odlotu().plusHours(3)) && dzien.equals(lot.getDzien())){
                         return true;
                     }
                 }
@@ -130,8 +133,14 @@ public class Main {
         return Math.sqrt(dx*dx + dy*dy)*1000;
     }
 
-    public static double TravelTimeH(int odleglosc, int speed){
-        return odleglosc/speed;
+    public static int TravelTimeHours(double odleglosc, int speed){
+        double hours = odleglosc/(double)speed;
+        return (int)Math.floor(hours);
+    }
+
+    public static int TravelTimeMinutes(double odleglosc, int speed){
+        double minutes = odleglosc/(double)speed;
+        return (int) (minutes - (int)minutes);
     }
 
     public static LocalTime RandomHour(){
@@ -139,6 +148,12 @@ public class Main {
         int hour = random.nextInt(24);
         int minute = random.nextInt(60);
         return LocalTime.of(hour, minute);
+    }
+
+    public static LocalTime GodzinaPrzylotu(LocalTime godzinaOdlotu, double odleglosc, Samolot samolot){
+        godzinaOdlotu = godzinaOdlotu.plusHours(TravelTimeHours(odleglosc, samolot.getPredkosc()));
+        godzinaOdlotu = godzinaOdlotu.plusMinutes(TravelTimeMinutes(odleglosc, samolot.getPredkosc()));
+        return godzinaOdlotu;
     }
 
     public static void wypiszLoty() {
