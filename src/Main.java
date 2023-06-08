@@ -47,7 +47,7 @@ public class Main {
         Typ2 srednio_dystansowiec4 = new Typ2("Mid John4", 5000, 30);
         Typ3 daleko_dystansowiec4 = new Typ3("Long Ben4", 100000, 20);
 
-        Osoba osoba = new Osoba("Jan","Kowalski");
+
 
 
         lotnisko1.dodajSamolot(krotko_dystansowiec);
@@ -69,6 +69,7 @@ public class Main {
         System.out.println("Loty z Berlina do WWA \n");
         generujLot();
         wypiszLoty();
+        Osoba osoba = new Osoba("Jan","Kowalski");
         rezerwacjaBiletu(osoba,loty.get(2) );
         wyswietlanieBiletu(osoba);
     }
@@ -145,17 +146,18 @@ public class Main {
     public static void wypiszLoty() {
         for (int i = 0; i < loty.size(); i++) {
             Lot lot = loty.get(i);
-            if(lot.getLotnisko_p().getNazwa().equals("Berlin")&&lot.getLotnisko_k().getNazwa().equals("Warszawa")){
+            //if(lot.getLotnisko_p().getNazwa().equals("Berlin")&&lot.getLotnisko_k().getNazwa().equals("Warszawa")){
                 System.out.println((i + 1) + ". " + lot.getLotnisko_p().getNazwa() + " -> " + lot.getLotnisko_k().getNazwa());
                 System.out.println("    Samolot: " + lot.getSamolot().getNazwa());
                 System.out.println("    Dnia: " + lot.getDzien() + " o godzinie: " + lot.getGodzina_odlotu());
                 System.out.println();
-            }
+           // }
         }
     }
     public static void rezerwacjaBiletu(Klient klient, Lot lot){
-        Ticket ticket = new Ticket(1,lot);
+        Ticket ticket = new Ticket(lot);
         ticket.kupBilet(lot,klient);
+        System.out.println("Kupiono bilet na lot z lotniska " + lot.getLotnisko_p() +" do " + lot.getLotnisko_k() + " dnia " + lot.getDzien() + " o godzinie: " + lot.getGodzina_odlotu());
         klient.dodajBilet(ticket);
     }
 
