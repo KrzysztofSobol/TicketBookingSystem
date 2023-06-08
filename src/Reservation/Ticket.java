@@ -4,35 +4,40 @@ import Clients.*;
 
 
 public class Ticket {
-    private double cena;
-    private int nr_miejsca;
-    private int ID_Klienta;
-    private int ID_Lotu;
+    private Lot lot;
+    //private int nrBiletu;
 
-    public Ticket(int ID_Lotu, int ID_Klienta, int nr_miejsca, int cena){
-        this.ID_Lotu=ID_Lotu;
-        this.ID_Klienta=ID_Klienta;
-        this.nr_miejsca=nr_miejsca;
-        this.cena=cena;
+    public Ticket(Lot lot){
+        this.lot=lot;
     }
 
-    public double getCena() {
-        return cena;
+
+
+    public void kupBilet(Lot lot, Klient klient){
+        if(lot.getDostepne_bilety()<1){
+            System.out.println("Brak dostepnych miejsc na lot");
+        }
+        else {
+            lot.kupowanieBiletu();
+            //klient.Bilety.add(ticket); TO CHYBA DO MAINA IDK
+            //System.out.println("Kupiono bilet na lot z lotniska " + lot.getLotnisko_p() +" do " + lot.getLotnisko_k() + " dnia " + lot.getDzien() + " o godzinie: " + lot.getGodzina_odlotu());
+        }
     }
 
-    public int getID_Klienta() {
-        return ID_Klienta;
+    public void usunBilet( Klient klient, Ticket ticket){
+        ticket.getLot();
+        lot.odwolywanieBiletu();
+        System.out.println("Odwoloano rezerwacje biletu na lot z " + lot.getLotnisko_p().getNazwa() + " do " + lot.getLotnisko_k().getNazwa() + " dnia " + lot.getDzien() + " o godzinie: " + lot.getGodzina_odlotu());
+        klient.Bilety.remove(ticket);
     }
 
-    public int getID_Lotu() {
-        return ID_Lotu;
+    public Lot getLot(){
+        return lot;
     }
 
-    public int getNr_miejsca() {
-        return nr_miejsca;
+    /*public void wyswietlBilety(){
+        System.out.println("Bilety klienta" + imie);
+        for()
     }
-
-    public void setNr_miejsca(int nr_miejsca) {
-        this.nr_miejsca = nr_miejsca;
-    }
+    */
 }
