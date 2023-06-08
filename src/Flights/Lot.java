@@ -5,6 +5,7 @@ import Resources.Samolot;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
+import java.util.Random;
 
 public class Lot {
     private LocalTime godzina_odlotu;
@@ -14,7 +15,7 @@ public class Lot {
     private int dostepne_bilety;
 
     public Lot(LocalTime godzina_odlotu, DayOfWeek dzien, Samolot samolot, Lotnisko lotnisko_p, Lotnisko lotnisko_k){
-        this.godzina_odlotu = godzina_odlotu;  //will be random
+        this.godzina_odlotu = godzina_odlotu;  // will be random
         this.dzien = dzien;                    // pon - niedz
         this.samolot = samolot;                // przydzielony algorytmem
         this.lotnisko_p = lotnisko_p;          // po koleji z pętli
@@ -45,4 +46,5 @@ public class Lot {
     public void odwolywanieBiletu(){ //setter
         this.dostepne_bilety+=1;
     }
+
 }
