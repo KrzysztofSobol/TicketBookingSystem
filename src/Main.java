@@ -59,7 +59,6 @@ public class Main {
         lotnisko4.dodajSamolot(srednio_dystansowiec4);
         lotnisko4.dodajSamolot(daleko_dystansowiec4);
 
-        System.out.println("Loty z Berlina do WWA \n");
         generujLot();
         wypiszLoty();
     }
@@ -82,11 +81,9 @@ public class Main {
                     if (samolot == null) {
                         continue;
                     }
-
                     Lot lot_out = new Lot(godzinaOdlotu, dzienOdlotu, samolot, lotnisko_p, lotnisko_k);
-                    LocalTime godzinaPrzylotu = GodzinaPrzylotu(godzinaOdlotu, odleglosc, samolot);
 
-                    godzinaOdlotu = godzinaOdlotu.plusMinutes(TravelTimeMinutes(odleglosc, samolot.getPredkosc()));
+                    LocalTime godzinaPrzylotu = GodzinaPrzylotu(godzinaOdlotu, odleglosc, samolot);
                     if (godzinaPrzylotu.isAfter(LocalTime.MIDNIGHT) && godzinaPrzylotu.isBefore(godzinaOdlotu)) {
                         dzienOdlotu = dzienOdlotu.plus(1);
                     }
