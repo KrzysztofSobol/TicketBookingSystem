@@ -27,7 +27,7 @@ public class Ticket {
     public void usunBilet( Klient klient, Ticket ticket){
         ticket.getLot();
         lot.odwolywanieBiletu();
-        System.out.println("Odwoloano rezerwacje biletu na lot z " + lot.getLotnisko_p() + "do" + lot.getLotnisko_k());
+        System.out.println("Odwoloano rezerwacje biletu na lot z " + lot.getLotnisko_p().getNazwa() + " do " + lot.getLotnisko_k().getNazwa() + " dnia " + lot.getDzien() + " o godzinie: " + lot.getGodzina_odlotu());
         klient.Bilety.remove(ticket);
     }
 

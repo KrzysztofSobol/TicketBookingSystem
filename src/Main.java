@@ -70,8 +70,11 @@ public class Main {
         generujLot();
         wypiszLoty();
         Osoba osoba = new Osoba("Jan","Kowalski");
-        rezerwacjaBiletu(osoba,loty.get(2) );
+        rezerwacjaBiletu(osoba,loty.get(2));
         wyswietlanieBiletu(osoba);
+        odwolywanieBiletu(osoba,osoba.Bilety.get(0));
+        wyswietlanieBiletu(osoba);
+
     }
 
     public static void generujLot() {
@@ -157,20 +160,32 @@ public class Main {
     public static void rezerwacjaBiletu(Klient klient, Lot lot){
         Ticket ticket = new Ticket(lot);
         ticket.kupBilet(lot,klient);
-        System.out.println("Kupiono bilet na lot z lotniska " + lot.getLotnisko_p() +" do " + lot.getLotnisko_k() + " dnia " + lot.getDzien() + " o godzinie: " + lot.getGodzina_odlotu());
+        System.out.println("Kupiono bilet na lot z lotniska " + lot.getLotnisko_p().getNazwa() +" do " + lot.getLotnisko_k().getNazwa() + " dnia " + lot.getDzien() + " o godzinie: " + lot.getGodzina_odlotu());
         klient.dodajBilet(ticket);
+        System.out.println();
     }
 
     public static void odwolywanieBiletu(Klient klient, Ticket ticket){
-        ticket.getLot().odwolywanieBiletu();
+        ticket.usunBilet(klient,ticket);
     }
 
     public static void wyswietlanieBiletu(Klient klient){
 
         List<Ticket>BiletyKlienta = klient.getBilety();
-        for(Ticket ticket : BiletyKlienta){
-            System.out.println("Miejsce docelowe to: " + ticket.getLot().getLotnisko_k());
+        int i=0;
+        if(klient instanceof Osoba) {
+            for (Ticket ticket : BiletyKlienta) {
+                //System.out.println("Bilety klienta: ") + klient;
+                System.out.println((i + 1) + ". " + ticket.getLot().getLotnisko_p().getNazwa() + " -> " + ticket.getLot().getLotnisko_k().getNazwa());
+                System.out.println("    Dnia: " + ticket.getLot().getDzien() + " o godzinie: " + ticket.getLot().getGodzina_odlotu());
+                System.out.println();
+            }
+            if (BiletyKlienta.isEmpty()) {
+                System.out.println("Klient nie posiada biletow");
+                System.out.println();
+            }
         }
+        else
 
     }
 
