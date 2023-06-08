@@ -1,4 +1,5 @@
 import Clients.Klient;
+import Clients.Types.Firma;
 import Clients.Types.Osoba;
 import Flights.Lot;
 import Reservation.*;
@@ -185,7 +186,20 @@ public class Main {
                 System.out.println();
             }
         }
-        else
+        else{
+            if(klient instanceof Firma){
+                for (Ticket ticket : BiletyKlienta) {
+                    //System.out.println("Bilety klienta: ") + klient;
+                    System.out.println((i + 1) + ". " + ticket.getLot().getLotnisko_p().getNazwa() + " -> " + ticket.getLot().getLotnisko_k().getNazwa());
+                    System.out.println("    Dnia: " + ticket.getLot().getDzien() + " o godzinie: " + ticket.getLot().getGodzina_odlotu());
+                    System.out.println();
+                }
+                if (BiletyKlienta.isEmpty()) {
+                    System.out.println("Klient nie posiada biletow");
+                    System.out.println();
+                }
+            }
+        }
 
     }
 
