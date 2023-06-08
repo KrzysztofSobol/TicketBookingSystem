@@ -67,6 +67,12 @@ public class Main {
 
         generujLot();
         wypiszLoty();
+        Osoba osoba = new Osoba("Jan","Kowalski");
+        rezerwacjaBiletu(osoba,loty.get(0));
+        rezerwacjaBiletu(osoba,loty.get(1));
+        wyswietlanieBiletu(osoba);
+        odwolywanieBiletu(osoba,osoba.Bilety.get(0));
+        wyswietlanieBiletu(osoba);
     }
 
     public static void generujLot() {
@@ -185,10 +191,11 @@ public class Main {
     public static void wyswietlanieBiletu(Klient klient){
 
         List<Ticket>BiletyKlienta = klient.getBilety();
-        int i=0;
+        //int i=0;
         if(klient instanceof Osoba) {
-            for (Ticket ticket : BiletyKlienta) {
-                //System.out.println("Bilety klienta: ") + klient;
+            for(int i=0; i<BiletyKlienta.size();i++){
+                Ticket ticket=BiletyKlienta.get(i);
+                System.out.println("Bilety klienta: " + klient.getNazwa() + " " + klient.getNazwiskoKrs());
                 System.out.println((i + 1) + ". " + ticket.getLot().getLotnisko_p().getNazwa() + " -> " + ticket.getLot().getLotnisko_k().getNazwa());
                 System.out.println("    Dnia: " + ticket.getLot().getDzien() + " o godzinie: " + ticket.getLot().getGodzina_odlotu());
                 System.out.println();
@@ -200,14 +207,15 @@ public class Main {
         }
         else{
             if(klient instanceof Firma){
-                for (Ticket ticket : BiletyKlienta) {
-                    //System.out.println("Bilety klienta: ") + klient;
+                for(int i=0; i<BiletyKlienta.size();i++){
+                    Ticket ticket=BiletyKlienta.get(i);
+                    System.out.println("Bilety firmy: " + klient.getNazwa() + " " + klient.getNazwiskoKrs());
                     System.out.println((i + 1) + ". " + ticket.getLot().getLotnisko_p().getNazwa() + " -> " + ticket.getLot().getLotnisko_k().getNazwa());
                     System.out.println("    Dnia: " + ticket.getLot().getDzien() + " o godzinie: " + ticket.getLot().getGodzina_odlotu());
                     System.out.println();
                 }
                 if (BiletyKlienta.isEmpty()) {
-                    System.out.println("Klient nie posiada biletow");
+                    System.out.println("Firma nie posiada biletow");
                     System.out.println();
                 }
             }

@@ -8,4 +8,17 @@ public class Osoba extends Klient {
         this.imie = Imie;
         this.nazwisko = Nazwisko;
     }
+
+   /* public String getImie(){
+        return imie;
+    }
+    */
+    public String getNazwa(){
+        return imie;
+    }
+
+    public String getNazwiskoKrs(){
+        return nazwisko;
+    }
+
 }
