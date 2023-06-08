@@ -11,6 +11,7 @@ public class Lot {
     private DayOfWeek dzien;
     private Samolot samolot;
     private Lotnisko lotnisko_p, lotnisko_k;
+    private int dostepne_bilety;
 
     public Lot(LocalTime godzina_odlotu, DayOfWeek dzien, Samolot samolot, Lotnisko lotnisko_p, Lotnisko lotnisko_k){
         this.godzina_odlotu = godzina_odlotu;  //will be random
@@ -31,4 +32,17 @@ public class Lot {
     public DayOfWeek getDzien() { return dzien; }
 
     public LocalTime getGodzina_odlotu() { return godzina_odlotu; }
+
+    public void kupowanieBiletu(int dostepne_bilety){ //setter
+        this.dostepne_bilety=dostepne_bilety-1;
+    }
+
+    public void odwolywanieBiletu(int dostepne_bilety){ //setter
+        this.dostepne_bilety=dostepne_bilety+1;
+    }
+
+    public int getDostepne_bilety() {
+        return dostepne_bilety;
+    }
+
 }
