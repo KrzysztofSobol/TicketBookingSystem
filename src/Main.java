@@ -97,6 +97,7 @@ public class Main {
                         continue;
                     }
 
+
                     Lot lot = new Lot(losowaGodzina, dzien_odlotu, samolot, lotnisko_p, lotnisko_k);
                     LocalTime losowaGodzina2 = losowaGodzina.plusHours(3);
                     if (losowaGodzina2.isAfter(LocalTime.MIDNIGHT) && losowaGodzina2.isBefore(losowaGodzina)) {
@@ -104,6 +105,11 @@ public class Main {
                     }
 
                     Lot lot2 = new Lot(losowaGodzina2, nowy_dzien_odlotu, samolot, lotnisko_k, lotnisko_p);
+
+                    Lot lot = new Lot(losowaGodzina, daysOfWeek[i], samolot, lotnisko_p, lotnisko_k,100);
+                    LocalTime losowaGodzina2 = losowaGodzina.plusHours(1);
+                    Lot lot2 = new Lot(losowaGodzina2, daysOfWeek[i], samolot, lotnisko_k, lotnisko_p,100);
+
                     loty.add(lot);
                     loty.add(lot2);
                 }
