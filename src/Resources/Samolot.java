@@ -1,11 +1,13 @@
 package Resources;
 
-import Flights.Lot;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.List;
 
 public class Samolot {
     private final String nazwa;
     private final int zasieg, iloscMiejsc, predkosc;
-    private Lot lot;
 
     public Samolot(String nazwa, int zasieg, int iloscMiejsc, int predkosc){
         this.nazwa = nazwa;
@@ -24,8 +26,24 @@ public class Samolot {
 
     public int getPredkosc() { return predkosc; }
 
-    public Lot getLot() { return lot; }
+    public static void writeToFile(List<Samolot> planesList,String fileName) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
 
-    public void setLot(Lot lot) { this.lot = lot; }
+            for (Samolot plane : planesList) {
+                String lineOfData =
+                        plane.getClass().toString().substring(plane.getClass().toString().length() - 4) + ";" +
+                                plane.getNazwa() + ";" +
+                                plane.getZasieg() + ";" +
+                                plane.getIloscMiejsc() + ";" +
+                                plane.getPredkosc();
+                writer.write(lineOfData);
+                writer.newLine();
+//               System.out.println(lineOfData);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
 
