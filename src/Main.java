@@ -8,8 +8,8 @@ import Resources.Samolot;
 import Resources.SamolotTyp.Typ1;
 import Resources.SamolotTyp.Typ2;
 import Resources.SamolotTyp.Typ3;
+import Resources.ZasiegComparator;
 
-import javax.swing.text.html.HTMLEditorKit;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
 import java.util.*;
@@ -22,17 +22,16 @@ public class Main {
     static ArrayList<Lotnisko> lotniska = new ArrayList<>();
     static ArrayList<Lot> loty = new ArrayList<>();
     public static void main(String[] args) {
-        Lotnisko lotnisko1 = new Lotnisko("Warszawa", "Warszawa", 1, 100);
+        Lotnisko lotnisko1 = new Lotnisko("Warszawa", "Warszawa", 1, 20);
         Lotnisko lotnisko2 = new Lotnisko("Berlin", "Berlin", 1, 20);
         Lotnisko lotnisko3 = new Lotnisko("Paryz", "Paryz", 1, 3);
-        Lotnisko lotnisko4 = new Lotnisko("HongKong", "HongKong", 1, 25);
+        Lotnisko lotnisko4 = new Lotnisko("HongKong", "HongKong", 1, 120);
 
         lotniska.add(lotnisko1);
         lotniska.add(lotnisko2);
         lotniska.add(lotnisko3);
         lotniska.add(lotnisko4);
-
-        /// Testy
+        
         Typ1 krotko_dystansowiec = new Typ1("Mini Majk", 1500, 40, 20);
         Typ2 srednio_dystansowiec = new Typ2("Mid John", 5000, 30, 30);
         Typ3 daleko_dystansowiec = new Typ3("Long Ben", 100000, 20, 70);
@@ -65,8 +64,14 @@ public class Main {
         lotnisko4.dodajSamolot(srednio_dystansowiec4);
         lotnisko4.dodajSamolot(daleko_dystansowiec4);
 
+        Collections.sort(lotnisko1.getFlota(), new ZasiegComparator());
+        Collections.sort(lotnisko2.getFlota(), new ZasiegComparator());
+        Collections.sort(lotnisko3.getFlota(), new ZasiegComparator());
+        Collections.sort(lotnisko4.getFlota(), new ZasiegComparator());
+
         generujLot();
         wypiszLoty();
+
         Osoba osoba = new Osoba("Jan","Kowalski");
         rezerwacjaBiletu(osoba,loty.get(0));
         rezerwacjaBiletu(osoba,loty.get(1));
