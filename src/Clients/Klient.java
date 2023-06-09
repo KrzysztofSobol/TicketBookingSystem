@@ -9,13 +9,13 @@ import Clients.Types.*;
 
 public abstract class Klient implements Serializable {
     public List<Klient> klienci = new ArrayList<>();
-    public List<Ticket> Bilety = new ArrayList<>();
+    public static List<Ticket> Bilety = new ArrayList<>();
 
     public List<Klient> getListaKlientow() {
         return klienci;
     }
 
-    public List<Ticket> getBilety() {
+    public static List<Ticket> getBilety() {
         return Bilety;
     }
 
