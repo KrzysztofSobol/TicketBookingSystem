@@ -1,18 +1,12 @@
 package Resources;
 
-<<<<<<< Updated upstream
-import Flights.Lot;
-=======
 import java.io.*;
 import java.util.List;
->>>>>>> Stashed changes
-
 import Resources.SamolotTyp.*;
 
 public class Samolot {
     private final String nazwa;
     private final int zasieg, iloscMiejsc, predkosc;
-    private Lot lot;
 
     public Samolot(String nazwa, int zasieg, int iloscMiejsc, int predkosc) {
         this.nazwa = nazwa;
@@ -40,11 +34,6 @@ public class Samolot {
         return predkosc;
     }
 
-<<<<<<< Updated upstream
-    public Lot getLot() { return lot; }
-
-    public void setLot(Lot lot) { this.lot = lot; }
-=======
     /**
      * Zapisuje listę obiektów samolotów do pliku tekstowego.
      *
@@ -78,7 +67,6 @@ public class Samolot {
      * @return lista obiektów samolotów
      */
     public static List<Samolot> readFromFile(List<Samolot> ListOfPlanes, String fileName) {
-
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String line;
 
@@ -116,8 +104,4 @@ public class Samolot {
 
         return ListOfPlanes;
     }
-
-
->>>>>>> Stashed changes
 }
-
