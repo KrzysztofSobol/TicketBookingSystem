@@ -5,7 +5,7 @@ import java.util.List;
 
 import Resources.SamolotTyp.*;
 
-public class Samolot {
+public class Samolot implements Serializable{
     private final String nazwa;
     private final int zasieg, iloscMiejsc, predkosc;
 

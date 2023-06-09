@@ -73,6 +73,28 @@ public class Main {
         wyswietlanieBiletu(osoba);
         odwolywanieBiletu(osoba, osoba.Bilety.get(0));
         wyswietlanieBiletu(osoba);
+
+        //TESTY ZAPIS/ODCZYT
+        Samolot.writeToFile(lotnisko1.getFlota(),"xd.txt");
+        List<Samolot> samoloty = new ArrayList<>();
+        Samolot.readFromFile(samoloty,"xd.txt");
+        System.out.println(samoloty);
+        Lotnisko.writeToFile(lotniska, "xx.txt");
+        Lotnisko.readFromFile(lotniska,"xx.txt");
+        System.out.println(lotniska);
+        System.out.println(loty);
+        Lot.writeToFile(loty, "loty.txt");
+        ArrayList<Lot> loty2 = new ArrayList<>();
+
+        Lot.readFromFile(loty2, "loty.txt");
+        System.out.println(loty2);
+
+        System.out.println(Klient.getBilety());
+        Klient.writeToFileBilet(Klient.Bilety,"XX.txt");
+        Klient.readFromFileBilet(Klient.Bilety, "XX.txt");
+        System.out.println(Klient.getBilety());
+
+
     }
 
     public static void generujLot() {
