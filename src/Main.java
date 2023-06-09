@@ -22,10 +22,10 @@ public class Main {
     static ArrayList<Lotnisko> lotniska = new ArrayList<>();
     static ArrayList<Lot> loty = new ArrayList<>();
     public static void main(String[] args) {
-        Lotnisko lotnisko1 = new Lotnisko("Warszawa", "Warszawa", 1, 20);
-        Lotnisko lotnisko2 = new Lotnisko("Berlin", "Berlin", 1, 20);
-        Lotnisko lotnisko3 = new Lotnisko("Paryz", "Paryz", 1, 3);
-        Lotnisko lotnisko4 = new Lotnisko("HongKong", "HongKong", 1, 120);
+        Lotnisko lotnisko1 = new Lotnisko("Warszawa", "Warszawa", 1, 87);
+        Lotnisko lotnisko2 = new Lotnisko("Berlin", "Berlin", 1, 64);
+        Lotnisko lotnisko3 = new Lotnisko("Paryz", "Paryz", 1, 22);
+        Lotnisko lotnisko4 = new Lotnisko("HongKong", "HongKong", 1, 44);
 
         lotniska.add(lotnisko1);
         lotniska.add(lotnisko2);
@@ -154,7 +154,8 @@ public class Main {
 
     public static int TravelTimeMinutes(double odleglosc, int speed){
         double minutes = odleglosc/(double)speed;
-        return (int) (minutes - (int)minutes);
+        minutes = (minutes - (int)minutes)*100;
+        return (int) minutes;
     }
 
     public static LocalTime RandomHour(){
