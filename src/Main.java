@@ -76,7 +76,7 @@ public class Main {
         rezerwacjaBiletu(osoba,loty.get(0));
         rezerwacjaBiletu(osoba,loty.get(1));
         wyswietlanieBiletu(osoba);
-        odwolywanieBiletu(osoba,osoba.Bilety.get(0));
+        odwolywanieBiletu(osoba, osoba.Bilety.get(0));
         wyswietlanieBiletu(osoba);
     }
 

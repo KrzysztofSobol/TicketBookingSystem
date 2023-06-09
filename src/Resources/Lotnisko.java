@@ -9,7 +9,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Lotnisko {
+public class Lotnisko implements Serializable{
     private final String nazwa, lokalizacja;
     private final double x, y;
     ArrayList<Samolot> flota = new ArrayList<>();
@@ -47,51 +47,31 @@ public class Lotnisko {
     }
 
     /**
-     * Zapisuje listę obiektów lotnisk do pliku tekstowego.
+     * Zapisuje listę obiektów lotnisk do pliku.
      *
      * @param airportsList lista obiektów lotnisk do zapisania
-     * @param fileName     nazwa pliku tekstowego
+     * @param fileName     nazwa pliku
      */
     public static void writeToFile(List<Lotnisko> airportsList, String fileName) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
-            for (Lotnisko airport : airportsList) {
-                String lineOfData =
-                        airport.getNazwa() + ";" +
-                                airport.getLokalizacja() + ";" +
-                                airport.getX() + ";" +
-                                airport.getY();
-                writer.write(lineOfData);
-                writer.newLine();
-            }
+        try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(fileName))) {
+            outputStream.writeObject(airportsList);
+            System.out.println("Zapisano obiekty do pliku: " + fileName);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     /**
-     * Odczytuje listę obiektów lotnisk z pliku tekstowego i zwraca ją jako wynik.
+     * Odczytuje listę obiektów lotnisk z pliku.
      *
-     * @param airportsList lista, do której będą dodawane odczytane obiekty lotnisk
-     * @param fileName     nazwa pliku tekstowego
-     * @return lista obiektów lotnisk odczytana z pliku
+     * @param airportsList lista obiektów lotnisk do zapisania
+     * @param fileName nazwa pliku
      */
-    public static List<Lotnisko> readFromFile(List<Lotnisko> airportsList, String fileName) {
-        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] data = line.split(";");
-                if (data.length == 4) {
-                    String nazwa = data[0];
-                    String lokalizacja = data[1];
-                    double x = Double.parseDouble(data[2]);
-                    double y = Double.parseDouble(data[3]);
-                    Lotnisko lotnisko = new Lotnisko(nazwa, lokalizacja, x, y);
-                    airportsList.add(lotnisko);
-                }
-            }
-        } catch (IOException e) {
+    public static void readFromFile(List<Lotnisko> airportsList, String fileName) {
+        try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(fileName))) {
+            airportsList = (List<Lotnisko>) inputStream.readObject();
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-        return airportsList;
     }
 }
