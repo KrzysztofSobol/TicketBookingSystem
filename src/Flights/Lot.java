@@ -3,11 +3,13 @@ package Flights;
 import Resources.Lotnisko;
 import Resources.Samolot;
 
+import java.io.*;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
+import java.util.List;
 import java.util.Random;
 
-public class Lot {
+public class Lot implements Serializable{
     private LocalTime godzina_odlotu;
     private DayOfWeek dzien;
     private Samolot samolot;
@@ -45,6 +47,36 @@ public class Lot {
 
     public void odwolywanieBiletu(){ //setter
         this.dostepne_bilety+=1;
+    }
+
+    /**
+     * Zapisuje listę obiektów Lotów do pliku.
+     *
+     * @param lotyList lista lotów
+     * @param fileName nazwa pliku
+     */
+    public static void writeToFile(List<Lot> lotyList, String fileName) {
+        try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(fileName))) {
+            outputStream.writeObject(lotyList);
+            System.out.println("Zapisano obiekty do pliku: " + fileName);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Odczytuje listę obiektów Lotów z pliku i dodaje je do istniejącej listy.
+     *
+     * @param lotyList lista, do której będą dodawane odczytane obiekty Lotów
+     * @param fileName nazwa pliku
+     */
+    public static void readFromFile(List<Lot> lotyList, String fileName) {
+        try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(fileName))) {
+            List<Lot> odczytaneLotyList = (List<Lot>) inputStream.readObject();
+            lotyList.addAll(odczytaneLotyList);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
 }
