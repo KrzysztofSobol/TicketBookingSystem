@@ -110,7 +110,7 @@ public class Main {
             for (Lotnisko lotnisko_k : lotniska) {
                 if (lotnisko_k.equals(lotnisko_p)) { continue; }
                 for (int i = 2; i <= 7; i++) {
-
+                    // lot pierwszy
                     double odleglosc = Odleglosc(lotnisko_p, lotnisko_k);
                     LocalTime godzinaOdlotu = RandomHour();
                     DayOfWeek dzienOdlotu = DayOfWeek.valueOf(daysOfWeek[i].toUpperCase(Locale.ENGLISH));
@@ -121,12 +121,13 @@ public class Main {
                     }
                     Lot lot_out = new Lot(godzinaOdlotu, dzienOdlotu, samolot, lotnisko_p, lotnisko_k);
 
+                    // lot powrotny
                     LocalTime godzinaPrzylotu = GodzinaPrzylotu(godzinaOdlotu, odleglosc, samolot);
                     if (godzinaPrzylotu.isAfter(LocalTime.MIDNIGHT) && godzinaPrzylotu.isBefore(godzinaOdlotu)) {
                         dzienOdlotu = dzienOdlotu.plus(1);
                     }
-
                     Lot lot_in = new Lot(godzinaPrzylotu, dzienOdlotu, samolot, lotnisko_k, lotnisko_p);
+
                     loty.add(lot_out);
                     loty.add(lot_in);
                 }
@@ -134,7 +135,7 @@ public class Main {
         }
     }
 
-
+    
     public static Samolot PrzydzielSamolot(Lotnisko lotnisko_p, LocalTime godzina, DayOfWeek dzien, double odleglosc) {
         for (Samolot samolot : lotnisko_p.getFlota()) {
             if (samolot.getZasieg() >= odleglosc && samolot.getIloscMiejsc() > 0) {

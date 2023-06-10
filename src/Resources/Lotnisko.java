@@ -1,10 +1,5 @@
 package Resources;
 
-import Flights.Lot;
-import Resources.SamolotTyp.Typ1;
-import Resources.SamolotTyp.Typ2;
-import Resources.SamolotTyp.Typ3;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
