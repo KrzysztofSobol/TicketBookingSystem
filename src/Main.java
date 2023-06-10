@@ -135,7 +135,7 @@ public class Main {
         }
     }
 
-    
+
     public static Samolot PrzydzielSamolot(Lotnisko lotnisko_p, LocalTime godzina, DayOfWeek dzien, double odleglosc) {
         for (Samolot samolot : lotnisko_p.getFlota()) {
             if (samolot.getZasieg() >= odleglosc && samolot.getIloscMiejsc() > 0) {
@@ -187,10 +187,10 @@ public class Main {
         return LocalTime.of(hour, minute);
     }
 
-    public static LocalTime GodzinaPrzylotu(LocalTime godzinaOdlotu, double odleglosc, Samolot samolot){
-        godzinaOdlotu = godzinaOdlotu.plusHours(TravelTimeHours(odleglosc, samolot.getPredkosc()));
-        godzinaOdlotu = godzinaOdlotu.plusMinutes(TravelTimeMinutes(odleglosc, samolot.getPredkosc()));
-        return godzinaOdlotu;
+    public static LocalTime GodzinaPrzylotu(LocalTime godzinaPrzylotu, double odleglosc, Samolot samolot){
+        godzinaPrzylotu = godzinaPrzylotu.plusHours(TravelTimeHours(odleglosc, samolot.getPredkosc()));
+        godzinaPrzylotu = godzinaPrzylotu.plusMinutes(TravelTimeMinutes(odleglosc, samolot.getPredkosc()));
+        return godzinaPrzylotu;
     }
 
     public static void wypiszLoty() {
