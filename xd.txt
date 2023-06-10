@@ -1,0 +1,15 @@
+Typ1;Mini Majk;1500;40;20
+Typ2;Mid John;5000;30;30
+Typ3;Long Ben;100000;20;70
+Typ1;Mini Majk;1500;40;20
+Typ2;Mid John;5000;30;30
+Typ3;Long Ben;100000;20;70
+Typ1;Mini Majk;1500;40;20
+Typ2;Mid John;5000;30;30
+Typ3;Long Ben;100000;20;70
+Typ1;Mini Majk;1500;40;20
+Typ2;Mid John;5000;30;30
+Typ3;Long Ben;100000;20;70
+Typ1;Mini Majk;1500;40;20
+Typ2;Mid John;5000;30;30
+Typ3;Long Ben;100000;20;70

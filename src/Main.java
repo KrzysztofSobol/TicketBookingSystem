@@ -3,6 +3,7 @@ import Clients.Types.Firma;
 import Clients.Types.Osoba;
 import Flights.Lot;
 import Reservation.*;
+
 import Resources.Lotnisko;
 import Resources.Samolot;
 import Resources.SamolotTyp.Typ1;
@@ -12,8 +13,8 @@ import Resources.ZasiegComparator;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
-import java.util.*;
 import java.text.DateFormatSymbols;
+import java.util.*;
 
 
 
@@ -22,10 +23,10 @@ public class Main {
     static ArrayList<Lotnisko> lotniska = new ArrayList<>();
     static ArrayList<Lot> loty = new ArrayList<>();
     public static void main(String[] args) {
-        Lotnisko lotnisko1 = new Lotnisko("Warszawa", "Warszawa", 1, 87);
-        Lotnisko lotnisko2 = new Lotnisko("Berlin", "Berlin", 1, 64);
-        Lotnisko lotnisko3 = new Lotnisko("Paryz", "Paryz", 1, 22);
-        Lotnisko lotnisko4 = new Lotnisko("HongKong", "HongKong", 1, 44);
+        Lotnisko lotnisko1 = new Lotnisko("Warszawa", "Warszawa", 1, 1);
+        Lotnisko lotnisko2 = new Lotnisko("Berlin", "Berlin", 1, 1);
+        Lotnisko lotnisko3 = new Lotnisko("Paryz", "Paryz", 1, 1);
+        Lotnisko lotnisko4 = new Lotnisko("HongKong", "HongKong", 1, 1);
 
         lotniska.add(lotnisko1);
         lotniska.add(lotnisko2);
@@ -64,10 +65,10 @@ public class Main {
         lotnisko4.dodajSamolot(srednio_dystansowiec4);
         lotnisko4.dodajSamolot(daleko_dystansowiec4);
 
-        Collections.sort(lotnisko1.getFlota(), new ZasiegComparator());
-        Collections.sort(lotnisko2.getFlota(), new ZasiegComparator());
-        Collections.sort(lotnisko3.getFlota(), new ZasiegComparator());
-        Collections.sort(lotnisko4.getFlota(), new ZasiegComparator());
+        lotnisko1.getFlota().sort(new ZasiegComparator());
+        lotnisko2.getFlota().sort(new ZasiegComparator());
+        lotnisko3.getFlota().sort(new ZasiegComparator());
+        lotnisko4.getFlota().sort(new ZasiegComparator());
 
         generujLot();
         wypiszLoty();
@@ -106,11 +107,9 @@ public class Main {
         DateFormatSymbols dni = new DateFormatSymbols(new Locale("en", "US"));
         String[] daysOfWeek = dni.getWeekdays();
         for (Lotnisko lotnisko_p : lotniska) {
-            for (int i = 2; i <= 7; i++) {
-                for (Lotnisko lotnisko_k : lotniska) {
-                    if (lotnisko_k.equals(lotnisko_p)) {
-                        continue;
-                    }
+            for (Lotnisko lotnisko_k : lotniska) {
+                if (lotnisko_k.equals(lotnisko_p)) { continue; }
+                for (int i = 2; i <= 7; i++) {
 
                     double odleglosc = Odleglosc(lotnisko_p, lotnisko_k);
                     LocalTime godzinaOdlotu = RandomHour();
