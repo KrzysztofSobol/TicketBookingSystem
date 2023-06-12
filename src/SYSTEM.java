@@ -19,10 +19,10 @@ import java.util.*;
 
 
 
-public class Main {
+public class SYSTEM {
     static ArrayList<Lotnisko> lotniska = new ArrayList<>();
     static ArrayList<Lot> loty = new ArrayList<>();
-    public static void main(String[] args) {
+    public static void start(String[] args) {
         Lotnisko lotnisko1 = new Lotnisko("Warszawa", "Warszawa", 1, 1);
         Lotnisko lotnisko2 = new Lotnisko("Berlin", "Berlin", 1, 1);
         Lotnisko lotnisko3 = new Lotnisko("Paryz", "Paryz", 1, 1);
