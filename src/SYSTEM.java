@@ -74,6 +74,7 @@ public class SYSTEM {
         wypiszLoty();
 
         Osoba osoba = new Osoba("Jan","Kowalski");
+        osoba.dodajKlienta();
         rezerwacjaBiletu(osoba,loty.get(0));
         rezerwacjaBiletu(osoba,loty.get(1));
         wyswietlanieBiletu(osoba);
@@ -162,7 +163,6 @@ public class SYSTEM {
         return false;
     }
 
-
     public static double Odleglosc(Lotnisko lotnisko_p, Lotnisko lotnisko_k){
         double dx = lotnisko_k.getX() - lotnisko_p.getX();
         double dy = lotnisko_k.getY() - lotnisko_p.getY();
@@ -249,4 +249,10 @@ public class SYSTEM {
             }
         }
     }
+
+    public static void StworzOsobe(String Imie, String Nazwisko){
+        Osoba osoba = new Osoba(Imie,Nazwisko);
+        osoba.dodajKlienta();
+    }
+
 }
