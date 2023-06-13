@@ -14,6 +14,7 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
+        StworzKontoPanel.setVisible(false); // Hide the panel initially
     }
 
     /**
@@ -29,6 +30,8 @@ public class Main extends javax.swing.JFrame {
         stworzKonto = new javax.swing.JButton();
         zarezerwujLot = new javax.swing.JButton();
         wgrajDane = new javax.swing.JButton();
+        StworzKontoPanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,7 +50,6 @@ public class Main extends javax.swing.JFrame {
         });
 
         zarezerwujLot.setText("Zarezerwuj lot");
-        zarezerwujLot.setActionCommand("Zarezerwuj lot");
         zarezerwujLot.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 zarezerwujLotActionPerformed(evt);
@@ -61,21 +63,43 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("huh");
+
+        javax.swing.GroupLayout StworzKontoPanelLayout = new javax.swing.GroupLayout(StworzKontoPanel);
+        StworzKontoPanel.setLayout(StworzKontoPanelLayout);
+        StworzKontoPanelLayout.setHorizontalGroup(
+                StworzKontoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(StworzKontoPanelLayout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addComponent(jLabel1)
+                                .addContainerGap(52, Short.MAX_VALUE))
+        );
+        StworzKontoPanelLayout.setVerticalGroup(
+                StworzKontoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(StworzKontoPanelLayout.createSequentialGroup()
+                                .addGap(39, 39, 39)
+                                .addComponent(jLabel1)
+                                .addContainerGap(45, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                                .addGap(215, 215, 215)
+                                .addGap(211, 211, 211)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(stworzKonto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(zarezerwujLot, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
                                         .addComponent(wgrajDane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addContainerGap(216, Short.MAX_VALUE))
+                                .addContainerGap(211, Short.MAX_VALUE))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap(200, Short.MAX_VALUE)
+                                .addContainerGap(195, Short.MAX_VALUE)
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(200, Short.MAX_VALUE))
+                                .addContainerGap(196, Short.MAX_VALUE))
+                        .addGroup(layout.createSequentialGroup()
+                                .addComponent(StworzKontoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -88,14 +112,15 @@ public class Main extends javax.swing.JFrame {
                                 .addComponent(zarezerwujLot)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(wgrajDane)
-                                .addContainerGap(118, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(StworzKontoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>
 
     private void stworzKontoActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        StworzKontoPanel.setVisible(true);
     }
 
     private void zarezerwujLotActionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,6 +167,8 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify
+    private javax.swing.JPanel StworzKontoPanel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton stworzKonto;
     private javax.swing.JButton wgrajDane;
