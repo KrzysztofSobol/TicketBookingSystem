@@ -16,6 +16,7 @@ public class Main extends javax.swing.JFrame {
         initComponents();
         MainMenu.setVisible(true);
         StworzKontoPanel.setVisible(false);
+        KlientWybor.setVisible(false);
     }
 
     /**
@@ -36,9 +37,15 @@ public class Main extends javax.swing.JFrame {
         stworzKonto = new javax.swing.JButton();
         zarezerwujLot = new javax.swing.JButton();
         wgrajDane = new javax.swing.JButton();
+        KlientWybor = new javax.swing.JPanel();
+        optionOsoba = new javax.swing.JButton();
+        optionFirma = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        StworzKontoPanel.setMaximumSize(new java.awt.Dimension(548, 288));
+        StworzKontoPanel.setMinimumSize(new java.awt.Dimension(548, 288));
+        StworzKontoPanel.setPreferredSize(new java.awt.Dimension(548, 288));
         StworzKontoPanel.addHierarchyListener(new java.awt.event.HierarchyListener() {
             public void hierarchyChanged(java.awt.event.HierarchyEvent evt) {
                 StworzKontoPanelHierarchyChanged(evt);
@@ -85,6 +92,10 @@ public class Main extends javax.swing.JFrame {
                                 .addContainerGap(118, Short.MAX_VALUE))
         );
 
+        MainMenu.setMaximumSize(new java.awt.Dimension(548, 288));
+        MainMenu.setMinimumSize(new java.awt.Dimension(548, 288));
+        MainMenu.setPreferredSize(new java.awt.Dimension(548, 288));
+
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Ticket Booking System");
         jLabel2.setToolTipText("");
@@ -123,11 +134,11 @@ public class Main extends javax.swing.JFrame {
                                         .addComponent(wgrajDane, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(zarezerwujLot, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(stworzKonto, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addContainerGap(210, Short.MAX_VALUE))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainMenuLayout.createSequentialGroup()
-                                .addContainerGap(199, Short.MAX_VALUE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(199, 199, 199))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         MainMenuLayout.setVerticalGroup(
                 MainMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,25 +154,74 @@ public class Main extends javax.swing.JFrame {
                                 .addContainerGap(104, Short.MAX_VALUE))
         );
 
+        KlientWybor.setMaximumSize(new java.awt.Dimension(548, 288));
+        KlientWybor.setMinimumSize(new java.awt.Dimension(548, 288));
+        KlientWybor.setPreferredSize(new java.awt.Dimension(548, 288));
+
+        optionOsoba.setText("Osoba");
+        optionOsoba.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                optionOsobaActionPerformed(evt);
+            }
+        });
+
+        optionFirma.setText("Firma");
+        optionFirma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                optionFirmaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout KlientWyborLayout = new javax.swing.GroupLayout(KlientWybor);
+        KlientWybor.setLayout(KlientWyborLayout);
+        KlientWyborLayout.setHorizontalGroup(
+                KlientWyborLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(KlientWyborLayout.createSequentialGroup()
+                                .addGap(198, 198, 198)
+                                .addComponent(optionOsoba)
+                                .addGap(18, 18, 18)
+                                .addComponent(optionFirma)
+                                .addContainerGap(188, Short.MAX_VALUE))
+        );
+        KlientWyborLayout.setVerticalGroup(
+                KlientWyborLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(KlientWyborLayout.createSequentialGroup()
+                                .addGap(103, 103, 103)
+                                .addGroup(KlientWyborLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(optionOsoba)
+                                        .addComponent(optionFirma))
+                                .addContainerGap(162, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 553, Short.MAX_VALUE)
+                        .addGap(0, 1001, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(StworzKontoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(StworzKontoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1001, Short.MAX_VALUE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
                                         .addComponent(MainMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                        .addGap(226, 226, 226)
+                                        .addComponent(KlientWybor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addContainerGap(227, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 288, Short.MAX_VALUE)
+                        .addGap(0, 476, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(StworzKontoPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(StworzKontoPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(MainMenu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(MainMenu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                        .addGap(94, 94, 94)
+                                        .addComponent(KlientWybor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addContainerGap(94, Short.MAX_VALUE)))
         );
 
         pack();
@@ -169,7 +229,7 @@ public class Main extends javax.swing.JFrame {
 
     private void stworzKontoActionPerformed(java.awt.event.ActionEvent evt) {
         MainMenu.setVisible(false);
-        StworzKontoPanel.setVisible(true);
+        KlientWybor.setVisible(true);
     }
 
     private void zarezerwujLotActionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,6 +254,15 @@ public class Main extends javax.swing.JFrame {
 
     private void getNazwiskoActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+    }
+
+    private void optionFirmaActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void optionOsobaActionPerformed(java.awt.event.ActionEvent evt) {
+        KlientWybor.setVisible(false);
+        StworzKontoPanel.setVisible(true);
     }
 
     /**
@@ -232,12 +301,15 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify
+    private javax.swing.JPanel KlientWybor;
     private javax.swing.JPanel MainMenu;
     private javax.swing.JPanel StworzKontoPanel;
     private java.awt.TextField getImie;
     private java.awt.TextField getNazwisko;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton optionFirma;
+    private javax.swing.JButton optionOsoba;
     private javax.swing.JButton stworzKonto;
     private javax.swing.JButton wgrajDane;
     private javax.swing.JButton zarezerwujLot;
