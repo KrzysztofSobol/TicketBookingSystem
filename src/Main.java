@@ -14,9 +14,9 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
-        MainMenu.setVisible(true);
-        StworzKontoPanel.setVisible(false);
-        KlientWybor.setVisible(false);
+        KlientWyborPanel.setVisible(false);
+        StworzOsobaPanel.setVisible(false);
+        StworzFirmaPanel.setVisible(false);
     }
 
     /**
@@ -28,73 +28,33 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
 
-        StworzKontoPanel = new javax.swing.JPanel();
-        getImie = new java.awt.TextField();
-        getNazwisko = new java.awt.TextField();
-        jButton2 = new javax.swing.JButton();
         MainMenu = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         stworzKonto = new javax.swing.JButton();
         zarezerwujLot = new javax.swing.JButton();
         wgrajDane = new javax.swing.JButton();
-        KlientWybor = new javax.swing.JPanel();
-        optionOsoba = new javax.swing.JButton();
-        optionFirma = new javax.swing.JButton();
+        KlientWyborPanel = new javax.swing.JPanel();
+        wyborOsoba = new javax.swing.JButton();
+        wyborFirma = new javax.swing.JButton();
+        goBack = new javax.swing.JButton();
+        StworzOsobaPanel = new javax.swing.JPanel();
+        getImie = new java.awt.TextField();
+        getNazwisko = new java.awt.TextField();
+        Register = new javax.swing.JButton();
+        goBack1 = new javax.swing.JButton();
+        StworzFirmaPanel = new javax.swing.JPanel();
+        getFirma = new java.awt.TextField();
+        getKRS = new java.awt.TextField();
+        Register1 = new javax.swing.JButton();
+        goBack2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        StworzKontoPanel.setMaximumSize(new java.awt.Dimension(548, 288));
-        StworzKontoPanel.setMinimumSize(new java.awt.Dimension(548, 288));
-        StworzKontoPanel.setPreferredSize(new java.awt.Dimension(548, 288));
-        StworzKontoPanel.addHierarchyListener(new java.awt.event.HierarchyListener() {
+        MainMenu.addHierarchyListener(new java.awt.event.HierarchyListener() {
             public void hierarchyChanged(java.awt.event.HierarchyEvent evt) {
-                StworzKontoPanelHierarchyChanged(evt);
+                MainMenuHierarchyChanged(evt);
             }
         });
-
-        getImie.setText("Imie");
-
-        getNazwisko.setText("Nazwisko");
-        getNazwisko.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                getNazwiskoActionPerformed(evt);
-            }
-        });
-
-        jButton2.setText("Register");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout StworzKontoPanelLayout = new javax.swing.GroupLayout(StworzKontoPanel);
-        StworzKontoPanel.setLayout(StworzKontoPanelLayout);
-        StworzKontoPanelLayout.setHorizontalGroup(
-                StworzKontoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(StworzKontoPanelLayout.createSequentialGroup()
-                                .addGap(219, 219, 219)
-                                .addGroup(StworzKontoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(getNazwisko, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(getImie, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE))
-                                .addContainerGap(219, Short.MAX_VALUE))
-        );
-        StworzKontoPanelLayout.setVerticalGroup(
-                StworzKontoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(StworzKontoPanelLayout.createSequentialGroup()
-                                .addGap(87, 87, 87)
-                                .addComponent(getImie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(getNazwisko, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2)
-                                .addContainerGap(118, Short.MAX_VALUE))
-        );
-
-        MainMenu.setMaximumSize(new java.awt.Dimension(548, 288));
-        MainMenu.setMinimumSize(new java.awt.Dimension(548, 288));
-        MainMenu.setPreferredSize(new java.awt.Dimension(548, 288));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Ticket Booking System");
@@ -128,22 +88,19 @@ public class Main extends javax.swing.JFrame {
         MainMenu.setLayout(MainMenuLayout);
         MainMenuLayout.setHorizontalGroup(
                 MainMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(MainMenuLayout.createSequentialGroup()
-                                .addGap(215, 215, 215)
-                                .addGroup(MainMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(wgrajDane, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(zarezerwujLot, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(stworzKonto, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(210, Short.MAX_VALUE))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainMenuLayout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(216, 216, 216)
+                                .addGroup(MainMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(zarezerwujLot, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                                        .addComponent(stworzKonto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(wgrajDane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addContainerGap(209, Short.MAX_VALUE))
         );
         MainMenuLayout.setVerticalGroup(
                 MainMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(MainMenuLayout.createSequentialGroup()
-                                .addGap(41, 41, 41)
+                                .addGap(45, 45, 45)
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(stworzKonto)
@@ -151,77 +108,229 @@ public class Main extends javax.swing.JFrame {
                                 .addComponent(zarezerwujLot)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(wgrajDane)
-                                .addContainerGap(104, Short.MAX_VALUE))
+                                .addGap(112, 112, 112))
         );
 
-        KlientWybor.setMaximumSize(new java.awt.Dimension(548, 288));
-        KlientWybor.setMinimumSize(new java.awt.Dimension(548, 288));
-        KlientWybor.setPreferredSize(new java.awt.Dimension(548, 288));
-
-        optionOsoba.setText("Osoba");
-        optionOsoba.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                optionOsobaActionPerformed(evt);
+        KlientWyborPanel.setRequestFocusEnabled(false);
+        KlientWyborPanel.addHierarchyListener(new java.awt.event.HierarchyListener() {
+            public void hierarchyChanged(java.awt.event.HierarchyEvent evt) {
+                KlientWyborPanelHierarchyChanged(evt);
             }
         });
 
-        optionFirma.setText("Firma");
-        optionFirma.addActionListener(new java.awt.event.ActionListener() {
+        wyborOsoba.setText("Osoba");
+        wyborOsoba.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                optionFirmaActionPerformed(evt);
+                wyborOsobaActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout KlientWyborLayout = new javax.swing.GroupLayout(KlientWybor);
-        KlientWybor.setLayout(KlientWyborLayout);
-        KlientWyborLayout.setHorizontalGroup(
-                KlientWyborLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(KlientWyborLayout.createSequentialGroup()
-                                .addGap(198, 198, 198)
-                                .addComponent(optionOsoba)
-                                .addGap(18, 18, 18)
-                                .addComponent(optionFirma)
-                                .addContainerGap(188, Short.MAX_VALUE))
+        wyborFirma.setText("Firma");
+        wyborFirma.setRolloverEnabled(false);
+        wyborFirma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                wyborFirmaActionPerformed(evt);
+            }
+        });
+
+        goBack.setText("Back");
+        goBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                goBackActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout KlientWyborPanelLayout = new javax.swing.GroupLayout(KlientWyborPanel);
+        KlientWyborPanel.setLayout(KlientWyborPanelLayout);
+        KlientWyborPanelLayout.setHorizontalGroup(
+                KlientWyborPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(KlientWyborPanelLayout.createSequentialGroup()
+                                .addGap(250, 250, 250)
+                                .addGroup(KlientWyborPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(wyborOsoba, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(wyborFirma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addContainerGap(257, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, KlientWyborPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(goBack)
+                                .addContainerGap())
         );
-        KlientWyborLayout.setVerticalGroup(
-                KlientWyborLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(KlientWyborLayout.createSequentialGroup()
-                                .addGap(103, 103, 103)
-                                .addGroup(KlientWyborLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(optionOsoba)
-                                        .addComponent(optionFirma))
-                                .addContainerGap(162, Short.MAX_VALUE))
+        KlientWyborPanelLayout.setVerticalGroup(
+                KlientWyborPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(KlientWyborPanelLayout.createSequentialGroup()
+                                .addGap(95, 95, 95)
+                                .addComponent(wyborOsoba)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(wyborFirma)
+                                .addGap(124, 124, 124)
+                                .addComponent(goBack)
+                                .addContainerGap())
+        );
+
+        StworzOsobaPanel.addHierarchyListener(new java.awt.event.HierarchyListener() {
+            public void hierarchyChanged(java.awt.event.HierarchyEvent evt) {
+                StworzOsobaPanelHierarchyChanged(evt);
+            }
+        });
+
+        getImie.setText("Imie");
+        getImie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                getImieActionPerformed(evt);
+            }
+        });
+
+        getNazwisko.setText("Nazwisko");
+
+        Register.setText("Register");
+        Register.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegisterActionPerformed(evt);
+            }
+        });
+
+        goBack1.setText("Back");
+        goBack1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                goBack1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout StworzOsobaPanelLayout = new javax.swing.GroupLayout(StworzOsobaPanel);
+        StworzOsobaPanel.setLayout(StworzOsobaPanelLayout);
+        StworzOsobaPanelLayout.setHorizontalGroup(
+                StworzOsobaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(StworzOsobaPanelLayout.createSequentialGroup()
+                                .addGap(248, 248, 248)
+                                .addGroup(StworzOsobaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(getNazwisko, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(getImie, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(Register, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE))
+                                .addContainerGap(242, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, StworzOsobaPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(goBack1)
+                                .addContainerGap())
+        );
+        StworzOsobaPanelLayout.setVerticalGroup(
+                StworzOsobaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(StworzOsobaPanelLayout.createSequentialGroup()
+                                .addGap(88, 88, 88)
+                                .addComponent(getImie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(getNazwisko, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Register)
+                                .addGap(100, 100, 100)
+                                .addComponent(goBack1)
+                                .addContainerGap())
+        );
+
+        StworzFirmaPanel.setPreferredSize(new java.awt.Dimension(534, 281));
+        StworzFirmaPanel.addHierarchyListener(new java.awt.event.HierarchyListener() {
+            public void hierarchyChanged(java.awt.event.HierarchyEvent evt) {
+                StworzFirmaPanelHierarchyChanged(evt);
+            }
+        });
+
+        getFirma.setText("Firma XYZ");
+        getFirma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                getFirmaActionPerformed(evt);
+            }
+        });
+
+        getKRS.setText("Numer KRS");
+
+        Register1.setText("Register");
+        Register1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Register1ActionPerformed(evt);
+            }
+        });
+
+        goBack2.setText("Back");
+        goBack2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                goBack2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout StworzFirmaPanelLayout = new javax.swing.GroupLayout(StworzFirmaPanel);
+        StworzFirmaPanel.setLayout(StworzFirmaPanelLayout);
+        StworzFirmaPanelLayout.setHorizontalGroup(
+                StworzFirmaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(StworzFirmaPanelLayout.createSequentialGroup()
+                                .addGap(250, 250, 250)
+                                .addGroup(StworzFirmaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(getKRS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(getFirma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(Register1, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE))
+                                .addContainerGap(240, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, StworzFirmaPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(goBack2)
+                                .addContainerGap())
+        );
+        StworzFirmaPanelLayout.setVerticalGroup(
+                StworzFirmaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(StworzFirmaPanelLayout.createSequentialGroup()
+                                .addGap(88, 88, 88)
+                                .addComponent(getFirma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(getKRS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Register1)
+                                .addGap(81, 81, 81)
+                                .addComponent(goBack2)
+                                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 1001, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(StworzKontoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1001, Short.MAX_VALUE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                        .addComponent(MainMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(MainMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap())
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
-                                        .addGap(226, 226, 226)
-                                        .addComponent(KlientWybor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addContainerGap(227, Short.MAX_VALUE)))
+                                        .addGap(12, 12, 12)
+                                        .addComponent(KlientWyborPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(12, 12, 12)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(StworzOsobaPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 543, Short.MAX_VALUE)
+                                        .addGap(18, 18, 18)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(StworzFirmaPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 543, Short.MAX_VALUE)
+                                        .addGap(18, 18, 18)))
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 476, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(StworzKontoPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(MainMenu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE))
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(MainMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap())
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
-                                        .addGap(94, 94, 94)
-                                        .addComponent(KlientWybor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addContainerGap(94, Short.MAX_VALUE)))
+                                        .addGap(12, 12, 12)
+                                        .addComponent(KlientWyborPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(12, 12, 12)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(StworzOsobaPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(18, 18, 18)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(StworzFirmaPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
+                                        .addGap(18, 18, 18)))
         );
 
         pack();
@@ -229,7 +338,7 @@ public class Main extends javax.swing.JFrame {
 
     private void stworzKontoActionPerformed(java.awt.event.ActionEvent evt) {
         MainMenu.setVisible(false);
-        KlientWybor.setVisible(true);
+        KlientWyborPanel.setVisible(true);
     }
 
     private void zarezerwujLotActionPerformed(java.awt.event.ActionEvent evt) {
@@ -240,29 +349,69 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }
 
-    private void StworzKontoPanelHierarchyChanged(java.awt.event.HierarchyEvent evt) {
+    private void MainMenuHierarchyChanged(java.awt.event.HierarchyEvent evt) {
         // TODO add your handling code here:
     }
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void KlientWyborPanelHierarchyChanged(java.awt.event.HierarchyEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void wyborFirmaActionPerformed(java.awt.event.ActionEvent evt) {
+        KlientWyborPanel.setVisible(false);
+        StworzFirmaPanel.setVisible(true);
+    }
+
+    private void wyborOsobaActionPerformed(java.awt.event.ActionEvent evt) {
+        KlientWyborPanel.setVisible(false);
+        StworzOsobaPanel.setVisible(true);
+    }
+
+    private void StworzOsobaPanelHierarchyChanged(java.awt.event.HierarchyEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void getImieActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {
         getImie.setText("Imie");
         getNazwisko.setText("Nazwisko");
         SYSTEM.StworzOsobe(getImie.getText(),getNazwisko.getText());
-        StworzKontoPanel.setVisible(false);
+        StworzOsobaPanel.setVisible(false);
         MainMenu.setVisible(true);
     }
 
-    private void getNazwiskoActionPerformed(java.awt.event.ActionEvent evt) {
+    private void getFirmaActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }
 
-    private void optionFirmaActionPerformed(java.awt.event.ActionEvent evt) {
+    private void Register1ActionPerformed(java.awt.event.ActionEvent evt) {
+        getFirma.setText("Firma XYZ");
+        getKRS.setText("Numer KRS");
+        SYSTEM.StworzFirme(getFirma.getText(),getKRS.getText());
+        StworzFirmaPanel.setVisible(false);
+        MainMenu.setVisible(true);
+    }
+
+    private void StworzFirmaPanelHierarchyChanged(java.awt.event.HierarchyEvent evt) {
         // TODO add your handling code here:
     }
 
-    private void optionOsobaActionPerformed(java.awt.event.ActionEvent evt) {
-        KlientWybor.setVisible(false);
-        StworzKontoPanel.setVisible(true);
+    private void goBackActionPerformed(java.awt.event.ActionEvent evt) {
+        KlientWyborPanel.setVisible(false);
+        MainMenu.setVisible(true);
+    }
+
+    private void goBack1ActionPerformed(java.awt.event.ActionEvent evt) {
+        StworzOsobaPanel.setVisible(false);
+        KlientWyborPanel.setVisible(true);
+    }
+
+    private void goBack2ActionPerformed(java.awt.event.ActionEvent evt) {
+        StworzFirmaPanel.setVisible(false);
+        KlientWyborPanel.setVisible(true);
     }
 
     /**
@@ -301,17 +450,24 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify
-    private javax.swing.JPanel KlientWybor;
+    private javax.swing.JPanel KlientWyborPanel;
     private javax.swing.JPanel MainMenu;
-    private javax.swing.JPanel StworzKontoPanel;
+    private javax.swing.JButton Register;
+    private javax.swing.JButton Register1;
+    private javax.swing.JPanel StworzFirmaPanel;
+    private javax.swing.JPanel StworzOsobaPanel;
+    private java.awt.TextField getFirma;
     private java.awt.TextField getImie;
+    private java.awt.TextField getKRS;
     private java.awt.TextField getNazwisko;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton goBack;
+    private javax.swing.JButton goBack1;
+    private javax.swing.JButton goBack2;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JButton optionFirma;
-    private javax.swing.JButton optionOsoba;
     private javax.swing.JButton stworzKonto;
     private javax.swing.JButton wgrajDane;
+    private javax.swing.JButton wyborFirma;
+    private javax.swing.JButton wyborOsoba;
     private javax.swing.JButton zarezerwujLot;
     // End of variables declaration
 }
