@@ -22,7 +22,6 @@ public class Main extends javax.swing.JFrame {
         StworzOsobaPanel.setVisible(false);
         StworzFirmaPanel.setVisible(false);
         RezerwacjaLotuPanel.setVisible(false);
-        WgrajDanePanel.setVisible(false);
     }
 
     /**
@@ -72,6 +71,7 @@ public class Main extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jSpinner1 = new javax.swing.JSpinner();
         jLabel6 = new javax.swing.JLabel();
+        gowno = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,7 +94,7 @@ public class Main extends javax.swing.JFrame {
                 stworzKontoActionPerformed(evt);
             }
         });
-
+        
         zarezerwujLot.setText("Zarezerwuj lot");
         zarezerwujLot.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -284,12 +284,12 @@ public class Main extends javax.swing.JFrame {
                                 .addContainerGap()
                                 .addGroup(StworzFirmaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(getFirma, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(getKRS, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
+                                        .addComponent(getKRS, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(Register1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, StworzFirmaPanelLayout.createSequentialGroup()
                                                 .addComponent(goBack2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(0, 0, Short.MAX_VALUE)))
-                                .addContainerGap(483, Short.MAX_VALUE))
+                                .addContainerGap(450, Short.MAX_VALUE))
         );
         StworzFirmaPanelLayout.setVerticalGroup(
                 StworzFirmaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -300,7 +300,7 @@ public class Main extends javax.swing.JFrame {
                                 .addComponent(getKRS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(Register1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 275, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE)
                                 .addComponent(goBack2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())
         );
@@ -360,9 +360,9 @@ public class Main extends javax.swing.JFrame {
         });
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            ArrayList<Lot> loty = SYSTEM.getLoty();
+            public int getSize() { return loty.size(); }
+            public String getElementAt(int i) { return (loty.get(i).getLotnisko_p().getNazwa() + " -> " + loty.get(i).getLotnisko_k().getNazwa());  }
         });
         jScrollPane1.setViewportView(jList1);
 
@@ -402,6 +402,8 @@ public class Main extends javax.swing.JFrame {
 
         jLabel6.setText("Pasażerowie");
 
+        gowno.setText("jTextField1");
+
         javax.swing.GroupLayout RezerwacjaLotuPanelLayout = new javax.swing.GroupLayout(RezerwacjaLotuPanel);
         RezerwacjaLotuPanel.setLayout(RezerwacjaLotuPanelLayout);
         RezerwacjaLotuPanelLayout.setHorizontalGroup(
@@ -413,7 +415,10 @@ public class Main extends javax.swing.JFrame {
                                         .addGroup(RezerwacjaLotuPanelLayout.createSequentialGroup()
                                                 .addComponent(obieStrony, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jednaStrona))
+                                                .addComponent(jednaStrona)
+                                                .addGap(121, 121, 121)
+                                                .addComponent(gowno, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(0, 0, Short.MAX_VALUE))
                                         .addGroup(RezerwacjaLotuPanelLayout.createSequentialGroup()
                                                 .addGroup(RezerwacjaLotuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addComponent(choice1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -434,7 +439,7 @@ public class Main extends javax.swing.JFrame {
                                                 .addGroup(RezerwacjaLotuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addGroup(RezerwacjaLotuPanelLayout.createSequentialGroup()
                                                                 .addComponent(jLabel6)
-                                                                .addGap(0, 16, Short.MAX_VALUE))
+                                                                .addGap(0, 18, Short.MAX_VALUE))
                                                         .addComponent(jSpinner1))))
                                 .addContainerGap())
         );
@@ -444,8 +449,9 @@ public class Main extends javax.swing.JFrame {
                                 .addContainerGap()
                                 .addGroup(RezerwacjaLotuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(obieStrony)
-                                        .addComponent(jednaStrona))
-                                .addGap(10, 10, 10)
+                                        .addComponent(jednaStrona)
+                                        .addComponent(gowno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(9, 9, 9)
                                 .addGroup(RezerwacjaLotuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -461,7 +467,7 @@ public class Main extends javax.swing.JFrame {
                                                 .addComponent(D2)
                                                 .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
                                 .addContainerGap())
         );
 
@@ -479,7 +485,7 @@ public class Main extends javax.swing.JFrame {
                                         .addContainerGap()
                                         .addComponent(StworzOsobaPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(StworzFirmaPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE))
+                                .addComponent(StworzFirmaPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 614, Short.MAX_VALUE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
@@ -501,7 +507,7 @@ public class Main extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(StworzOsobaPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(StworzFirmaPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE))
+                                .addComponent(StworzFirmaPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
@@ -687,6 +693,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton goBack;
     private javax.swing.JButton goBack1;
     private javax.swing.JButton goBack2;
+    private javax.swing.JTextField gowno;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

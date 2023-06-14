@@ -79,4 +79,8 @@ public class Lot implements Serializable{
         }
     }
 
+    @Override
+    public String toString() {
+        return lotnisko_p + " -> " + lotnisko_k;
+    }
 }
