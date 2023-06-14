@@ -22,7 +22,13 @@ public class Lotnisko implements Serializable{
     }
 
     public void dodajSamolot(Samolot samolot) {
-        flota.add(samolot);
+        if (this.nazwa == samolot.getnazwaLotniskaStacjonowanie() && this.lokalizacja == samolot.getLokalizacjaStacjonowania()){
+            flota.add(samolot);
+        }
+        else{
+            System.out.println("Błąd odczytu - nieprawidłowo dodawany samolot do lotniska");
+        }
+
     }
     //public void dodajLot(Lot lot){ loty.add(lot) ;}
 

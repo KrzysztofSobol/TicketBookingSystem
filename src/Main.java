@@ -33,21 +33,21 @@ public class Main {
         lotniska.add(lotnisko4);
 
         /// Testy
-        Typ1 krotko_dystansowiec = new Typ1("Mini Majk", 1500, 40, 20);
-        Typ2 srednio_dystansowiec = new Typ2("Mid John", 5000, 30, 30);
-        Typ3 daleko_dystansowiec = new Typ3("Long Ben", 100000, 20, 70);
+        Typ1 krotko_dystansowiec = new Typ1("Mini Majk", 1500, 40, 20, "Warszawa", "Warszawa");
+        Typ2 srednio_dystansowiec = new Typ2("Mid John", 5000, 30,50 , "Warszawa", "Warszawa");
+        Typ3 daleko_dystansowiec = new Typ3("Long Ben", 100000, 20, 70, "Warszawa", "Warszawa");
 
-        Typ1 krotko_dystansowiec2 = new Typ1("Mini Majk2", 1500, 20, 20);
-        Typ2 srednio_dystansowiec2 = new Typ2("Mid John2", 5000, 30, 35);
-        Typ3 daleko_dystansowiec2 = new Typ3("Long Ben2", 100000, 20, 80);
+        Typ1 krotko_dystansowiec2 = new Typ1("Mini Majk2", 1500, 20, 20, "Berlin", "Berlin");
+        Typ2 srednio_dystansowiec2 = new Typ2("Mid John2", 5000, 30, 40, "Berlin", "Berlin");
+        Typ3 daleko_dystansowiec2 = new Typ3("Long Ben2", 100000, 20, 80, "Berlin", "Berlin");
 
-        Typ1 krotko_dystansowiec3 = new Typ1("Mini Majk3", 1500, 20, 20);
-        Typ2 srednio_dystansowiec3 = new Typ2("Mid John3", 5000, 30, 40);
-        Typ3 daleko_dystansowiec3 = new Typ3("Long Ben3", 100000, 20, 90);
+        Typ1 krotko_dystansowiec3 = new Typ1("Mini Majk3", 1500, 20, 20, "Paryz", "Paryz");
+        Typ2 srednio_dystansowiec3 = new Typ2("Mid John3", 5000, 30, 40, "Paryz", "Paryz");
+        Typ3 daleko_dystansowiec3 = new Typ3("Long Ben3", 100000, 20, 90, "Paryz", "Paryz");
 
-        Typ1 krotko_dystansowiec4 = new Typ1("Mini Majk4", 1500, 20, 23);
-        Typ2 srednio_dystansowiec4 = new Typ2("Mid John4", 5000, 30, 42);
-        Typ3 daleko_dystansowiec4 = new Typ3("Long Ben4", 100000, 20, 65);
+        Typ1 krotko_dystansowiec4 = new Typ1("Mini Majk4", 1500, 20, 23, "HongKong", "HongKong");
+        Typ2 srednio_dystansowiec4 = new Typ2("Mid John4", 5000, 30, 42, "HongKong", "HongKong");
+        Typ3 daleko_dystansowiec4 = new Typ3("Long Ben4", 100000, 20, 65,"HongKong", "HongKong" );
 
         lotnisko1.dodajSamolot(krotko_dystansowiec);
         lotnisko1.dodajSamolot(srednio_dystansowiec);
@@ -66,33 +66,33 @@ public class Main {
         lotnisko4.dodajSamolot(daleko_dystansowiec4);
 
         generujLot();
-        wypiszLoty();
-        Osoba osoba = new Osoba("Jan","Kowalski");
-        rezerwacjaBiletu(osoba,loty.get(0));
-        rezerwacjaBiletu(osoba,loty.get(1));
-        wyswietlanieBiletu(osoba);
-        odwolywanieBiletu(osoba, osoba.Bilety.get(0));
-        wyswietlanieBiletu(osoba);
+        //wypiszLoty();
+        //Osoba osoba = new Osoba("Jan","Kowalski");
+//        rezerwacjaBiletu(osoba,loty.get(0));
+//        rezerwacjaBiletu(osoba,loty.get(1));
+//        wyswietlanieBiletu(osoba);
+//        odwolywanieBiletu(osoba, osoba.Bilety.get(0));
+//        wyswietlanieBiletu(osoba);
 
         //TESTY ZAPIS/ODCZYT
-        Samolot.writeToFile(lotnisko1.getFlota(),"xd.txt");
-        List<Samolot> samoloty = new ArrayList<>();
-        Samolot.readFromFile(samoloty,"xd.txt");
-        System.out.println(samoloty);
-        Lotnisko.writeToFile(lotniska, "xx.txt");
-        Lotnisko.readFromFile(lotniska,"xx.txt");
-        System.out.println(lotniska);
-        System.out.println(loty);
-        Lot.writeToFile(loty, "loty.txt");
-        ArrayList<Lot> loty2 = new ArrayList<>();
-
-        Lot.readFromFile(loty2, "loty.txt");
-        System.out.println(loty2);
-
-        System.out.println(Klient.getBilety());
-        Klient.writeToFileBilet(Klient.Bilety,"XX.txt");
-        Klient.readFromFileBilet(Klient.Bilety, "XX.txt");
-        System.out.println(Klient.getBilety());
+//        Samolot.writeToFile(lotnisko1.getFlota(),"xd.txt");
+        ArrayList<Samolot> samoloty = new ArrayList<>();
+//        Samolot.readFromFile(samoloty,"xd.txt");
+//        System.out.println(samoloty);
+//        Lotnisko.writeToFile(lotniska, "xx.txt");
+//        Lotnisko.readFromFile(lotniska,"xx.txt");
+//        System.out.println(lotniska);
+//        System.out.println(loty);
+//        Lot.writeToFile(loty, "loty.txt");
+//        ArrayList<Lot> loty2 = new ArrayList<>();
+//
+//        Lot.readFromFile(loty2, "loty.txt");
+//        System.out.println(loty2);
+//
+//        System.out.println(Klient.getBilety());
+//        Klient.writeToFileBilet(Klient.Bilety,"XX.txt");
+//        Klient.readFromFileBilet(Klient.Bilety, "XX.txt");
+//        System.out.println(Klient.getBilety());
 
 
     }
