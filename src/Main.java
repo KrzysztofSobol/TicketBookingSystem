@@ -17,6 +17,7 @@ public class Main extends javax.swing.JFrame {
         KlientWyborPanel.setVisible(false);
         StworzOsobaPanel.setVisible(false);
         StworzFirmaPanel.setVisible(false);
+        RezerwacjaLotuPanel.setVisible(false);
     }
 
     /**
@@ -28,6 +29,7 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
 
+        D1 = new javax.swing.JTextField();
         MainMenu = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         stworzKonto = new javax.swing.JButton();
@@ -47,6 +49,27 @@ public class Main extends javax.swing.JFrame {
         getKRS = new java.awt.TextField();
         Register1 = new javax.swing.JButton();
         goBack2 = new javax.swing.JButton();
+        RezerwacjaLotuPanel = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        obieStrony = new javax.swing.JCheckBox();
+        jednaStrona = new javax.swing.JCheckBox();
+        choice1 = new java.awt.Choice();
+        choice2 = new java.awt.Choice();
+        D = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        D2 = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jSpinner1 = new javax.swing.JSpinner();
+        jLabel6 = new javax.swing.JLabel();
+
+        D1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                D1ActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,13 +112,13 @@ public class Main extends javax.swing.JFrame {
         MainMenuLayout.setHorizontalGroup(
                 MainMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainMenuLayout.createSequentialGroup()
-                                .addGap(216, 216, 216)
+                                .addGap(215, 215, 215)
                                 .addGroup(MainMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(zarezerwujLot, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
                                         .addComponent(stworzKonto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(wgrajDane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addContainerGap(209, Short.MAX_VALUE))
+                                .addContainerGap(225, Short.MAX_VALUE))
         );
         MainMenuLayout.setVerticalGroup(
                 MainMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,7 +131,7 @@ public class Main extends javax.swing.JFrame {
                                 .addComponent(zarezerwujLot)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(wgrajDane)
-                                .addGap(112, 112, 112))
+                                .addContainerGap(206, Short.MAX_VALUE))
         );
 
         KlientWyborPanel.setRequestFocusEnabled(false);
@@ -145,25 +168,22 @@ public class Main extends javax.swing.JFrame {
         KlientWyborPanelLayout.setHorizontalGroup(
                 KlientWyborPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(KlientWyborPanelLayout.createSequentialGroup()
-                                .addGap(250, 250, 250)
+                                .addGap(10, 10, 10)
                                 .addGroup(KlientWyborPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(wyborOsoba, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(wyborFirma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addContainerGap(257, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, KlientWyborPanelLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(goBack)
-                                .addContainerGap())
+                                        .addComponent(wyborFirma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(goBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addContainerGap(518, Short.MAX_VALUE))
         );
         KlientWyborPanelLayout.setVerticalGroup(
                 KlientWyborPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(KlientWyborPanelLayout.createSequentialGroup()
-                                .addGap(95, 95, 95)
+                                .addGap(10, 10, 10)
                                 .addComponent(wyborOsoba)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(wyborFirma)
-                                .addGap(124, 124, 124)
-                                .addComponent(goBack)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 300, Short.MAX_VALUE)
+                                .addComponent(goBack, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())
         );
 
@@ -201,28 +221,26 @@ public class Main extends javax.swing.JFrame {
         StworzOsobaPanelLayout.setHorizontalGroup(
                 StworzOsobaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(StworzOsobaPanelLayout.createSequentialGroup()
-                                .addGap(248, 248, 248)
-                                .addGroup(StworzOsobaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(getNazwisko, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(getImie, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(Register, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE))
-                                .addContainerGap(242, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, StworzOsobaPanelLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(goBack1)
-                                .addContainerGap())
+                                .addGroup(StworzOsobaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(StworzOsobaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(getImie, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(getNazwisko, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(Register, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE))
+                                        .addComponent(goBack1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(495, Short.MAX_VALUE))
         );
         StworzOsobaPanelLayout.setVerticalGroup(
                 StworzOsobaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(StworzOsobaPanelLayout.createSequentialGroup()
-                                .addGap(88, 88, 88)
+                                .addContainerGap()
                                 .addComponent(getImie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(getNazwisko, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(Register)
-                                .addGap(100, 100, 100)
-                                .addComponent(goBack1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 275, Short.MAX_VALUE)
+                                .addComponent(goBack1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())
         );
 
@@ -260,29 +278,141 @@ public class Main extends javax.swing.JFrame {
         StworzFirmaPanel.setLayout(StworzFirmaPanelLayout);
         StworzFirmaPanelLayout.setHorizontalGroup(
                 StworzFirmaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(StworzFirmaPanelLayout.createSequentialGroup()
-                                .addGap(250, 250, 250)
-                                .addGroup(StworzFirmaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(getKRS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(getFirma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(Register1, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE))
-                                .addContainerGap(240, Short.MAX_VALUE))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, StworzFirmaPanelLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(goBack2)
-                                .addContainerGap())
+                                .addGroup(StworzFirmaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(getFirma, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(getKRS, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
+                                        .addComponent(Register1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, StworzFirmaPanelLayout.createSequentialGroup()
+                                                .addComponent(goBack2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addContainerGap(483, Short.MAX_VALUE))
         );
         StworzFirmaPanelLayout.setVerticalGroup(
                 StworzFirmaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(StworzFirmaPanelLayout.createSequentialGroup()
-                                .addGap(88, 88, 88)
+                                .addContainerGap()
                                 .addComponent(getFirma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(getKRS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(Register1)
-                                .addGap(81, 81, 81)
-                                .addComponent(goBack2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 275, Short.MAX_VALUE)
+                                .addComponent(goBack2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
+        );
+
+        RezerwacjaLotuPanel.setRequestFocusEnabled(false);
+        RezerwacjaLotuPanel.addHierarchyListener(new java.awt.event.HierarchyListener() {
+            public void hierarchyChanged(java.awt.event.HierarchyEvent evt) {
+                RezerwacjaLotuPanelHierarchyChanged(evt);
+            }
+        });
+
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(jList1);
+
+        jLabel1.setText("Miejsce wylotu");
+
+        jLabel3.setText("Miejsce przylotu");
+
+        obieStrony.setText("W obie strony");
+        obieStrony.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                obieStronyActionPerformed(evt);
+            }
+        });
+
+        jednaStrona.setText("W jedną stronę");
+        jednaStrona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jednaStronaActionPerformed(evt);
+            }
+        });
+
+        D.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Data wylotu");
+
+        D2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                D2ActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Data przylotu");
+
+        jLabel6.setText("Pasażerowie");
+
+        javax.swing.GroupLayout RezerwacjaLotuPanelLayout = new javax.swing.GroupLayout(RezerwacjaLotuPanel);
+        RezerwacjaLotuPanel.setLayout(RezerwacjaLotuPanelLayout);
+        RezerwacjaLotuPanelLayout.setHorizontalGroup(
+                RezerwacjaLotuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(RezerwacjaLotuPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(RezerwacjaLotuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jScrollPane1)
+                                        .addGroup(RezerwacjaLotuPanelLayout.createSequentialGroup()
+                                                .addComponent(obieStrony, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jednaStrona))
+                                        .addGroup(RezerwacjaLotuPanelLayout.createSequentialGroup()
+                                                .addGroup(RezerwacjaLotuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(choice1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jLabel1))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(RezerwacjaLotuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                        .addComponent(jLabel3)
+                                                        .addComponent(choice2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(RezerwacjaLotuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jLabel4)
+                                                        .addComponent(D, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(10, 10, 10)
+                                                .addGroup(RezerwacjaLotuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(D2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jLabel5))
+                                                .addGap(10, 10, 10)
+                                                .addGroup(RezerwacjaLotuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(RezerwacjaLotuPanelLayout.createSequentialGroup()
+                                                                .addComponent(jLabel6)
+                                                                .addGap(0, 14, Short.MAX_VALUE))
+                                                        .addComponent(jSpinner1))))
+                                .addContainerGap())
+        );
+        RezerwacjaLotuPanelLayout.setVerticalGroup(
+                RezerwacjaLotuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(RezerwacjaLotuPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(RezerwacjaLotuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(obieStrony)
+                                        .addComponent(jednaStrona))
+                                .addGap(10, 10, 10)
+                                .addGroup(RezerwacjaLotuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(9, 9, 9)
+                                .addGroup(RezerwacjaLotuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(choice1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(choice2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(RezerwacjaLotuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(D)
+                                                .addComponent(D2)
+                                                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
                                 .addContainerGap())
         );
 
@@ -292,45 +422,37 @@ public class Main extends javax.swing.JFrame {
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(MainMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addContainerGap())
+                                .addComponent(MainMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(KlientWyborPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
-                                        .addGap(12, 12, 12)
-                                        .addComponent(KlientWyborPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGap(12, 12, 12)))
+                                        .addContainerGap()
+                                        .addComponent(StworzOsobaPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(StworzFirmaPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(StworzOsobaPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 543, Short.MAX_VALUE)
-                                        .addGap(18, 18, 18)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(StworzFirmaPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 543, Short.MAX_VALUE)
-                                        .addGap(18, 18, 18)))
+                                        .addGap(6, 6, 6)
+                                        .addComponent(RezerwacjaLotuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(6, 6, 6)))
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(MainMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addContainerGap())
+                                .addComponent(MainMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(KlientWyborPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(StworzOsobaPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(StworzFirmaPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
-                                        .addGap(12, 12, 12)
-                                        .addComponent(KlientWyborPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGap(12, 12, 12)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(StworzOsobaPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGap(18, 18, 18)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(StworzFirmaPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
-                                        .addGap(18, 18, 18)))
+                                        .addGap(6, 6, 6)
+                                        .addComponent(RezerwacjaLotuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(6, 6, 6)))
         );
 
         pack();
@@ -342,7 +464,8 @@ public class Main extends javax.swing.JFrame {
     }
 
     private void zarezerwujLotActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        MainMenu.setVisible(false);
+        RezerwacjaLotuPanel.setVisible(true);
     }
 
     private void wgrajDaneActionPerformed(java.awt.event.ActionEvent evt) {
@@ -414,6 +537,30 @@ public class Main extends javax.swing.JFrame {
         KlientWyborPanel.setVisible(true);
     }
 
+    private void RezerwacjaLotuPanelHierarchyChanged(java.awt.event.HierarchyEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void obieStronyActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void jednaStronaActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void DActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void D1ActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void D2ActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -450,12 +597,18 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify
+    private javax.swing.JTextField D;
+    private javax.swing.JTextField D1;
+    private javax.swing.JTextField D2;
     private javax.swing.JPanel KlientWyborPanel;
     private javax.swing.JPanel MainMenu;
     private javax.swing.JButton Register;
     private javax.swing.JButton Register1;
+    private javax.swing.JPanel RezerwacjaLotuPanel;
     private javax.swing.JPanel StworzFirmaPanel;
     private javax.swing.JPanel StworzOsobaPanel;
+    private java.awt.Choice choice1;
+    private java.awt.Choice choice2;
     private java.awt.TextField getFirma;
     private java.awt.TextField getImie;
     private java.awt.TextField getKRS;
@@ -463,7 +616,17 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton goBack;
     private javax.swing.JButton goBack1;
     private javax.swing.JButton goBack2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JList<String> jList1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JCheckBox jednaStrona;
+    private javax.swing.JCheckBox obieStrony;
     private javax.swing.JButton stworzKonto;
     private javax.swing.JButton wgrajDane;
     private javax.swing.JButton wyborFirma;

@@ -255,8 +255,8 @@ public class SYSTEM {
         osoba.dodajKlienta();
     }
 
-    public static void StworzFirme(String Firma, String KRS){
-        Firma firma = new Firma(Firma, KRS);
+    public static void StworzFirme(String Nazwa, String KRS) {
+        Firma firma = new Firma(Nazwa, KRS);
         firma.dodajKlienta();
     }
 }
