@@ -73,48 +73,23 @@ public class Samolot implements Serializable {
      * @param fileName     nazwa pliku tekstowego
      * @return lista obiektów samolotów
      */
-    public static ArrayList<Samolot> readFromFile(ArrayList<Samolot> ListOfPlanes, String fileName) {
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
-            String line;
-
-            while ((line = reader.readLine()) != null) {
-                String[] data = line.split(";");
-                if (data.length == 5) {
-                    String className = data[0];
-                    String nazwa = data[1];
-                    int zasieg = Integer.parseInt(data[2]);
-                    int iloscMiejsc = Integer.parseInt(data[3]);
-                    int predkosc = Integer.parseInt(data[4]);
-
-                    Samolot samolot;
-                    switch (className) {
-                        case "Typ1":
-                            samolot = new Typ1(nazwa, zasieg, iloscMiejsc, predkosc);
-                            break;
-                        case "Typ2":
-                            samolot = new Typ2(nazwa, zasieg, iloscMiejsc, predkosc);
-                            break;
-                        case "Typ3":
-                            samolot = new Typ3(nazwa, zasieg, iloscMiejsc, predkosc);
-                            break;
-                        default:
-                            samolot = new Samolot(nazwa, zasieg, iloscMiejsc, predkosc);
-                            break;
-                    }
-
-                    ListOfPlanes.add(samolot);
-                }
-            }
-        } catch (IOException e) {
-            public static void readFromFile (ArrayList < Samolot > ListOfPlanes, String fileName){
-                try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(fileName))) {
-                    ListOfPlanes.clear();
-                    ListOfPlanes.addAll((ArrayList<Samolot>) inputStream.readObject());
-                } catch (IOException | ClassNotFoundException e) {
-                    e.printStackTrace();
-                }
-            }
-
+    public static void readFromFile (ArrayList <Samolot> ListOfPlanes, String fileName){
+        try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(fileName))) {
+            ListOfPlanes.clear();
+            ListOfPlanes.addAll((ArrayList<Samolot>) inputStream.readObject());
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
         }
+    }
+
+    public static void readFromFile(ArrayList<Samolot> ListOfPlanes, String fileName) {
+        try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(fileName))) {
+            ListOfPlanes.clear();
+            ListOfPlanes.addAll((ArrayList<Samolot>) inputStream.readObject());
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+}
 

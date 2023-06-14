@@ -53,6 +53,7 @@ public class Lotnisko implements Serializable{
      * @param airportsList lista obiektów lotnisk do zapisania
      * @param fileName     nazwa pliku
      */
+
     public static void writeToFile(List<Lotnisko> airportsList, String fileName) {
         try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(fileName))) {
             outputStream.writeObject(airportsList);
