@@ -6,7 +6,6 @@
 import Flights.Lot;
 import Resources.Lotnisko;
 import java.util.ArrayList;
-import Resources.Samolot;
 
 /**
  *
@@ -23,6 +22,7 @@ public class Main extends javax.swing.JFrame {
         StworzOsobaPanel.setVisible(false);
         StworzFirmaPanel.setVisible(false);
         RezerwacjaLotuPanel.setVisible(false);
+        WgrajDanePanel.setVisible(false);
     }
 
     /**
@@ -120,7 +120,7 @@ public class Main extends javax.swing.JFrame {
                                         .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
                                         .addComponent(stworzKonto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(wgrajDane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addContainerGap(235, Short.MAX_VALUE))
+                                .addContainerGap(225, Short.MAX_VALUE))
         );
         MainMenuLayout.setVerticalGroup(
                 MainMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,7 +133,7 @@ public class Main extends javax.swing.JFrame {
                                 .addComponent(zarezerwujLot)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(wgrajDane)
-                                .addContainerGap(218, Short.MAX_VALUE))
+                                .addContainerGap(206, Short.MAX_VALUE))
         );
 
         KlientWyborPanel.setRequestFocusEnabled(false);
@@ -175,7 +175,7 @@ public class Main extends javax.swing.JFrame {
                                         .addComponent(wyborOsoba, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(wyborFirma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(goBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addContainerGap(528, Short.MAX_VALUE))
+                                .addContainerGap(518, Short.MAX_VALUE))
         );
         KlientWyborPanelLayout.setVerticalGroup(
                 KlientWyborPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,7 +184,7 @@ public class Main extends javax.swing.JFrame {
                                 .addComponent(wyborOsoba)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(wyborFirma)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 312, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 300, Short.MAX_VALUE)
                                 .addComponent(goBack, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())
         );
@@ -230,7 +230,7 @@ public class Main extends javax.swing.JFrame {
                                                 .addComponent(getNazwisko, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(Register, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE))
                                         .addComponent(goBack1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(505, Short.MAX_VALUE))
+                                .addContainerGap(495, Short.MAX_VALUE))
         );
         StworzOsobaPanelLayout.setVerticalGroup(
                 StworzOsobaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -241,7 +241,7 @@ public class Main extends javax.swing.JFrame {
                                 .addComponent(getNazwisko, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(Register)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 287, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 275, Short.MAX_VALUE)
                                 .addComponent(goBack1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())
         );
@@ -284,12 +284,12 @@ public class Main extends javax.swing.JFrame {
                                 .addContainerGap()
                                 .addGroup(StworzFirmaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(getFirma, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(getKRS, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(getKRS, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
                                         .addComponent(Register1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, StworzFirmaPanelLayout.createSequentialGroup()
                                                 .addComponent(goBack2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(0, 0, Short.MAX_VALUE)))
-                                .addContainerGap(450, Short.MAX_VALUE))
+                                .addContainerGap(483, Short.MAX_VALUE))
         );
         StworzFirmaPanelLayout.setVerticalGroup(
                 StworzFirmaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -300,7 +300,7 @@ public class Main extends javax.swing.JFrame {
                                 .addComponent(getKRS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(Register1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 275, Short.MAX_VALUE)
                                 .addComponent(goBack2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())
         );
@@ -338,7 +338,7 @@ public class Main extends javax.swing.JFrame {
                                         .addComponent(WgrajSamoloty, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(WgrajLoty, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(WgrajKlientów, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addContainerGap(588, Short.MAX_VALUE))
+                                .addContainerGap(510, Short.MAX_VALUE))
         );
         WgrajDanePanelLayout.setVerticalGroup(
                 WgrajDanePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -349,7 +349,7 @@ public class Main extends javax.swing.JFrame {
                                 .addComponent(WgrajSamoloty)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(WgrajKlientów)
-                                .addContainerGap(357, Short.MAX_VALUE))
+                                .addContainerGap(309, Short.MAX_VALUE))
         );
 
         RezerwacjaLotuPanel.setRequestFocusEnabled(false);
@@ -359,11 +359,11 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        //jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            //ArrayList<Lot> loty = SYSTEM.getLoty();
-            //public int getSize() { return loty.size(); }
-            //public String getElementAt(int i) { return (loty.get(i).getLotnisko_p().getNazwa() + " -> " + loty.get(i).getLotnisko_k().getNazwa());  }
-        //});
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
         jScrollPane1.setViewportView(jList1);
 
         jLabel1.setText("Miejsce wylotu");
@@ -434,7 +434,7 @@ public class Main extends javax.swing.JFrame {
                                                 .addGroup(RezerwacjaLotuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addGroup(RezerwacjaLotuPanelLayout.createSequentialGroup()
                                                                 .addComponent(jLabel6)
-                                                                .addGap(0, 14, Short.MAX_VALUE))
+                                                                .addGap(0, 16, Short.MAX_VALUE))
                                                         .addComponent(jSpinner1))))
                                 .addContainerGap())
         );
@@ -479,7 +479,7 @@ public class Main extends javax.swing.JFrame {
                                         .addContainerGap()
                                         .addComponent(StworzOsobaPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(StworzFirmaPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE))
+                                .addComponent(StworzFirmaPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
@@ -501,7 +501,7 @@ public class Main extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(StworzOsobaPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(StworzFirmaPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE))
+                                .addComponent(StworzFirmaPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
@@ -626,7 +626,7 @@ public class Main extends javax.swing.JFrame {
     }
 
     private void WgrajLotyActionPerformed(java.awt.event.ActionEvent evt) {
-        Samolot.readFromFile(SYSTEM.getLoty(),"xd.txt");
+        // TODO add your handling code here:
     }
 
     /**
