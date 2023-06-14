@@ -7,3 +7,4 @@ public class Typ3 extends Samolot implements Serializable{
         super(nazwa, zasieg, iloscMiejsc, predkosc, nazwaLotniskaStacjonowanie, lokalizacjaStacjonowania);
     }
 }
+

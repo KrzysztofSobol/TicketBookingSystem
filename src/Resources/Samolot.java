@@ -50,6 +50,7 @@ public class Samolot implements Serializable{
      * @param planesList lista obiektów samolotów do zapisania
      * @param fileName   nazwa pliku tekstowego
      */
+
     public static void writeToFile(List<Samolot> planesList, String fileName) {
         try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(fileName))) {
             outputStream.writeObject(planesList);
@@ -66,6 +67,7 @@ public class Samolot implements Serializable{
      * @param fileName     nazwa pliku tekstowego
      * @return lista obiektów samolotów
      */
+
     public static void readFromFile(ArrayList<Samolot> ListOfPlanes, String fileName) {
         try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(fileName))) {
             ListOfPlanes.clear();
