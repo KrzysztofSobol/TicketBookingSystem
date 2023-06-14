@@ -6,10 +6,6 @@ import Reservation.*;
 
 import Resources.Lotnisko;
 import Resources.Samolot;
-import Resources.SamolotTyp.Typ1;
-import Resources.SamolotTyp.Typ2;
-import Resources.SamolotTyp.Typ3;
-import Resources.ZasiegComparator;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
@@ -20,91 +16,10 @@ import java.util.*;
 
 
 public class SYSTEM {
-    static ArrayList<Lotnisko> lotniska = new ArrayList<>();
-    static ArrayList<Lot> loty = new ArrayList<>();
-    public static void start(String[] args) {
-        Lotnisko lotnisko1 = new Lotnisko("Warszawa", "Warszawa", 1, 1);
-        Lotnisko lotnisko2 = new Lotnisko("Berlin", "Berlin", 1, 1);
-        Lotnisko lotnisko3 = new Lotnisko("Paryz", "Paryz", 1, 1);
-        Lotnisko lotnisko4 = new Lotnisko("HongKong", "HongKong", 1, 1);
+    private ArrayList<Lotnisko> lotniska = new ArrayList<>();
+    private ArrayList<Lot> loty = new ArrayList<>();
 
-        lotniska.add(lotnisko1);
-        lotniska.add(lotnisko2);
-        lotniska.add(lotnisko3);
-        lotniska.add(lotnisko4);
-        
-        Typ1 krotko_dystansowiec = new Typ1("Mini Majk", 1500, 40, 20);
-        Typ2 srednio_dystansowiec = new Typ2("Mid John", 5000, 30, 30);
-        Typ3 daleko_dystansowiec = new Typ3("Long Ben", 100000, 20, 70);
-
-        Typ1 krotko_dystansowiec2 = new Typ1("Mini Majk2", 1500, 20, 20);
-        Typ2 srednio_dystansowiec2 = new Typ2("Mid John2", 5000, 30, 35);
-        Typ3 daleko_dystansowiec2 = new Typ3("Long Ben2", 100000, 20, 80);
-
-        Typ1 krotko_dystansowiec3 = new Typ1("Mini Majk3", 1500, 20, 20);
-        Typ2 srednio_dystansowiec3 = new Typ2("Mid John3", 5000, 30, 40);
-        Typ3 daleko_dystansowiec3 = new Typ3("Long Ben3", 100000, 20, 90);
-
-        Typ1 krotko_dystansowiec4 = new Typ1("Mini Majk4", 1500, 20, 23);
-        Typ2 srednio_dystansowiec4 = new Typ2("Mid John4", 5000, 30, 42);
-        Typ3 daleko_dystansowiec4 = new Typ3("Long Ben4", 100000, 20, 65);
-
-        lotnisko1.dodajSamolot(krotko_dystansowiec);
-        lotnisko1.dodajSamolot(srednio_dystansowiec);
-        lotnisko1.dodajSamolot(daleko_dystansowiec);
-
-        lotnisko2.dodajSamolot(krotko_dystansowiec2);
-        lotnisko2.dodajSamolot(srednio_dystansowiec2);
-        lotnisko2.dodajSamolot(daleko_dystansowiec2);
-
-        lotnisko3.dodajSamolot(krotko_dystansowiec3);
-        lotnisko3.dodajSamolot(srednio_dystansowiec3);
-        lotnisko3.dodajSamolot(daleko_dystansowiec3);
-
-        lotnisko4.dodajSamolot(krotko_dystansowiec4);
-        lotnisko4.dodajSamolot(srednio_dystansowiec4);
-        lotnisko4.dodajSamolot(daleko_dystansowiec4);
-
-        lotnisko1.getFlota().sort(new ZasiegComparator());
-        lotnisko2.getFlota().sort(new ZasiegComparator());
-        lotnisko3.getFlota().sort(new ZasiegComparator());
-        lotnisko4.getFlota().sort(new ZasiegComparator());
-
-        generujLot();
-        wypiszLoty();
-
-        Osoba osoba = new Osoba("Jan","Kowalski");
-        osoba.dodajKlienta();
-        rezerwacjaBiletu(osoba,loty.get(0));
-        rezerwacjaBiletu(osoba,loty.get(1));
-        wyswietlanieBiletu(osoba);
-        odwolywanieBiletu(osoba, osoba.Bilety.get(0));
-        wyswietlanieBiletu(osoba);
-
-        //TESTY ZAPIS/ODCZYT
-        Samolot.writeToFile(lotnisko1.getFlota(),"xd.txt");
-        List<Samolot> samoloty = new ArrayList<>();
-        Samolot.readFromFile(samoloty,"xd.txt");
-        System.out.println(samoloty);
-        Lotnisko.writeToFile(lotniska, "xx.txt");
-        Lotnisko.readFromFile(lotniska,"xx.txt");
-        System.out.println(lotniska);
-        System.out.println(loty);
-        Lot.writeToFile(loty, "loty.txt");
-        ArrayList<Lot> loty2 = new ArrayList<>();
-
-        Lot.readFromFile(loty2, "loty.txt");
-        System.out.println(loty2);
-
-        System.out.println(Klient.getBilety());
-        Klient.writeToFileBilet(Klient.Bilety,"XX.txt");
-        Klient.readFromFileBilet(Klient.Bilety, "XX.txt");
-        System.out.println(Klient.getBilety());
-
-
-    }
-
-    public static void generujLot() {
+    public void generujLot() {
         DateFormatSymbols dni = new DateFormatSymbols(new Locale("en", "US"));
         String[] daysOfWeek = dni.getWeekdays();
         for (Lotnisko lotnisko_p : lotniska) {
@@ -137,7 +52,7 @@ public class SYSTEM {
     }
 
 
-    public static Samolot PrzydzielSamolot(Lotnisko lotnisko_p, LocalTime godzina, DayOfWeek dzien, double odleglosc) {
+    public Samolot PrzydzielSamolot(Lotnisko lotnisko_p, LocalTime godzina, DayOfWeek dzien, double odleglosc) {
         for (Samolot samolot : lotnisko_p.getFlota()) {
             if (samolot.getZasieg() >= odleglosc && samolot.getIloscMiejsc() > 0) {
                 if(!Overlap(samolot, lotnisko_p, godzina, dzien, odleglosc)){
@@ -149,7 +64,7 @@ public class SYSTEM {
     }
 
 
-    public static Boolean Overlap(Samolot samolot, Lotnisko lotnisko_p, LocalTime godzina, DayOfWeek dzien, double odleglosc) {
+    public Boolean Overlap(Samolot samolot, Lotnisko lotnisko_p, LocalTime godzina, DayOfWeek dzien, double odleglosc) {
         if (!loty.isEmpty()) {
             for (int i = loty.size() - 1; i >= 0; i--) {
                 Lot lot = loty.get(i);
@@ -163,37 +78,37 @@ public class SYSTEM {
         return false;
     }
 
-    public static double Odleglosc(Lotnisko lotnisko_p, Lotnisko lotnisko_k){
+    public double Odleglosc(Lotnisko lotnisko_p, Lotnisko lotnisko_k){
         double dx = lotnisko_k.getX() - lotnisko_p.getX();
         double dy = lotnisko_k.getY() - lotnisko_p.getY();
         return Math.sqrt(dx*dx + dy*dy)*1000;
     }
 
-    public static int TravelTimeHours(double odleglosc, int speed){
+    public int TravelTimeHours(double odleglosc, int speed){
         double hours = odleglosc/(double)speed;
         return (int)Math.floor(hours);
     }
 
-    public static int TravelTimeMinutes(double odleglosc, int speed){
+    public int TravelTimeMinutes(double odleglosc, int speed){
         double minutes = odleglosc/(double)speed;
         minutes = (minutes - (int)minutes)*100;
         return (int) minutes;
     }
 
-    public static LocalTime RandomHour(){
+    public LocalTime RandomHour(){
         Random random = new Random();
         int hour = random.nextInt(24);
         int minute = random.nextInt(60);
         return LocalTime.of(hour, minute);
     }
 
-    public static LocalTime GodzinaPrzylotu(LocalTime godzinaPrzylotu, double odleglosc, Samolot samolot){
+    public LocalTime GodzinaPrzylotu(LocalTime godzinaPrzylotu, double odleglosc, Samolot samolot){
         godzinaPrzylotu = godzinaPrzylotu.plusHours(TravelTimeHours(odleglosc, samolot.getPredkosc()));
         godzinaPrzylotu = godzinaPrzylotu.plusMinutes(TravelTimeMinutes(odleglosc, samolot.getPredkosc()));
         return godzinaPrzylotu;
     }
 
-    public static void wypiszLoty() {
+    public void wypiszLoty() {
         for (int i = 0; i < loty.size(); i++) {
             Lot lot = loty.get(i);
             //if(lot.getLotnisko_p().getNazwa().equals("Berlin")&&lot.getLotnisko_k().getNazwa().equals("Warszawa")){
@@ -204,7 +119,7 @@ public class SYSTEM {
             //}
         }
     }
-     public static void rezerwacjaBiletu(Klient klient, Lot lot){
+     public void rezerwacjaBiletu(Klient klient, Lot lot){
         Ticket ticket = new Ticket(lot);
         ticket.kupBilet(lot,klient);
         System.out.println("Kupiono bilet na lot z lotniska " + lot.getLotnisko_p().getNazwa() +" do " + lot.getLotnisko_k().getNazwa() + " dnia " + lot.getDzien() + " o godzinie: " + lot.getGodzina_odlotu());
@@ -212,12 +127,11 @@ public class SYSTEM {
         System.out.println();
     }
 
-    public static void odwolywanieBiletu(Klient klient, Ticket ticket){
+    public void odwolywanieBiletu(Klient klient, Ticket ticket){
         ticket.usunBilet(klient,ticket);
     }
 
-    public static void wyswietlanieBiletu(Klient klient){
-
+    public void wyswietlanieBiletu(Klient klient){
         List<Ticket>BiletyKlienta = klient.getBilety();
         //int i=0;
         if(klient instanceof Osoba) {
@@ -250,13 +164,18 @@ public class SYSTEM {
         }
     }
 
-    public static void StworzOsobe(String Imie, String Nazwisko){
+    public void StworzOsobe(String Imie, String Nazwisko){
         Osoba osoba = new Osoba(Imie,Nazwisko);
         osoba.dodajKlienta();
     }
 
-    public static void StworzFirme(String Nazwa, String KRS) {
+    public void StworzFirme(String Nazwa, String KRS) {
         Firma firma = new Firma(Nazwa, KRS);
         firma.dodajKlienta();
     }
 }
+
+//        lotnisko1.getFlota().sort(new ZasiegComparator());
+//       lotnisko2.getFlota().sort(new ZasiegComparator());
+//        lotnisko3.getFlota().sort(new ZasiegComparator());
+//        lotnisko4.getFlota().sort(new ZasiegComparator());

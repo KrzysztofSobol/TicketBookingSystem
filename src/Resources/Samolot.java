@@ -3,6 +3,7 @@ import java.io.*;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import Resources.SamolotTyp.*;
@@ -70,7 +71,7 @@ public class Samolot implements Serializable{
      * @param fileName     nazwa pliku tekstowego
      * @return lista obiektów samolotów
      */
-    public static List<Samolot> readFromFile(List<Samolot> ListOfPlanes, String fileName) {
+    public static ArrayList<Samolot> readFromFile(ArrayList<Samolot> ListOfPlanes, String fileName) {
 
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String line;
