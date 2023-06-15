@@ -17,7 +17,13 @@ public class Lotnisko implements Serializable{
     }
 
     public void dodajSamolot(Samolot samolot) {
-        flota.add(samolot);
+        if (this.nazwa == samolot.getnazwaLotniskaStacjonowanie() && this.lokalizacja == samolot.getLokalizacjaStacjonowania()){
+            flota.add(samolot);
+        }
+        else{
+            System.out.println("Błąd odczytu - nieprawidłowo dodawany samolot do lotniska");
+        }
+
     }
     //public void dodajLot(Lot lot){ loty.add(lot) ;}
 
@@ -47,6 +53,7 @@ public class Lotnisko implements Serializable{
      * @param airportsList lista obiektów lotnisk do zapisania
      * @param fileName     nazwa pliku
      */
+
     public static void writeToFile(List<Lotnisko> airportsList, String fileName) {
         try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(fileName))) {
             outputStream.writeObject(airportsList);
