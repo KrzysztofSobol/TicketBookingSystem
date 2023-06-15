@@ -36,36 +36,6 @@ public abstract class Klient implements Serializable {
     public abstract String getNazwiskoKrs();
 
     /**
-     * Zapisuje listę obiektów Klientów do pliku tekstowego.
-     *
-     * @param klientList lista klientów
-     * @param fileName  nazwa pliku tekstowego
-     */
-    public static void writeToFile(List<Klient> klientList, String fileName) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
-            for (Klient klient : klientList) {
-                String lineOfData;
-                if (klient instanceof Osoba) {
-                    lineOfData = "Osoba;" +
-                            ((Osoba) klient).getNazwa() + ";" +
-                            ((Osoba) klient).getNazwiskoKrs();
-                } else if (klient instanceof Firma) {
-                    lineOfData = "Firma;" +
-                            ((Firma) klient).getNazwa() + ";" +
-                            ((Firma) klient).getNazwiskoKrs();
-                } else {
-                    lineOfData = "Klient;";
-                }
-
-                writer.write(lineOfData);
-                writer.newLine();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
      * Zapisuje listę obiektów Klientów do pliku.
      *
      * @param klientList lista klientów
@@ -107,40 +77,6 @@ public abstract class Klient implements Serializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    /**
-     * Odczytuje listę obiektów Klientów z pliku tekstowego i zwraca ją jako wynik.
-     *
-     * @param fileName nazwa pliku tekstowego
-     * @return lista odczytanych obiektów Klientów
-     */
-    public static List<Klient> readFromFile(String fileName) {
-        List<Klient> klientList = new ArrayList<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] data = line.split(";");
-                if (data.length > 0) {
-                    String type = data[0];
-                    Klient klient = null;
-                    switch (type) {
-                        case "Osoba":
-                            klient = new Osoba(data[1], data[2]);
-                            break;
-                        case "Firma":
-                            klient = new Firma(data[1], data[2]);
-                            break;
-                    }
-                    if (klient != null) {
-                        klientList.add(klient);
-                    }
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return klientList;
     }
 
     /**
