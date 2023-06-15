@@ -9,6 +9,7 @@ import Resources.Samolot;
 import Resources.SamolotTyp.Typ1;
 import Resources.SamolotTyp.Typ2;
 import Resources.SamolotTyp.Typ3;
+import Resources.ZasiegComparator;
 
 
 import java.time.DayOfWeek;
@@ -66,6 +67,11 @@ public class SYSTEM {
         lotnisko4.dodajSamolot(krotko_dystansowiec4);
         lotnisko4.dodajSamolot(srednio_dystansowiec4);
         lotnisko4.dodajSamolot(daleko_dystansowiec4);
+
+        lotnisko1.getFlota().sort(new ZasiegComparator());
+        lotnisko2.getFlota().sort(new ZasiegComparator());
+        lotnisko3.getFlota().sort(new ZasiegComparator());
+        lotnisko4.getFlota().sort(new ZasiegComparator());
 
         generujLot();
     }
@@ -159,17 +165,6 @@ public class SYSTEM {
         return godzinaPrzylotu;
     }
 
-    public void wypiszLoty() {
-        for (int i = 0; i < loty.size(); i++) {
-            Lot lot = loty.get(i);
-            //if(lot.getLotnisko_p().getNazwa().equals("Berlin")&&lot.getLotnisko_k().getNazwa().equals("Warszawa")){
-                System.out.println((i + 1) + ". " + lot.getLotnisko_p().getNazwa() + " -> " + lot.getLotnisko_k().getNazwa());
-                System.out.println("    Samolot: " + lot.getSamolot().getNazwa());
-                System.out.println("    Dnia: " + lot.getDzien() + " o godzinie: " + lot.getGodzina_odlotu());
-                System.out.println();
-            //}
-        }
-    }
      public void rezerwacjaBiletu(Klient klient, Lot lot){
         Ticket ticket = new Ticket(lot);
         ticket.kupBilet(lot,klient);
@@ -227,9 +222,12 @@ public class SYSTEM {
     public ArrayList<Lot> getLoty() {
         return loty;
     }
+
+    public ArrayList<Lotnisko> getLotniska() { return lotniska; }
+
+    public Lot getLotFromSelectedValue(String number){
+        int i = Integer.parseInt(number);
+        return loty.get(i);
+    }
 }
 
-//        lotnisko1.getFlota().sort(new ZasiegComparator());
-//       lotnisko2.getFlota().sort(new ZasiegComparator());
-//        lotnisko3.getFlota().sort(new ZasiegComparator());
-//        lotnisko4.getFlota().sort(new ZasiegComparator());

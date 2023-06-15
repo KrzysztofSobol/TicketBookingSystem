@@ -2,10 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
+import Clients.Klient;
+import Clients.Types.Osoba;
 import Flights.Lot;
 import Resources.Lotnisko;
+
+import java.awt.*;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.ArrayList;
+
 
 /**
  *
@@ -17,11 +23,13 @@ public class Main extends javax.swing.JFrame {
      * Creates new form Main
      */
     public Main() {
+        SYSTEM.KURWAMAC();
         initComponents();
         KlientWyborPanel.setVisible(false);
         StworzOsobaPanel.setVisible(false);
         StworzFirmaPanel.setVisible(false);
         RezerwacjaLotuPanel.setVisible(false);
+        WgrajDanePanel.setVisible(false);
     }
 
     /**
@@ -71,7 +79,7 @@ public class Main extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jSpinner1 = new javax.swing.JSpinner();
         jLabel6 = new javax.swing.JLabel();
-        gowno = new javax.swing.JTextField();
+        rezerwujButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,7 +102,7 @@ public class Main extends javax.swing.JFrame {
                 stworzKontoActionPerformed(evt);
             }
         });
-        
+
         zarezerwujLot.setText("Zarezerwuj lot");
         zarezerwujLot.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -362,7 +370,12 @@ public class Main extends javax.swing.JFrame {
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             ArrayList<Lot> loty = SYSTEM.getLoty();
             public int getSize() { return loty.size(); }
-            public String getElementAt(int i) { return (loty.get(i).getLotnisko_p().getNazwa() + " -> " + loty.get(i).getLotnisko_k().getNazwa());  }
+            public String getElementAt(int i) { return loty.get(i).toString() + "  -  " + SYSTEM.GodzinaPrzylotu(loty.get(i).getGodzina_odlotu(), SYSTEM.Odleglosc(loty.get(i).getLotnisko_p(),loty.get(i).getLotnisko_k()),loty.get(i).getSamolot()); }
+        });
+        jList1.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                jList1ValueChanged(evt);
+            }
         });
         jScrollPane1.setViewportView(jList1);
 
@@ -384,6 +397,48 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        // Populate the Choice component with airport names
+        for (Lotnisko lotnisko : SYSTEM.getLotniska()) {
+            choice1.add(lotnisko.getNazwa());
+        }
+
+        // ItemListener for the Choice component
+        ItemListener choiceListener = new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (e.getStateChange() == ItemEvent.SELECTED) {
+                    String selectedAirport = choice1.getSelectedItem();
+                    // Perform any action with the selected airport
+                    System.out.println("Selected airport: " + selectedAirport);
+                }
+            }
+        };
+
+        // Add the ItemListener to the Choice component
+        choice1.addItemListener(choiceListener);
+
+        Choice choice2 = new Choice();
+
+        // Populate the Choice component with airport names
+        for (Lotnisko lotnisko : SYSTEM.getLotniska()) {
+            choice2.add(lotnisko.getNazwa());
+        }
+
+        // ItemListener for the Choice component
+        ItemListener choiceListener2 = new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (e.getStateChange() == ItemEvent.SELECTED) {
+                    String selectedAirport = choice2.getSelectedItem();
+                    // Perform any action with the selected airport
+                    System.out.println("Selected airport: " + selectedAirport);
+                }
+            }
+        };
+
+        // Add the ItemListener to the Choice component
+        choice2.addItemListener(choiceListener2);
+
         D.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DActionPerformed(evt);
@@ -402,7 +457,12 @@ public class Main extends javax.swing.JFrame {
 
         jLabel6.setText("Pasażerowie");
 
-        gowno.setText("jTextField1");
+        rezerwujButton.setText("Zarezerwuj");
+        rezerwujButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rezerwujButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout RezerwacjaLotuPanelLayout = new javax.swing.GroupLayout(RezerwacjaLotuPanel);
         RezerwacjaLotuPanel.setLayout(RezerwacjaLotuPanelLayout);
@@ -416,8 +476,6 @@ public class Main extends javax.swing.JFrame {
                                                 .addComponent(obieStrony, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(jednaStrona)
-                                                .addGap(121, 121, 121)
-                                                .addComponent(gowno, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(0, 0, Short.MAX_VALUE))
                                         .addGroup(RezerwacjaLotuPanelLayout.createSequentialGroup()
                                                 .addGroup(RezerwacjaLotuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -440,7 +498,10 @@ public class Main extends javax.swing.JFrame {
                                                         .addGroup(RezerwacjaLotuPanelLayout.createSequentialGroup()
                                                                 .addComponent(jLabel6)
                                                                 .addGap(0, 18, Short.MAX_VALUE))
-                                                        .addComponent(jSpinner1))))
+                                                        .addComponent(jSpinner1)))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RezerwacjaLotuPanelLayout.createSequentialGroup()
+                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                .addComponent(rezerwujButton)))
                                 .addContainerGap())
         );
         RezerwacjaLotuPanelLayout.setVerticalGroup(
@@ -449,9 +510,8 @@ public class Main extends javax.swing.JFrame {
                                 .addContainerGap()
                                 .addGroup(RezerwacjaLotuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(obieStrony)
-                                        .addComponent(jednaStrona)
-                                        .addComponent(gowno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(9, 9, 9)
+                                        .addComponent(jednaStrona))
+                                .addGap(10, 10, 10)
                                 .addGroup(RezerwacjaLotuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -466,9 +526,11 @@ public class Main extends javax.swing.JFrame {
                                                 .addComponent(D)
                                                 .addComponent(D2)
                                                 .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(6, 6, 6)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                                .addContainerGap())
+                                .addComponent(rezerwujButton)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -635,6 +697,22 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }
 
+    private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {
+
+    }
+
+    private void rezerwujButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        Klient klient = new Osoba("Krzys", "S");
+        klient.dodajKlienta();
+        int[] selectedIndices = jList1.getSelectedIndices();
+        if (selectedIndices.length > 0) {
+            for (int selectedIndex : selectedIndices) {
+                Lot selectedLot = SYSTEM.getLoty().get(selectedIndex);
+                SYSTEM.rezerwacjaBiletu(klient, selectedLot);
+            }
+        }
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -693,7 +771,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton goBack;
     private javax.swing.JButton goBack1;
     private javax.swing.JButton goBack2;
-    private javax.swing.JTextField gowno;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -705,6 +782,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JCheckBox jednaStrona;
     private javax.swing.JCheckBox obieStrony;
+    private javax.swing.JButton rezerwujButton;
     private javax.swing.JButton stworzKonto;
     private javax.swing.JButton wgrajDane;
     private javax.swing.JButton wyborFirma;

@@ -81,6 +81,6 @@ public class Lot implements Serializable{
 
     @Override
     public String toString() {
-        return lotnisko_p + " -> " + lotnisko_k;
+        return lotnisko_p.getNazwa() + " -> " + lotnisko_k.getNazwa() + "     " + godzina_odlotu;
     }
 }
