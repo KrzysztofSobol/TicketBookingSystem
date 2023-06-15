@@ -82,14 +82,5 @@ public class Samolot implements Serializable {
             e.printStackTrace();
         }
     }
-
-    public static void readFromFile(ArrayList<Samolot> ListOfPlanes, String fileName) {
-        try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(fileName))) {
-            ListOfPlanes.clear();
-            ListOfPlanes.addAll((ArrayList<Samolot>) inputStream.readObject());
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
 }
 
