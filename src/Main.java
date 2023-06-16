@@ -23,7 +23,6 @@ public class Main extends javax.swing.JFrame {
      * Creates new form Main
      */
     public Main() {
-        SYSTEM.KURWAMAC();
         initComponents();
         KlientWyborPanel.setVisible(false);
         StworzOsobaPanel.setVisible(false);
