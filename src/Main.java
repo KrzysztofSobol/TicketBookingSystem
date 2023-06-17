@@ -2,15 +2,28 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+
 import Clients.Klient;
 import Clients.Types.Osoba;
 import Flights.Lot;
 import Resources.Lotnisko;
 
+import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.TextStyle;
 import java.util.ArrayList;
+import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 /**
@@ -23,6 +36,7 @@ public class Main extends javax.swing.JFrame {
      * Creates new form Main
      */
     public Main() {
+        SYSTEM.daneTEST();
         initComponents();
         KlientWyborPanel.setVisible(false);
         StworzOsobaPanel.setVisible(false);
@@ -68,17 +82,15 @@ public class Main extends javax.swing.JFrame {
         jList1 = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        obieStrony = new javax.swing.JCheckBox();
-        jednaStrona = new javax.swing.JCheckBox();
         choice1 = new java.awt.Choice();
         choice2 = new java.awt.Choice();
         D = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        D2 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
         jSpinner1 = new javax.swing.JSpinner();
         jLabel6 = new javax.swing.JLabel();
-        rezerwujButton = new javax.swing.JButton();
+        refreshButton = new javax.swing.JButton();
+        klientChooser = new javax.swing.JComboBox<>();
+        ZarezerwujLot = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -371,30 +383,13 @@ public class Main extends javax.swing.JFrame {
             public int getSize() { return loty.size(); }
             public String getElementAt(int i) { return loty.get(i).toString() + "  -  " + SYSTEM.GodzinaPrzylotu(loty.get(i).getGodzina_odlotu(), SYSTEM.Odleglosc(loty.get(i).getLotnisko_p(),loty.get(i).getLotnisko_k()),loty.get(i).getSamolot()); }
         });
-        jList1.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
-            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                jList1ValueChanged(evt);
-            }
-        });
         jScrollPane1.setViewportView(jList1);
 
         jLabel1.setText("Miejsce wylotu");
 
         jLabel3.setText("Miejsce przylotu");
 
-        obieStrony.setText("W obie strony");
-        obieStrony.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                obieStronyActionPerformed(evt);
-            }
-        });
-
-        jednaStrona.setText("W jedną stronę");
-        jednaStrona.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jednaStronaActionPerformed(evt);
-            }
-        });
+        Choice choice1 = new Choice();
 
         // Populate the Choice component with airport names
         for (Lotnisko lotnisko : SYSTEM.getLotniska()) {
@@ -402,7 +397,7 @@ public class Main extends javax.swing.JFrame {
         }
 
         // ItemListener for the Choice component
-        ItemListener choiceListener = new ItemListener() {
+        ItemListener choiceListener111 = new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
                 if (e.getStateChange() == ItemEvent.SELECTED) {
@@ -414,7 +409,7 @@ public class Main extends javax.swing.JFrame {
         };
 
         // Add the ItemListener to the Choice component
-        choice1.addItemListener(choiceListener);
+        choice1.addItemListener(choiceListener111);
 
         Choice choice2 = new Choice();
 
@@ -424,7 +419,7 @@ public class Main extends javax.swing.JFrame {
         }
 
         // ItemListener for the Choice component
-        ItemListener choiceListener2 = new ItemListener() {
+        ItemListener choiceListener211 = new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
                 if (e.getStateChange() == ItemEvent.SELECTED) {
@@ -436,7 +431,7 @@ public class Main extends javax.swing.JFrame {
         };
 
         // Add the ItemListener to the Choice component
-        choice2.addItemListener(choiceListener2);
+        choice1.addItemListener(choiceListener211);
 
         D.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -446,20 +441,48 @@ public class Main extends javax.swing.JFrame {
 
         jLabel4.setText("Data wylotu");
 
-        D2.addActionListener(new java.awt.event.ActionListener() {
+        jLabel6.setText("Pasażerowie");
+
+        refreshButton.setText("Odśwież");
+        refreshButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                D2ActionPerformed(evt);
+                refreshButtonActionPerformed(evt);
+            }
+        });
+        refreshButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String selectedChoice1 = choice1.getSelectedItem();
+                String selectedChoice2 = choice2.getSelectedItem();
+
+                ListModel<String> customModel = jList1.getModel();
+                DefaultListModel<String> model = new DefaultListModel<>();
+
+                ArrayList<Lot> loty = SYSTEM.getLoty();
+                for (Lot lot : loty) {
+                    if (lot.getLotnisko_p().getNazwa().equals(selectedChoice1) && lot.getLotnisko_k().getNazwa().equals(selectedChoice2)) {
+                        String element = lot.toString();
+                        model.addElement(element);
+                    }
+                }
+
+                jList1.setModel(model);
             }
         });
 
-        jLabel5.setText("Data przylotu");
-
-        jLabel6.setText("Pasażerowie");
-
-        rezerwujButton.setText("Zarezerwuj");
-        rezerwujButton.addActionListener(new java.awt.event.ActionListener() {
+        for (Klient klient : Klient.klienci) {
+            klientChooser.addItem(klient.getNazwa());
+        }
+        klientChooser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rezerwujButtonActionPerformed(evt);
+                klientChooserActionPerformed(evt);
+            }
+        });
+
+        ZarezerwujLot.setText("Zarezerwuj");
+        ZarezerwujLot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ZarezerwujLotActionPerformed(evt);
             }
         });
 
@@ -471,12 +494,7 @@ public class Main extends javax.swing.JFrame {
                                 .addContainerGap()
                                 .addGroup(RezerwacjaLotuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jScrollPane1)
-                                        .addGroup(RezerwacjaLotuPanelLayout.createSequentialGroup()
-                                                .addComponent(obieStrony, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jednaStrona)
-                                                .addGap(0, 0, Short.MAX_VALUE))
-                                        .addGroup(RezerwacjaLotuPanelLayout.createSequentialGroup()
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RezerwacjaLotuPanelLayout.createSequentialGroup()
                                                 .addGroup(RezerwacjaLotuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addComponent(choice1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addComponent(jLabel1))
@@ -486,50 +504,47 @@ public class Main extends javax.swing.JFrame {
                                                         .addComponent(choice2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addGroup(RezerwacjaLotuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(jLabel4)
-                                                        .addComponent(D, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(10, 10, 10)
-                                                .addGroup(RezerwacjaLotuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(D2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(jLabel5))
-                                                .addGap(10, 10, 10)
+                                                        .addComponent(D, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jLabel4))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addGroup(RezerwacjaLotuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addGroup(RezerwacjaLotuPanelLayout.createSequentialGroup()
                                                                 .addComponent(jLabel6)
-                                                                .addGap(0, 18, Short.MAX_VALUE))
-                                                        .addComponent(jSpinner1)))
+                                                                .addGap(0, 0, Short.MAX_VALUE))
+                                                        .addComponent(jSpinner1, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(RezerwacjaLotuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                        .addComponent(klientChooser, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(refreshButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RezerwacjaLotuPanelLayout.createSequentialGroup()
                                                 .addGap(0, 0, Short.MAX_VALUE)
-                                                .addComponent(rezerwujButton)))
+                                                .addComponent(ZarezerwujLot)))
                                 .addContainerGap())
         );
         RezerwacjaLotuPanelLayout.setVerticalGroup(
                 RezerwacjaLotuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(RezerwacjaLotuPanelLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(RezerwacjaLotuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(obieStrony)
-                                        .addComponent(jednaStrona))
-                                .addGap(10, 10, 10)
+                                .addGap(9, 9, 9)
+                                .addComponent(klientChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(RezerwacjaLotuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(9, 9, 9)
                                 .addGroup(RezerwacjaLotuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(choice1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(choice2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(RezerwacjaLotuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                .addComponent(D)
-                                                .addComponent(D2)
-                                                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(6, 6, 6)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(D, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rezerwujButton)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(ZarezerwujLot)
+                                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -668,19 +683,7 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }
 
-    private void obieStronyActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
-    private void jednaStronaActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
     private void DActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
-    private void D2ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }
 
@@ -696,22 +699,69 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }
 
-    private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {
-
+    private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
     }
 
-    private void rezerwujButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        Klient klient = new Osoba("Krzys", "S");
-        klient.dodajKlienta();
+    private void ZarezerwujLotActionPerformed(java.awt.event.ActionEvent evt) {
         int[] selectedIndices = jList1.getSelectedIndices();
-        if (selectedIndices.length > 0) {
-            for (int selectedIndex : selectedIndices) {
-                Lot selectedLot = SYSTEM.getLoty().get(selectedIndex);
-                SYSTEM.rezerwacjaBiletu(klient, selectedLot);
+        ListModel<String> model = jList1.getModel();
+        int selectedClientIndex = klientChooser.getSelectedIndex();
+        Klient selectedKlient = Klient.klienci.get(selectedClientIndex);
+        for (int selectedIndex : selectedIndices) {
+            String selectedString = model.getElementAt(selectedIndex);
+            String[] parts = selectedString.split("->");
+            String lotnisko_p = parts[0].trim();
+
+            // Extracting the lotnisko_k value
+            Pattern pattern = Pattern.compile("->\\s+(.*?)\\s+\\d{2}\\.\\d{2}\\.\\d{4}\\s+\\d{2}:\\d{2}");
+            Matcher matcher = pattern.matcher(selectedString);
+
+            String lotnisko_k = "";
+            if (matcher.find()) {
+                lotnisko_k = matcher.group(1);
             }
+
+            // Extracting the date and time using regular expressions
+            pattern = Pattern.compile("(\\d{2}\\.\\d{2}\\.\\d{4})\\s+(\\d{2}:\\d{2})");
+            matcher = pattern.matcher(selectedString);
+
+            String data = "";
+            String hour = "";
+
+            if (matcher.find()) {
+                data = matcher.group(1);
+                hour = matcher.group(2);
+            }
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+            LocalTime localTime = LocalTime.parse(hour, formatter);
+            DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+            LocalDate date = LocalDate.parse(data, formatter2);
+            DayOfWeek dayOfWeek = date.getDayOfWeek();
+            Lot lot = findLotByFlightDetails(lotnisko_p, lotnisko_k, dayOfWeek, localTime);
+            SYSTEM.rezerwacjaBiletu(selectedKlient, lot);
         }
     }
 
+    private Lot findLotByFlightDetails(String lotnisko_p, String lotnisko_k, DayOfWeek dzien, LocalTime godzina_odlotu) {
+        ArrayList<Lot> loty = SYSTEM.getLoty();
+        for (Lot lot : loty) {
+            if (lot.getLotnisko_p().getNazwa().equals(lotnisko_p) &&
+                    lot.getLotnisko_k().getNazwa().equals(lotnisko_k) &&
+                    lot.getDzien() == dzien &&
+                    lot.getGodzina_odlotu().equals(godzina_odlotu)) {
+                return lot;
+            }
+        }
+        return null; // No matching Lot found
+    }
+
+    private void klientChooserActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+    private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {
+
+    }
     /**
      * @param args the command line arguments
      */
@@ -749,7 +799,6 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify
     private javax.swing.JTextField D;
-    private javax.swing.JTextField D2;
     private javax.swing.JPanel KlientWyborPanel;
     private javax.swing.JPanel MainMenu;
     private javax.swing.JButton Register;
@@ -761,6 +810,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton WgrajKlientów;
     private javax.swing.JButton WgrajLoty;
     private javax.swing.JButton WgrajSamoloty;
+    private javax.swing.JButton ZarezerwujLot;
     private java.awt.Choice choice1;
     private java.awt.Choice choice2;
     private java.awt.TextField getFirma;
@@ -774,14 +824,12 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JCheckBox jednaStrona;
-    private javax.swing.JCheckBox obieStrony;
-    private javax.swing.JButton rezerwujButton;
+    private javax.swing.JComboBox<String> klientChooser;
+    private javax.swing.JButton refreshButton;
     private javax.swing.JButton stworzKonto;
     private javax.swing.JButton wgrajDane;
     private javax.swing.JButton wyborFirma;

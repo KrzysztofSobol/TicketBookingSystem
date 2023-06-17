@@ -8,7 +8,7 @@ import java.util.List;
 import Clients.Types.*;
 
 public abstract class Klient implements Serializable {
-    public List<Klient> klienci = new ArrayList<>();
+    public static List<Klient> klienci = new ArrayList<>();
     public static List<Ticket> Bilety = new ArrayList<>();
 
     public List<Klient> getListaKlientow() {

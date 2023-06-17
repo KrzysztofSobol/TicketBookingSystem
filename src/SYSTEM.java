@@ -24,6 +24,57 @@ public class SYSTEM {
     private ArrayList<Lotnisko> lotniska = new ArrayList<>();
     private ArrayList<Lot> loty = new ArrayList<>();
 
+    public void daneTEST(){
+        Lotnisko lotnisko1 = new Lotnisko("Warszawa", "Warszawa", 1, 100);
+        Lotnisko lotnisko2 = new Lotnisko("Berlin", "Berlin", 1, 20);
+        Lotnisko lotnisko3 = new Lotnisko("Paryz", "Paryz", 1, 3);
+        Lotnisko lotnisko4 = new Lotnisko("HongKong", "HongKong", 1, 25);
+
+        lotniska.add(lotnisko1);
+        lotniska.add(lotnisko2);
+        lotniska.add(lotnisko3);
+        lotniska.add(lotnisko4);
+
+        /// Testy
+        Typ1 krotko_dystansowiec = new Typ1("Mini Majk", 1500, 40, 20, "Warszawa", "Warszawa");
+        Typ2 srednio_dystansowiec = new Typ2("Mid John", 5000, 30,50 , "Warszawa", "Warszawa");
+        Typ3 daleko_dystansowiec = new Typ3("Long Ben", 100000, 20, 70, "Warszawa", "Warszawa");
+
+        Typ1 krotko_dystansowiec2 = new Typ1("Mini Majk2", 1500, 20, 20, "Berlin", "Berlin");
+        Typ2 srednio_dystansowiec2 = new Typ2("Mid John2", 5000, 30, 40, "Berlin", "Berlin");
+        Typ3 daleko_dystansowiec2 = new Typ3("Long Ben2", 100000, 20, 80, "Berlin", "Berlin");
+
+        Typ1 krotko_dystansowiec3 = new Typ1("Mini Majk3", 1500, 20, 20, "Paryz", "Paryz");
+        Typ2 srednio_dystansowiec3 = new Typ2("Mid John3", 5000, 30, 40, "Paryz", "Paryz");
+        Typ3 daleko_dystansowiec3 = new Typ3("Long Ben3", 100000, 20, 90, "Paryz", "Paryz");
+
+        Typ1 krotko_dystansowiec4 = new Typ1("Mini Majk4", 1500, 20, 23, "HongKong", "HongKong");
+        Typ2 srednio_dystansowiec4 = new Typ2("Mid John4", 5000, 30, 42, "HongKong", "HongKong");
+        Typ3 daleko_dystansowiec4 = new Typ3("Long Ben4", 100000, 20, 65,"HongKong", "HongKong" );
+
+        lotnisko1.dodajSamolot(krotko_dystansowiec);
+        lotnisko1.dodajSamolot(srednio_dystansowiec);
+        lotnisko1.dodajSamolot(daleko_dystansowiec);
+
+        lotnisko2.dodajSamolot(krotko_dystansowiec2);
+        lotnisko2.dodajSamolot(srednio_dystansowiec2);
+        lotnisko2.dodajSamolot(daleko_dystansowiec2);
+
+        lotnisko3.dodajSamolot(krotko_dystansowiec3);
+        lotnisko3.dodajSamolot(srednio_dystansowiec3);
+        lotnisko3.dodajSamolot(daleko_dystansowiec3);
+
+        lotnisko4.dodajSamolot(krotko_dystansowiec4);
+        lotnisko4.dodajSamolot(srednio_dystansowiec4);
+        lotnisko4.dodajSamolot(daleko_dystansowiec4);
+
+        generujLot();
+        Klient klient1 = new Osoba("Krzys", "S");
+        Klient klient2 = new Firma("Piekarnia", "W");
+        klient1.dodajKlienta();
+        klient2.dodajKlienta();
+    }
+
     public void generujLot() {
         DateFormatSymbols dni = new DateFormatSymbols(new Locale("en", "US"));
         String[] daysOfWeek = dni.getWeekdays();

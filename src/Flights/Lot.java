@@ -5,7 +5,9 @@ import Resources.Samolot;
 
 import java.io.*;
 import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Random;
 
@@ -81,6 +83,10 @@ public class Lot implements Serializable{
 
     @Override
     public String toString() {
-        return lotnisko_p.getNazwa() + " -> " + lotnisko_k.getNazwa() + "     " + godzina_odlotu;
+        LocalDate today = LocalDate.now();
+        int daysToAdd = (dzien.getValue() - today.getDayOfWeek().getValue() + 7) % 7;
+        LocalDate closestDay = today.plusDays(daysToAdd);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        return lotnisko_p.getNazwa() + " -> " + lotnisko_k.getNazwa() + "   " + closestDay.format(formatter) + "   " + godzina_odlotu;
     }
 }
