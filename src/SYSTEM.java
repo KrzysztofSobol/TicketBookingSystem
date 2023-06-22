@@ -165,7 +165,7 @@ public class SYSTEM {
     }
 
      public void rezerwacjaBiletu(Klient klient, Lot lot){
-        Ticket ticket = new Ticket(lot);
+        Ticket ticket = new Ticket(lot, klient);
         ticket.kupBilet(lot,klient);
         System.out.println("Kupiono bilet na lot z lotniska " + lot.getLotnisko_p().getNazwa() +" do " + lot.getLotnisko_k().getNazwa() + " dnia " + lot.getDzien() + " o godzinie: " + lot.getGodzina_odlotu());
         klient.dodajBilet(ticket);

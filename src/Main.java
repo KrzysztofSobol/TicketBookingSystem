@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 import Clients.Klient;
 import Clients.Types.Osoba;
 import Flights.Lot;
+import Reservation.Ticket;
 import Resources.Lotnisko;
 
 import javax.swing.*;
@@ -14,6 +14,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.io.File;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -24,7 +25,6 @@ import java.util.ArrayList;
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 
 /**
  *
@@ -43,6 +43,8 @@ public class Main extends javax.swing.JFrame {
         StworzFirmaPanel.setVisible(false);
         RezerwacjaLotuPanel.setVisible(false);
         WgrajDanePanel.setVisible(false);
+        BiletyPanel.setVisible(false);
+        StworzSamolotPanel.setVisible(false);
     }
 
     /**
@@ -59,10 +61,13 @@ public class Main extends javax.swing.JFrame {
         stworzKonto = new javax.swing.JButton();
         zarezerwujLot = new javax.swing.JButton();
         wgrajDane = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         KlientWyborPanel = new javax.swing.JPanel();
         wyborOsoba = new javax.swing.JButton();
         wyborFirma = new javax.swing.JButton();
         goBack = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         StworzOsobaPanel = new javax.swing.JPanel();
         getImie = new java.awt.TextField();
         getNazwisko = new java.awt.TextField();
@@ -74,9 +79,19 @@ public class Main extends javax.swing.JFrame {
         Register1 = new javax.swing.JButton();
         goBack2 = new javax.swing.JButton();
         WgrajDanePanel = new javax.swing.JPanel();
-        WgrajLoty = new javax.swing.JButton();
-        WgrajSamoloty = new javax.swing.JButton();
-        WgrajKlientów = new javax.swing.JButton();
+        goBack3 = new javax.swing.JButton();
+        selectFileButton_Lotniska = new javax.swing.JButton();
+        selectFileButton_Samoloty = new javax.swing.JButton();
+        selectFileButton_Klienci = new javax.swing.JButton();
+        uploadButton_Klienci = new javax.swing.JButton();
+        uploadButton_Samoloty = new javax.swing.JButton();
+        uploadButton_Lotniska = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        LotniskaText = new javax.swing.JTextField();
+        SamolotyText = new javax.swing.JTextField();
+        KlienciText = new javax.swing.JTextField();
         RezerwacjaLotuPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
@@ -84,13 +99,26 @@ public class Main extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         choice1 = new java.awt.Choice();
         choice2 = new java.awt.Choice();
-        D = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
         jSpinner1 = new javax.swing.JSpinner();
         jLabel6 = new javax.swing.JLabel();
         refreshButton = new javax.swing.JButton();
         klientChooser = new javax.swing.JComboBox<>();
         ZarezerwujLot = new javax.swing.JButton();
+        goBack4 = new javax.swing.JButton();
+        BrakMiejscText = new javax.swing.JTextField();
+        BiletyPanel = new javax.swing.JPanel();
+        klientChooser2 = new javax.swing.JComboBox<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jList2 = new javax.swing.JList<>();
+        goBack5 = new javax.swing.JButton();
+        StworzSamolotPanel = new javax.swing.JPanel();
+        Register2 = new javax.swing.JButton();
+        goBack6 = new javax.swing.JButton();
+        getKRS3 = new java.awt.TextField();
+        getKRS4 = new java.awt.TextField();
+        NazwaSamolotu = new java.awt.TextField();
+        getKRS6 = new java.awt.TextField();
+        textField1 = new java.awt.TextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -107,7 +135,7 @@ public class Main extends javax.swing.JFrame {
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel2.setFocusable(false);
 
-        stworzKonto.setText("Stwórz konto");
+        stworzKonto.setText("Dodaj ");
         stworzKonto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stworzKontoActionPerformed(evt);
@@ -128,18 +156,26 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Bilety klienta");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout MainMenuLayout = new javax.swing.GroupLayout(MainMenu);
         MainMenu.setLayout(MainMenuLayout);
         MainMenuLayout.setHorizontalGroup(
                 MainMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainMenuLayout.createSequentialGroup()
+                        .addGroup(MainMenuLayout.createSequentialGroup()
                                 .addGap(215, 215, 215)
                                 .addGroup(MainMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(zarezerwujLot, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
                                         .addComponent(stworzKonto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(wgrajDane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addContainerGap(225, Short.MAX_VALUE))
+                                        .addComponent(wgrajDane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(215, 215, 215))
         );
         MainMenuLayout.setVerticalGroup(
                 MainMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,7 +188,9 @@ public class Main extends javax.swing.JFrame {
                                 .addComponent(zarezerwujLot)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(wgrajDane)
-                                .addContainerGap(206, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton1)
+                                .addContainerGap(227, Short.MAX_VALUE))
         );
 
         KlientWyborPanel.setRequestFocusEnabled(false);
@@ -184,17 +222,37 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jButton5.setText("Lotnisko");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Samolot");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout KlientWyborPanelLayout = new javax.swing.GroupLayout(KlientWyborPanel);
         KlientWyborPanel.setLayout(KlientWyborPanelLayout);
         KlientWyborPanelLayout.setHorizontalGroup(
                 KlientWyborPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(KlientWyborPanelLayout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addGroup(KlientWyborPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(wyborOsoba, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(wyborFirma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(goBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addContainerGap(518, Short.MAX_VALUE))
+                                .addGroup(KlientWyborPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(KlientWyborPanelLayout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, KlientWyborPanelLayout.createSequentialGroup()
+                                                .addGap(10, 10, 10)
+                                                .addGroup(KlientWyborPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                        .addComponent(goBack)
+                                                        .addComponent(wyborFirma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(wyborOsoba, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addGap(468, 468, 468))
         );
         KlientWyborPanelLayout.setVerticalGroup(
                 KlientWyborPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,7 +261,11 @@ public class Main extends javax.swing.JFrame {
                                 .addComponent(wyborOsoba)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(wyborFirma)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 300, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton2)
+                                .addGap(12, 12, 12)
+                                .addComponent(jButton5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 261, Short.MAX_VALUE)
                                 .addComponent(goBack, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())
         );
@@ -223,7 +285,7 @@ public class Main extends javax.swing.JFrame {
 
         getNazwisko.setText("Nazwisko");
 
-        Register.setText("Register");
+        Register.setText("Add");
         Register.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RegisterActionPerformed(evt);
@@ -249,7 +311,7 @@ public class Main extends javax.swing.JFrame {
                                                 .addComponent(getNazwisko, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(Register, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE))
                                         .addComponent(goBack1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(495, Short.MAX_VALUE))
+                                .addGap(400, 400, 400))
         );
         StworzOsobaPanelLayout.setVerticalGroup(
                 StworzOsobaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -260,7 +322,7 @@ public class Main extends javax.swing.JFrame {
                                 .addComponent(getNazwisko, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(Register)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 275, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 325, Short.MAX_VALUE)
                                 .addComponent(goBack1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())
         );
@@ -281,7 +343,7 @@ public class Main extends javax.swing.JFrame {
 
         getKRS.setText("Numer KRS");
 
-        Register1.setText("Register");
+        Register1.setText("Add");
         Register1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Register1ActionPerformed(evt);
@@ -308,7 +370,7 @@ public class Main extends javax.swing.JFrame {
                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, StworzFirmaPanelLayout.createSequentialGroup()
                                                 .addComponent(goBack2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(0, 0, Short.MAX_VALUE)))
-                                .addContainerGap(450, Short.MAX_VALUE))
+                                .addGap(450, 450, 450))
         );
         StworzFirmaPanelLayout.setVerticalGroup(
                 StworzFirmaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -331,44 +393,141 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        WgrajLoty.setText("Lotniska");
-        WgrajLoty.addActionListener(new java.awt.event.ActionListener() {
+        goBack3.setText("Back");
+        goBack3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                WgrajLotyActionPerformed(evt);
+                goBack3ActionPerformed(evt);
             }
         });
 
-        WgrajSamoloty.setText("Samoloty");
-        WgrajSamoloty.addActionListener(new java.awt.event.ActionListener() {
+        selectFileButton_Lotniska.setText("Wybierz Plik");
+        selectFileButton_Lotniska.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                WgrajSamolotyActionPerformed(evt);
+                selectFileButton_LotniskaActionPerformed(evt);
             }
         });
 
-        WgrajKlientów.setText("Klienci");
+        selectFileButton_Samoloty.setText("Wybierz Plik");
+        selectFileButton_Samoloty.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectFileButton_SamolotyActionPerformed(evt);
+            }
+        });
+
+        selectFileButton_Klienci.setText("Wybierz Plik");
+        selectFileButton_Klienci.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectFileButton_KlienciActionPerformed(evt);
+            }
+        });
+
+        uploadButton_Klienci.setText("Import");
+        uploadButton_Klienci.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uploadButton_KlienciActionPerformed(evt);
+            }
+        });
+
+        uploadButton_Samoloty.setText("Import");
+        uploadButton_Samoloty.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uploadButton_SamolotyActionPerformed(evt);
+            }
+        });
+
+        uploadButton_Lotniska.setText("Import");
+        uploadButton_Lotniska.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uploadButton_LotniskaActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Lotniska");
+
+        jLabel7.setText("Samoloty");
+
+        jLabel8.setText("Klienci");
+
+        LotniskaText.setText("Ścieżka do pliku");
+        LotniskaText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LotniskaTextActionPerformed(evt);
+            }
+        });
+
+        SamolotyText.setText("Ścieżka do pliku");
+        SamolotyText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SamolotyTextActionPerformed(evt);
+            }
+        });
+
+        KlienciText.setText("Ścieżka do pliku");
+        KlienciText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                KlienciTextActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout WgrajDanePanelLayout = new javax.swing.GroupLayout(WgrajDanePanel);
         WgrajDanePanel.setLayout(WgrajDanePanelLayout);
         WgrajDanePanelLayout.setHorizontalGroup(
                 WgrajDanePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, WgrajDanePanelLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(goBack3, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(WgrajDanePanelLayout.createSequentialGroup()
-                                .addGap(10, 10, 10)
+                                .addContainerGap()
+                                .addGroup(WgrajDanePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(WgrajDanePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(WgrajSamoloty, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(WgrajLoty, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(WgrajKlientów, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addContainerGap(510, Short.MAX_VALUE))
+                                        .addGroup(WgrajDanePanelLayout.createSequentialGroup()
+                                                .addComponent(selectFileButton_Klienci, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(uploadButton_Klienci))
+                                        .addGroup(WgrajDanePanelLayout.createSequentialGroup()
+                                                .addComponent(selectFileButton_Samoloty, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(uploadButton_Samoloty))
+                                        .addGroup(WgrajDanePanelLayout.createSequentialGroup()
+                                                .addComponent(selectFileButton_Lotniska)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(uploadButton_Lotniska)))
+                                .addGap(12, 12, 12)
+                                .addGroup(WgrajDanePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(LotniskaText, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(SamolotyText, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(KlienciText, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         WgrajDanePanelLayout.setVerticalGroup(
                 WgrajDanePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(WgrajDanePanelLayout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(WgrajLoty)
+                                .addContainerGap()
+                                .addGroup(WgrajDanePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(selectFileButton_Lotniska)
+                                        .addComponent(uploadButton_Lotniska)
+                                        .addComponent(jLabel5)
+                                        .addComponent(LotniskaText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(WgrajSamoloty)
+                                .addGroup(WgrajDanePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(selectFileButton_Samoloty)
+                                        .addComponent(uploadButton_Samoloty)
+                                        .addComponent(jLabel7)
+                                        .addComponent(SamolotyText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(WgrajKlientów)
-                                .addContainerGap(309, Short.MAX_VALUE))
+                                .addGroup(WgrajDanePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(selectFileButton_Klienci)
+                                        .addComponent(uploadButton_Klienci)
+                                        .addComponent(jLabel8)
+                                        .addComponent(KlienciText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 319, Short.MAX_VALUE)
+                                .addComponent(goBack3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
         );
 
         RezerwacjaLotuPanel.setRequestFocusEnabled(false);
@@ -433,14 +592,6 @@ public class Main extends javax.swing.JFrame {
         // Add the ItemListener to the Choice component
         choice1.addItemListener(choiceListener211);
 
-        D.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DActionPerformed(evt);
-            }
-        });
-
-        jLabel4.setText("Data wylotu");
-
         jLabel6.setText("Pasażerowie");
 
         refreshButton.setText("Odśwież");
@@ -461,7 +612,7 @@ public class Main extends javax.swing.JFrame {
                 ArrayList<Lot> loty = SYSTEM.getLoty();
                 for (Lot lot : loty) {
                     if (lot.getLotnisko_p().getNazwa().equals(selectedChoice1) && lot.getLotnisko_k().getNazwa().equals(selectedChoice2)) {
-                        String element = lot.toString();
+                        String element = lot.toString() + "  -  " + SYSTEM.GodzinaPrzylotu(lot.getGodzina_odlotu(), SYSTEM.Odleglosc(lot.getLotnisko_p(),lot.getLotnisko_k()),lot.getSamolot());
                         model.addElement(element);
                     }
                 }
@@ -486,6 +637,13 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        goBack4.setText("Back");
+        goBack4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                goBack4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout RezerwacjaLotuPanelLayout = new javax.swing.GroupLayout(RezerwacjaLotuPanel);
         RezerwacjaLotuPanel.setLayout(RezerwacjaLotuPanelLayout);
         RezerwacjaLotuPanelLayout.setHorizontalGroup(
@@ -502,48 +660,217 @@ public class Main extends javax.swing.JFrame {
                                                 .addGroup(RezerwacjaLotuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                         .addComponent(jLabel3)
                                                         .addComponent(choice2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(RezerwacjaLotuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(D, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(jLabel4))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(RezerwacjaLotuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(RezerwacjaLotuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                         .addGroup(RezerwacjaLotuPanelLayout.createSequentialGroup()
-                                                                .addComponent(jLabel6)
-                                                                .addGap(0, 0, Short.MAX_VALUE))
-                                                        .addComponent(jSpinner1, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addGap(110, 110, 110)
+                                                                .addComponent(jLabel6))
+                                                        .addGroup(RezerwacjaLotuPanelLayout.createSequentialGroup()
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(jSpinner1)))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addGroup(RezerwacjaLotuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                         .addComponent(klientChooser, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                         .addComponent(refreshButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RezerwacjaLotuPanelLayout.createSequentialGroup()
-                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                .addComponent(goBack4)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(BrakMiejscText, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(ZarezerwujLot)))
                                 .addContainerGap())
         );
         RezerwacjaLotuPanelLayout.setVerticalGroup(
                 RezerwacjaLotuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(RezerwacjaLotuPanelLayout.createSequentialGroup()
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RezerwacjaLotuPanelLayout.createSequentialGroup()
                                 .addGap(9, 9, 9)
                                 .addComponent(klientChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(RezerwacjaLotuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(9, 9, 9)
                                 .addGroup(RezerwacjaLotuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(choice1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(choice2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(RezerwacjaLotuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                .addComponent(D, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(ZarezerwujLot)
+                                .addGroup(RezerwacjaLotuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(goBack4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(RezerwacjaLotuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(ZarezerwujLot, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(BrakMiejscText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addContainerGap())
+        );
+
+        BiletyPanel.setRequestFocusEnabled(false);
+        BiletyPanel.addHierarchyListener(new java.awt.event.HierarchyListener() {
+            public void hierarchyChanged(java.awt.event.HierarchyEvent evt) {
+                BiletyPanelHierarchyChanged(evt);
+            }
+        });
+
+        for (Klient klient : Klient.klienci) {
+            klientChooser2.addItem(klient.getNazwa());
+        }
+        klientChooser2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                klientChooser2ActionPerformed(evt);
+            }
+        });
+        klientChooser2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                DefaultListModel<String> model2 = new DefaultListModel<>();
+                model2.clear(); // Clear the JList before adding new elements
+                jList2.setModel(model2);
+
+                int selectedClientIndex = klientChooser2.getSelectedIndex();
+                Klient selectedKlient = Klient.klienci.get(selectedClientIndex);
+                ArrayList<Ticket> bilety = (ArrayList<Ticket>) selectedKlient.Bilety;
+
+                for (Ticket bilet : bilety) {
+                    if(bilet.getKlient()==selectedKlient){
+                        String element = (bilet.getLot().getLotnisko_p().getNazwa() + " -> " + bilet.getLot().getLotnisko_k().getNazwa());
+                        model2.addElement(element);
+                    }
+                }
+
+                jList2.setModel(model2);
+            }
+        });
+
+        jList2.setModel(new javax.swing.AbstractListModel<String>() {
+            int selectedClientIndex = klientChooser2.getSelectedIndex();
+            Klient selectedKlient = Klient.klienci.get(selectedClientIndex);
+            ArrayList<Ticket> bilety = (ArrayList<Ticket>) selectedKlient.Bilety;
+            public int getSize() { return bilety.size(); }
+            public String getElementAt(int i) { return bilety.get(i).getLot().toString(); }
+        });
+        jScrollPane2.setViewportView(jList2);
+
+        goBack5.setText("Back");
+        goBack5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                goBack5ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout BiletyPanelLayout = new javax.swing.GroupLayout(BiletyPanel);
+        BiletyPanel.setLayout(BiletyPanelLayout);
+        BiletyPanelLayout.setHorizontalGroup(
+                BiletyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BiletyPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(BiletyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 950, Short.MAX_VALUE)
+                                        .addGroup(BiletyPanelLayout.createSequentialGroup()
+                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                .addComponent(klientChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addContainerGap())
+                        .addGroup(BiletyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(BiletyPanelLayout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addComponent(goBack5)
+                                        .addContainerGap(464, Short.MAX_VALUE)))
+        );
+        BiletyPanelLayout.setVerticalGroup(
+                BiletyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(BiletyPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(klientChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(65, Short.MAX_VALUE))
+                        .addGroup(BiletyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BiletyPanelLayout.createSequentialGroup()
+                                        .addContainerGap(409, Short.MAX_VALUE)
+                                        .addComponent(goBack5)
+                                        .addContainerGap()))
+        );
+
+        StworzSamolotPanel.setPreferredSize(new java.awt.Dimension(534, 281));
+        StworzSamolotPanel.addHierarchyListener(new java.awt.event.HierarchyListener() {
+            public void hierarchyChanged(java.awt.event.HierarchyEvent evt) {
+                StworzSamolotPanelHierarchyChanged(evt);
+            }
+        });
+
+        Register2.setText("Add");
+        Register2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Register2ActionPerformed(evt);
+            }
+        });
+
+        goBack6.setText("Back");
+        goBack6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                goBack6ActionPerformed(evt);
+            }
+        });
+
+        getKRS3.setText("Zasięg");
+        getKRS3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                getKRS3ActionPerformed(evt);
+            }
+        });
+
+        getKRS4.setText("Ilość miejsc");
+
+        NazwaSamolotu.setText("Nazwa");
+        NazwaSamolotu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NazwaSamolotuActionPerformed(evt);
+            }
+        });
+
+        getKRS6.setText("Prędkość");
+
+        textField1.setText("Lotnisko ");
+
+        javax.swing.GroupLayout StworzSamolotPanelLayout = new javax.swing.GroupLayout(StworzSamolotPanel);
+        StworzSamolotPanel.setLayout(StworzSamolotPanelLayout);
+        StworzSamolotPanelLayout.setHorizontalGroup(
+                StworzSamolotPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(StworzSamolotPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(StworzSamolotPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(StworzSamolotPanelLayout.createSequentialGroup()
+                                                .addGroup(StworzSamolotPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(goBack6, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(getKRS4, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addContainerGap(699, Short.MAX_VALUE))
+                                        .addGroup(StworzSamolotPanelLayout.createSequentialGroup()
+                                                .addGroup(StworzSamolotPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                        .addComponent(NazwaSamolotu, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                                                        .addComponent(getKRS3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(getKRS6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                                                        .addComponent(Register2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(textField1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                .addGap(0, 0, Short.MAX_VALUE))))
+        );
+        StworzSamolotPanelLayout.setVerticalGroup(
+                StworzSamolotPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(StworzSamolotPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(NazwaSamolotu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(getKRS3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(getKRS4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(getKRS6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                                .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Register2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                                .addComponent(goBack6, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())
         );
 
@@ -561,7 +888,7 @@ public class Main extends javax.swing.JFrame {
                                         .addContainerGap()
                                         .addComponent(StworzOsobaPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(StworzFirmaPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 614, Short.MAX_VALUE))
+                                .addComponent(StworzFirmaPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 986, Short.MAX_VALUE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
@@ -572,6 +899,16 @@ public class Main extends javax.swing.JFrame {
                                         .addGap(7, 7, 7)
                                         .addComponent(WgrajDanePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(7, 7, 7)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                        .addGap(12, 12, 12)
+                                        .addComponent(BiletyPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(12, 12, 12)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                        .addGap(46, 46, 46)
+                                        .addComponent(StworzSamolotPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 894, Short.MAX_VALUE)
+                                        .addGap(46, 46, 46)))
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -583,7 +920,7 @@ public class Main extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(StworzOsobaPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(StworzFirmaPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE))
+                                .addComponent(StworzFirmaPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
@@ -594,6 +931,16 @@ public class Main extends javax.swing.JFrame {
                                         .addGap(6, 6, 6)
                                         .addComponent(WgrajDanePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(6, 6, 6)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(BiletyPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(6, 6, 6)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                        .addGap(82, 82, 82)
+                                        .addComponent(StworzSamolotPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
+                                        .addGap(83, 83, 83)))
         );
 
         pack();
@@ -618,20 +965,6 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }
 
-    private void KlientWyborPanelHierarchyChanged(java.awt.event.HierarchyEvent evt) {
-        // TODO add your handling code here:
-    }
-
-    private void wyborFirmaActionPerformed(java.awt.event.ActionEvent evt) {
-        KlientWyborPanel.setVisible(false);
-        StworzFirmaPanel.setVisible(true);
-    }
-
-    private void wyborOsobaActionPerformed(java.awt.event.ActionEvent evt) {
-        KlientWyborPanel.setVisible(false);
-        StworzOsobaPanel.setVisible(true);
-    }
-
     private void StworzOsobaPanelHierarchyChanged(java.awt.event.HierarchyEvent evt) {
         // TODO add your handling code here:
     }
@@ -641,9 +974,11 @@ public class Main extends javax.swing.JFrame {
     }
 
     private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {
+        SYSTEM.StworzOsobe(getImie.getText(),getNazwisko.getText());
+        klientChooser2.addItem(getImie.getText());
+        klientChooser.addItem(getImie.getText());
         getImie.setText("Imie");
         getNazwisko.setText("Nazwisko");
-        SYSTEM.StworzOsobe(getImie.getText(),getNazwisko.getText());
         StworzOsobaPanel.setVisible(false);
         MainMenu.setVisible(true);
     }
@@ -653,20 +988,17 @@ public class Main extends javax.swing.JFrame {
     }
 
     private void Register1ActionPerformed(java.awt.event.ActionEvent evt) {
+        SYSTEM.StworzFirme(getFirma.getText(),getKRS.getText());
+        klientChooser2.addItem(getFirma.getText());
+        klientChooser.addItem(getFirma.getText());
         getFirma.setText("Firma XYZ");
         getKRS.setText("Numer KRS");
-        SYSTEM.StworzFirme(getFirma.getText(),getKRS.getText());
         StworzFirmaPanel.setVisible(false);
         MainMenu.setVisible(true);
     }
 
     private void StworzFirmaPanelHierarchyChanged(java.awt.event.HierarchyEvent evt) {
         // TODO add your handling code here:
-    }
-
-    private void goBackActionPerformed(java.awt.event.ActionEvent evt) {
-        KlientWyborPanel.setVisible(false);
-        MainMenu.setVisible(true);
     }
 
     private void goBack1ActionPerformed(java.awt.event.ActionEvent evt) {
@@ -683,19 +1015,7 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }
 
-    private void DActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
     private void WgrajDanePanelHierarchyChanged(java.awt.event.HierarchyEvent evt) {
-        // TODO add your handling code here:
-    }
-
-    private void WgrajSamolotyActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
-    private void WgrajLotyActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }
 
@@ -739,10 +1059,17 @@ public class Main extends javax.swing.JFrame {
             LocalDate date = LocalDate.parse(data, formatter2);
             DayOfWeek dayOfWeek = date.getDayOfWeek();
             Lot lot = findLotByFlightDetails(lotnisko_p, lotnisko_k, dayOfWeek, localTime);
-            SYSTEM.rezerwacjaBiletu(selectedKlient, lot);
+            if (lot.getDostepne_bilety() <= (int) jSpinner1.getValue()) {
+                BrakMiejscText.setText("Brak miejsc");
+            }
+            else{
+                BrakMiejscText.setText("Zarezerwowano");
+                for (int i = 0; i < (int) jSpinner1.getValue(); i++) {
+                    SYSTEM.rezerwacjaBiletu(selectedKlient, lot);
+                }
+            }
         }
     }
-
     private Lot findLotByFlightDetails(String lotnisko_p, String lotnisko_k, DayOfWeek dzien, LocalTime godzina_odlotu) {
         ArrayList<Lot> loty = SYSTEM.getLoty();
         for (Lot lot : loty) {
@@ -755,9 +1082,140 @@ public class Main extends javax.swing.JFrame {
         }
         return null; // No matching Lot found
     }
-
     private void klientChooserActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+    }
+
+    private void BiletyPanelHierarchyChanged(java.awt.event.HierarchyEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void klientChooser2ActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+        BiletyPanel.setVisible(true);
+        MainMenu.setVisible(false);
+    }
+
+    private void goBack3ActionPerformed(java.awt.event.ActionEvent evt) {
+        WgrajDanePanel.setVisible(false);
+        MainMenu.setVisible(true);
+    }
+
+    private void goBack5ActionPerformed(java.awt.event.ActionEvent evt) {
+        BiletyPanel.setVisible(false);
+        MainMenu.setVisible(true);
+    }
+
+    private void goBack4ActionPerformed(java.awt.event.ActionEvent evt) {
+        RezerwacjaLotuPanel.setVisible(false);
+        MainMenu.setVisible(true);
+    }
+
+    private void KlientWyborPanelHierarchyChanged(java.awt.event.HierarchyEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void goBackActionPerformed(java.awt.event.ActionEvent evt) {
+        KlientWyborPanel.setVisible(false);
+        MainMenu.setVisible(true);
+    }
+
+    private void wyborFirmaActionPerformed(java.awt.event.ActionEvent evt) {
+        KlientWyborPanel.setVisible(false);
+        StworzFirmaPanel.setVisible(true);
+    }
+
+    private void wyborOsobaActionPerformed(java.awt.event.ActionEvent evt) {
+        KlientWyborPanel.setVisible(false);
+        StworzOsobaPanel.setVisible(true);
+    }
+
+    private void selectFileButton_KlienciActionPerformed(java.awt.event.ActionEvent evt) {
+        JFileChooser fileChooser = new JFileChooser();
+        int result = fileChooser.showOpenDialog(Main.this);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File selectedFile2 = fileChooser.getSelectedFile();
+            // Process the selected file (e.g., store the file path or perform operations on the file)
+            KlienciText.setText(selectedFile2.getAbsolutePath());
+        }
+    }
+
+    private void uploadButton_KlienciActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void uploadButton_SamolotyActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void uploadButton_LotniskaActionPerformed(java.awt.event.ActionEvent evt) {
+        Lotnisko.readFromFile(SYSTEM.getLotniska(),LotniskaText.getText());
+    }
+
+    private void selectFileButton_SamolotyActionPerformed(java.awt.event.ActionEvent evt) {
+        JFileChooser fileChooser = new JFileChooser();
+        int result = fileChooser.showOpenDialog(Main.this);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File selectedFile1 = fileChooser.getSelectedFile();
+            // Process the selected file (e.g., store the file path or perform operations on the file)
+            SamolotyText.setText(selectedFile1.getAbsolutePath());
+        }
+    }
+
+    private void selectFileButton_LotniskaActionPerformed(java.awt.event.ActionEvent evt) {
+        JFileChooser fileChooser = new JFileChooser();
+        int result = fileChooser.showOpenDialog(Main.this);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            // Process the selected file (e.g., store the file path or perform operations on the file)
+            LotniskaText.setText(selectedFile.getAbsolutePath());
+        }
+    }
+
+    private void LotniskaTextActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void KlienciTextActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void SamolotyTextActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void Register2ActionPerformed(java.awt.event.ActionEvent evt) {
+        StworzSamolotPanel.setVisible(false);
+        MainMenu.setVisible(true);
+    }
+
+    private void goBack6ActionPerformed(java.awt.event.ActionEvent evt) {
+        StworzSamolotPanel.setVisible(false);
+        KlientWyborPanel.setVisible(true);
+    }
+
+    private void StworzSamolotPanelHierarchyChanged(java.awt.event.HierarchyEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void getKRS3ActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void NazwaSamolotuActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
+        StworzSamolotPanel.setVisible(true);
+        KlientWyborPanel.setVisible(false);
     }
     private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {
 
@@ -798,39 +1256,65 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify
-    private javax.swing.JTextField D;
+    private javax.swing.JPanel BiletyPanel;
+    private javax.swing.JTextField BrakMiejscText;
+    private javax.swing.JTextField KlienciText;
     private javax.swing.JPanel KlientWyborPanel;
+    private javax.swing.JTextField LotniskaText;
     private javax.swing.JPanel MainMenu;
+    private java.awt.TextField NazwaSamolotu;
     private javax.swing.JButton Register;
     private javax.swing.JButton Register1;
+    private javax.swing.JButton Register2;
     private javax.swing.JPanel RezerwacjaLotuPanel;
+    private javax.swing.JTextField SamolotyText;
     private javax.swing.JPanel StworzFirmaPanel;
     private javax.swing.JPanel StworzOsobaPanel;
+    private javax.swing.JPanel StworzSamolotPanel;
     private javax.swing.JPanel WgrajDanePanel;
-    private javax.swing.JButton WgrajKlientów;
-    private javax.swing.JButton WgrajLoty;
-    private javax.swing.JButton WgrajSamoloty;
     private javax.swing.JButton ZarezerwujLot;
     private java.awt.Choice choice1;
     private java.awt.Choice choice2;
     private java.awt.TextField getFirma;
     private java.awt.TextField getImie;
     private java.awt.TextField getKRS;
+    private java.awt.TextField getKRS3;
+    private java.awt.TextField getKRS4;
+    private java.awt.TextField getKRS6;
     private java.awt.TextField getNazwisko;
     private javax.swing.JButton goBack;
     private javax.swing.JButton goBack1;
     private javax.swing.JButton goBack2;
+    private javax.swing.JButton goBack3;
+    private javax.swing.JButton goBack4;
+    private javax.swing.JButton goBack5;
+    private javax.swing.JButton goBack6;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JList<String> jList1;
+    private javax.swing.JList<String> jList2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JComboBox<String> klientChooser;
+    private javax.swing.JComboBox<String> klientChooser2;
     private javax.swing.JButton refreshButton;
+    private javax.swing.JButton selectFileButton_Klienci;
+    private javax.swing.JButton selectFileButton_Lotniska;
+    private javax.swing.JButton selectFileButton_Samoloty;
     private javax.swing.JButton stworzKonto;
+    private java.awt.TextField textField1;
+    private javax.swing.JButton uploadButton_Klienci;
+    private javax.swing.JButton uploadButton_Lotniska;
+    private javax.swing.JButton uploadButton_Samoloty;
     private javax.swing.JButton wgrajDane;
     private javax.swing.JButton wyborFirma;
     private javax.swing.JButton wyborOsoba;

@@ -8,9 +8,10 @@ import java.util.List;
 
 public class Ticket implements Serializable {
     private Lot lot;
-
-    public Ticket(Lot lot) {
+    private Klient klient;
+    public Ticket(Lot lot, Klient klient) {
         this.lot = lot;
+        this.klient = klient;
     }
 
 
@@ -31,5 +32,8 @@ public class Ticket implements Serializable {
 
     public Lot getLot() {
         return lot;
+    }
+    public Klient getKlient() {
+        return klient;
     }
 }
