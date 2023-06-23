@@ -69,10 +69,12 @@ public class SYSTEM {
         lotnisko4.dodajSamolot(daleko_dystansowiec4);
 
         generujLot();
-        Klient klient1 = new Osoba("Krzys", "S");
-        Klient klient2 = new Firma("Piekarnia", "W");
+        Klient klient1 = new Osoba("Krzysztof", "S");
+        Klient klient2 = new Firma("Marek", "T");
+        Klient klient3 = new Firma("Dawid", "S");
         klient1.dodajKlienta();
         klient2.dodajKlienta();
+        klient3.dodajKlienta();
     }
 
     public void generujLot() {
