@@ -9,7 +9,6 @@ import Resources.Samolot;
 import Resources.SamolotTyp.Typ1;
 import Resources.SamolotTyp.Typ2;
 import Resources.SamolotTyp.Typ3;
-import Resources.ZasiegComparator;
 
 
 import java.time.DayOfWeek;
@@ -65,7 +64,7 @@ public class SYSTEM {
         lotnisko4.dodajSamolot(srednio_dystansowiec4);
         lotnisko4.dodajSamolot(daleko_dystansowiec4);
 
-        generujLot();
+        generujLoty();
         Klient klient1 = new Osoba("Krzysztof", "S");
         Klient klient2 = new Firma("Marek", "T");
         Klient klient3 = new Firma("Dawid", "S");
@@ -74,7 +73,7 @@ public class SYSTEM {
         klient3.dodajKlienta();
     }
 
-    public void generujLot() {
+    public void generujLoty() {
         DateFormatSymbols dni = new DateFormatSymbols(new Locale("en", "US"));
         String[] daysOfWeek = dni.getWeekdays();
         for (Lotnisko lotnisko_p : lotniska) {
@@ -109,10 +108,15 @@ public class SYSTEM {
 
     public Samolot PrzydzielSamolot(Lotnisko lotnisko_p, LocalTime godzina, DayOfWeek dzien, double odleglosc) {
         for (Samolot samolot : lotnisko_p.getFlota()) {
-            if (samolot.getZasieg() >= odleglosc && samolot.getIloscMiejsc() > 0) {
-                if(!Overlap(samolot, lotnisko_p, godzina, dzien, odleglosc)){
-                    return samolot;
-                }
+
+            boolean isAvailable  = (samolot.getZasieg() >= odleglosc && samolot.getIloscMiejsc() > 0);
+            if (!isAvailable) {
+                continue;
+            }
+
+            boolean DoesOverlap = Overlap(samolot, lotnisko_p, godzina, dzien, odleglosc);
+            if(!DoesOverlap){
+                return samolot;
             }
         }
         return null;
@@ -120,16 +124,20 @@ public class SYSTEM {
 
 
     public Boolean Overlap(Samolot samolot, Lotnisko lotnisko_p, LocalTime godzina, DayOfWeek dzien, double odleglosc) {
-        if (!loty.isEmpty()) {
-            for (int i = loty.size() - 1; i >= 0; i--) {
-                Lot lot = loty.get(i);
-                if (lot.getSamolot() == samolot && lot.getLotnisko_p() == lotnisko_p) {
-                    boolean czyPrzedOdlotem = !godzina.isBefore(lot.getGodzina_odlotu());
-                    if(czyPrzedOdlotem &&
-                       GodzinaPrzylotu(godzina, odleglosc, samolot).isBefore(lot.getGodzina_odlotu()) && dzien.equals(lot.getDzien()) ||
-                       !godzina.isAfter(lot.getGodzina_odlotu().plusHours(3)) && dzien.equals(lot.getDzien())){
-                        return true;
-                    }
+        if (loty.isEmpty()) {
+            return false;
+        }
+
+        for (int i = loty.size() - 1; i >= 0; i--) {
+            Lot lot = loty.get(i);
+            if (lot.GetSamolot() == samolot && lot.GetLotniskoP() == lotnisko_p) {
+
+                boolean doesDayOverlap = !godzina.isBefore(lot.GetGodzinaOdlotu()); // sprawdzamy czy nie ma konfliktu z innym lotem tego samego dnia
+                boolean isOnTime = GodzinaPrzylotu(godzina, odleglosc, samolot).isBefore(lot.GetGodzinaOdlotu()) && dzien.equals(lot.GetDzien()); // czy samolot zdazy przyleciec przed odlotem i czy jest to tego samego dnia
+                boolean canHaveBreak = !godzina.isAfter(lot.GetGodzinaOdlotu().plusHours(3)) && dzien.equals(lot.GetDzien()); // czy samolot bedzie mogl miec 3 godzinna przerwe przed kolejnym wylotem
+
+                if(doesDayOverlap && isOnTime || canHaveBreak){
+                    return true;
                 }
             }
         }
@@ -169,7 +177,7 @@ public class SYSTEM {
      public void rezerwacjaBiletu(Klient klient, Lot lot){
         Ticket ticket = new Ticket(lot, klient);
         ticket.kupBilet(lot,klient);
-        System.out.println("Kupiono bilet na lot z lotniska " + lot.getLotnisko_p().getNazwa() +" do " + lot.getLotnisko_k().getNazwa() + " dnia " + lot.getDzien() + " o godzinie: " + lot.getGodzina_odlotu());
+        System.out.println("Kupiono bilet na lot z lotniska " + lot.GetLotniskoP().getNazwa() +" do " + lot.GetLotniskoK().getNazwa() + " dnia " + lot.GetDzien() + " o godzinie: " + lot.GetGodzinaOdlotu());
         klient.dodajBilet(ticket);
         System.out.println();
     }
@@ -185,8 +193,8 @@ public class SYSTEM {
             for(int i=0; i<BiletyKlienta.size();i++){
                 Ticket ticket=BiletyKlienta.get(i);
                 System.out.println("Bilety klienta: " + klient.getNazwa() + " " + klient.getNazwiskoKrs());
-                System.out.println((i + 1) + ". " + ticket.getLot().getLotnisko_p().getNazwa() + " -> " + ticket.getLot().getLotnisko_k().getNazwa());
-                System.out.println("    Dnia: " + ticket.getLot().getDzien() + " o godzinie: " + ticket.getLot().getGodzina_odlotu());
+                System.out.println((i + 1) + ". " + ticket.getLot().GetLotniskoP().getNazwa() + " -> " + ticket.getLot().GetLotniskoK().getNazwa());
+                System.out.println("    Dnia: " + ticket.getLot().GetDzien() + " o godzinie: " + ticket.getLot().GetGodzinaOdlotu());
                 System.out.println();
             }
             if (BiletyKlienta.isEmpty()) {
@@ -199,8 +207,8 @@ public class SYSTEM {
                 for(int i=0; i<BiletyKlienta.size();i++){
                     Ticket ticket=BiletyKlienta.get(i);
                     System.out.println("Bilety firmy: " + klient.getNazwa() + " " + klient.getNazwiskoKrs());
-                    System.out.println((i + 1) + ". " + ticket.getLot().getLotnisko_p().getNazwa() + " -> " + ticket.getLot().getLotnisko_k().getNazwa());
-                    System.out.println("    Dnia: " + ticket.getLot().getDzien() + " o godzinie: " + ticket.getLot().getGodzina_odlotu());
+                    System.out.println((i + 1) + ". " + ticket.getLot().GetLotniskoP().getNazwa() + " -> " + ticket.getLot().GetLotniskoK().getNazwa());
+                    System.out.println("    Dnia: " + ticket.getLot().GetDzien() + " o godzinie: " + ticket.getLot().GetGodzinaOdlotu());
                     System.out.println();
                 }
                 if (BiletyKlienta.isEmpty()) {

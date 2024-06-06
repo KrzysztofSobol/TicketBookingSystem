@@ -26,28 +26,28 @@ public class Lot implements Serializable{
         this.lotnisko_k = lotnisko_k;          // po koleji z pętli
         this.dostepne_bilety=new Random().nextInt(samolot.getIloscMiejsc()+1); // randomowo od 0 do ilosci miejsc w samolocie
     }
-    public Lotnisko getLotnisko_p() {
+    public Lotnisko GetLotniskoP() {
         return lotnisko_p;
     }
-    public Lotnisko getLotnisko_k() {
+    public Lotnisko GetLotniskoK() {
         return lotnisko_k;
     }
 
-    public Samolot getSamolot() { return samolot; }
+    public Samolot GetSamolot() { return samolot; }
 
-    public DayOfWeek getDzien() { return dzien; }
+    public DayOfWeek GetDzien() { return dzien; }
 
-    public LocalTime getGodzina_odlotu() { return godzina_odlotu; }
+    public LocalTime GetGodzinaOdlotu() { return godzina_odlotu; }
 
-    public int getDostepne_bilety() {
+    public int GetDostepneBilety() {
         return dostepne_bilety;
     }
 
-    public void kupowanieBiletu(){ //setter
+    public void KupowanieBiletu(){ //setter
         this.dostepne_bilety-=1;
     }
 
-    public void odwolywanieBiletu(){ //setter
+    public void OdwolywanieBiletu(){ //setter
         this.dostepne_bilety+=1;
     }
 

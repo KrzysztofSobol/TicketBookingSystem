@@ -15,17 +15,17 @@ public class Ticket implements Serializable {
 
 
     public void kupBilet(Lot lot, Klient klient) {
-        if (lot.getDostepne_bilety() < 1) {
+        if (lot.GetDostepneBilety() < 1) {
             System.out.println("Brak dostepnych miejsc na lot");
         } else {
-            lot.kupowanieBiletu();
+            lot.KupowanieBiletu();
         }
     }
 
     public void usunBilet(Klient klient, Ticket ticket) {
         ticket.getLot();
-        System.out.println("Odwoloano rezerwacje biletu na lot z " + lot.getLotnisko_p().getNazwa() + " do " + lot.getLotnisko_k().getNazwa() + " dnia " + lot.getDzien() + " o godzinie: " + lot.getGodzina_odlotu());
-        lot.odwolywanieBiletu();
+        System.out.println("Odwoloano rezerwacje biletu na lot z " + lot.GetLotniskoP().getNazwa() + " do " + lot.GetLotniskoK().getNazwa() + " dnia " + lot.GetDzien() + " o godzinie: " + lot.GetGodzinaOdlotu());
+        lot.OdwolywanieBiletu();
         klient.bilety.remove(ticket);
     }
 

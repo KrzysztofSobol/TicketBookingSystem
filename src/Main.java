@@ -625,7 +625,7 @@ public class Main extends javax.swing.JFrame {
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             ArrayList<Lot> loty = SYSTEM.getLoty();
             public int getSize() { return loty.size(); }
-            public String getElementAt(int i) { return loty.get(i).toString() + "  -  " + SYSTEM.GodzinaPrzylotu(loty.get(i).getGodzina_odlotu(), SYSTEM.Odleglosc(loty.get(i).getLotnisko_p(),loty.get(i).getLotnisko_k()),loty.get(i).getSamolot()); }
+            public String getElementAt(int i) { return loty.get(i).toString() + "  -  " + SYSTEM.GodzinaPrzylotu(loty.get(i).GetGodzinaOdlotu(), SYSTEM.Odleglosc(loty.get(i).GetLotniskoP(),loty.get(i).GetLotniskoK()),loty.get(i).GetSamolot()); }
         });
         jScrollPane1.setViewportView(jList1);
 
@@ -696,8 +696,8 @@ public class Main extends javax.swing.JFrame {
 
                 ArrayList<Lot> loty = SYSTEM.getLoty();
                 for (Lot lot : loty) {
-                    if (lot.getLotnisko_p().getNazwa().equals(selectedChoice1) && lot.getLotnisko_k().getNazwa().equals(selectedChoice2)) {
-                        String element = lot.toString() + "  -  " + SYSTEM.GodzinaPrzylotu(lot.getGodzina_odlotu(), SYSTEM.Odleglosc(lot.getLotnisko_p(),lot.getLotnisko_k()),lot.getSamolot());
+                    if (lot.GetLotniskoP().getNazwa().equals(selectedChoice1) && lot.GetLotniskoK().getNazwa().equals(selectedChoice2)) {
+                        String element = lot.toString() + "  -  " + SYSTEM.GodzinaPrzylotu(lot.GetGodzinaOdlotu(), SYSTEM.Odleglosc(lot.GetLotniskoP(),lot.GetLotniskoK()),lot.GetSamolot());
                         model.addElement(element);
                     }
                 }
@@ -820,7 +820,7 @@ public class Main extends javax.swing.JFrame {
                 int i = 1;
                 for (Ticket bilet : bilety) {
                     if(bilet.getKlient()==selectedKlient){
-                        String element = i + ". "+ bilet.getLot().toString() + "  -  " + SYSTEM.GodzinaPrzylotu(bilet.getLot().getGodzina_odlotu(), SYSTEM.Odleglosc(bilet.getLot().getLotnisko_p(),bilet.getLot().getLotnisko_k()),bilet.getLot().getSamolot());
+                        String element = i + ". "+ bilet.getLot().toString() + "  -  " + SYSTEM.GodzinaPrzylotu(bilet.getLot().GetGodzinaOdlotu(), SYSTEM.Odleglosc(bilet.getLot().GetLotniskoP(),bilet.getLot().GetLotniskoK()),bilet.getLot().GetSamolot());
                         model2.addElement(element);
                         i++;
                     }
@@ -1247,7 +1247,7 @@ public class Main extends javax.swing.JFrame {
             LocalDate date = LocalDate.parse(data, formatter2);
             DayOfWeek dayOfWeek = date.getDayOfWeek();
             Lot lot = findLotByFlightDetails(lotnisko_p, lotnisko_k, dayOfWeek, localTime);
-            if (lot.getDostepne_bilety() <= (int) jSpinner1.getValue()) {
+            if (lot.GetDostepneBilety() <= (int) jSpinner1.getValue()) {
                 BrakMiejscText.setText("Brak miejsc");
             }
             else{
@@ -1261,10 +1261,10 @@ public class Main extends javax.swing.JFrame {
     private Lot findLotByFlightDetails(String lotnisko_p, String lotnisko_k, DayOfWeek dzien, LocalTime godzina_odlotu) {
         ArrayList<Lot> loty = SYSTEM.getLoty();
         for (Lot lot : loty) {
-            if (lot.getLotnisko_p().getNazwa().equals(lotnisko_p) &&
-                    lot.getLotnisko_k().getNazwa().equals(lotnisko_k) &&
-                    lot.getDzien() == dzien &&
-                    lot.getGodzina_odlotu().equals(godzina_odlotu)) {
+            if (lot.GetLotniskoP().getNazwa().equals(lotnisko_p) &&
+                    lot.GetLotniskoK().getNazwa().equals(lotnisko_k) &&
+                    lot.GetDzien() == dzien &&
+                    lot.GetGodzinaOdlotu().equals(godzina_odlotu)) {
                 return lot;
             }
         }
