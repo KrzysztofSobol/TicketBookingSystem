@@ -10,7 +10,7 @@ public class Firma extends Klient {
         this.numer_KRS = Numer_KRS;
     }
 
-   public String getNazwa(){
+    public String getNazwa(){
         return nazwa;
     }
 

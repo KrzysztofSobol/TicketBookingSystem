@@ -5,18 +5,17 @@ import Reservation.Ticket;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import Clients.Types.*;
 
 public abstract class Klient implements Serializable {
     public static List<Klient> klienci = new ArrayList<>();
-    public static List<Ticket> Bilety = new ArrayList<>();
+    public static List<Ticket> bilety = new ArrayList<>();
 
     public List<Klient> getListaKlientow() {
         return klienci;
     }
 
     public static List<Ticket> getBilety() {
-        return Bilety;
+        return bilety;
     }
 
     public void dodajKlienta() {
@@ -27,9 +26,7 @@ public abstract class Klient implements Serializable {
         klienci.remove(this);
     }
 
-    public void dodajBilet(Ticket ticket) {
-        Bilety.add(ticket);
-    }
+    public void dodajBilet(Ticket ticket) { bilety.add(ticket); }
 
     public abstract String getNazwa();
 

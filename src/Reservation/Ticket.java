@@ -3,7 +3,6 @@ import Flights.Lot;
 import Clients.*;
 
 import java.io.*;
-import java.util.List;
 
 
 public class Ticket implements Serializable {
@@ -27,7 +26,7 @@ public class Ticket implements Serializable {
         ticket.getLot();
         System.out.println("Odwoloano rezerwacje biletu na lot z " + lot.getLotnisko_p().getNazwa() + " do " + lot.getLotnisko_k().getNazwa() + " dnia " + lot.getDzien() + " o godzinie: " + lot.getGodzina_odlotu());
         lot.odwolywanieBiletu();
-        klient.Bilety.remove(ticket);
+        klient.bilety.remove(ticket);
     }
 
     public Lot getLot() {

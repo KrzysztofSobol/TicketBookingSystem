@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 import Clients.Klient;
-import Clients.Types.Osoba;
 import Flights.Lot;
 import Reservation.Ticket;
 import Resources.Lotnisko;
@@ -18,12 +17,9 @@ import java.awt.event.ItemListener;
 import java.io.File;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.time.format.TextStyle;
 import java.util.ArrayList;
-import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -819,7 +815,7 @@ public class Main extends javax.swing.JFrame {
 
                 int selectedClientIndex = klientChooser2.getSelectedIndex();
                 Klient selectedKlient = Klient.klienci.get(selectedClientIndex);
-                ArrayList<Ticket> bilety = (ArrayList<Ticket>) selectedKlient.Bilety;
+                ArrayList<Ticket> bilety = (ArrayList<Ticket>) selectedKlient.bilety;
 
                 int i = 1;
                 for (Ticket bilet : bilety) {
@@ -837,7 +833,7 @@ public class Main extends javax.swing.JFrame {
         jList2.setModel(new javax.swing.AbstractListModel<String>() {
             int selectedClientIndex = klientChooser2.getSelectedIndex();
             Klient selectedKlient = Klient.klienci.get(selectedClientIndex);
-            ArrayList<Ticket> bilety = (ArrayList<Ticket>) selectedKlient.Bilety;
+            ArrayList<Ticket> bilety = (ArrayList<Ticket>) selectedKlient.bilety;
             public int getSize() { return bilety.size(); }
             public String getElementAt(int i) { return bilety.get(i).getLot().toString() + "  -  "; }
         });

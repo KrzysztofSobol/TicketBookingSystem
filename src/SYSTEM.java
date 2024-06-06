@@ -17,9 +17,6 @@ import java.time.LocalTime;
 import java.text.DateFormatSymbols;
 import java.util.*;
 
-
-
-
 public class SYSTEM {
     private ArrayList<Lotnisko> lotniska = new ArrayList<>();
     private ArrayList<Lot> loty = new ArrayList<>();
@@ -127,7 +124,10 @@ public class SYSTEM {
             for (int i = loty.size() - 1; i >= 0; i--) {
                 Lot lot = loty.get(i);
                 if (lot.getSamolot() == samolot && lot.getLotnisko_p() == lotnisko_p) {
-                    if(!godzina.isBefore(lot.getGodzina_odlotu()) && GodzinaPrzylotu(godzina, odleglosc, samolot).isBefore(lot.getGodzina_odlotu()) && dzien.equals(lot.getDzien()) || !godzina.isAfter(lot.getGodzina_odlotu().plusHours(3)) && dzien.equals(lot.getDzien())){
+                    boolean czyPrzedOdlotem = !godzina.isBefore(lot.getGodzina_odlotu());
+                    if(czyPrzedOdlotem &&
+                       GodzinaPrzylotu(godzina, odleglosc, samolot).isBefore(lot.getGodzina_odlotu()) && dzien.equals(lot.getDzien()) ||
+                       !godzina.isAfter(lot.getGodzina_odlotu().plusHours(3)) && dzien.equals(lot.getDzien())){
                         return true;
                     }
                 }
@@ -178,9 +178,9 @@ public class SYSTEM {
         ticket.usunBilet(klient,ticket);
     }
 
+    // Method used for debugging and testing
     public void wyswietlanieBiletu(Klient klient){
         List<Ticket>BiletyKlienta = klient.getBilety();
-        //int i=0;
         if(klient instanceof Osoba) {
             for(int i=0; i<BiletyKlienta.size();i++){
                 Ticket ticket=BiletyKlienta.get(i);
