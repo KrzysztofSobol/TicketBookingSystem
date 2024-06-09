@@ -36,7 +36,7 @@ public class SYSTEM {
         Typ2 srednio_dystansowiec = new Typ2("Jak-42", 5000, 30,50 , "Warszawa", "Warszawa");
         Typ3 daleko_dystansowiec = new Typ3("Boeing 7771", 100000, 20, 70, "Warszawa", "Warszawa");
 
-        Typ1 krotko_dystansowiec2 = new Typ1("MAirbus A3192", 1500, 20, 20, "Berlin", "Berlin");
+        Typ1 krotko_dystansowiec2 = new Typ1("Airbus A3192", 1500, 20, 20, "Berlin", "Berlin");
         Typ2 srednio_dystansowiec2 = new Typ2("Jak-422", 5000, 30, 40, "Berlin", "Berlin");
         Typ3 daleko_dystansowiec2 = new Typ3("Boeing 7772", 100000, 20, 80, "Berlin", "Berlin");
 
@@ -93,7 +93,8 @@ public class SYSTEM {
 
                     // lot powrotny
                     LocalTime godzinaPrzylotu = GodzinaPrzylotu(godzinaOdlotu, odleglosc, samolot);
-                    if (godzinaPrzylotu.isAfter(LocalTime.MIDNIGHT) && godzinaPrzylotu.isBefore(godzinaOdlotu)) {
+                    boolean isAfterMidnight = godzinaPrzylotu.isAfter(LocalTime.MIDNIGHT) && godzinaPrzylotu.isBefore(godzinaOdlotu);
+                    if (isAfterMidnight) {
                         dzienOdlotu = dzienOdlotu.plus(1);
                     }
                     Lot lot_in = new Lot(godzinaPrzylotu, dzienOdlotu, samolot, lotnisko_k, lotnisko_p);
