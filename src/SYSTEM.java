@@ -133,11 +133,11 @@ public class SYSTEM {
             Lot lot = loty.get(i);
             if (lot.GetSamolot() == samolot && lot.GetLotniskoP() == lotnisko_p) {
 
-                boolean doesDayOverlap = !godzina.isBefore(lot.GetGodzinaOdlotu()); // sprawdzamy czy nie ma konfliktu z innym lotem tego samego dnia
+                boolean doesDayOverlap = godzina.isBefore(lot.GetGodzinaOdlotu()); // sprawdzamy czy nie ma konfliktu z innym lotem tego samego dnia
                 boolean isOnTime = GodzinaPrzylotu(godzina, odleglosc, samolot).isBefore(lot.GetGodzinaOdlotu()) && dzien.equals(lot.GetDzien()); // czy samolot zdazy przyleciec przed odlotem i czy jest to tego samego dnia
-                boolean canHaveBreak = !godzina.isAfter(lot.GetGodzinaOdlotu().plusHours(3)) && dzien.equals(lot.GetDzien()); // czy samolot bedzie mogl miec 3 godzinna przerwe przed kolejnym wylotem
+                boolean canHaveBreak = godzina.isAfter(lot.GetGodzinaOdlotu().plusHours(3)) && dzien.equals(lot.GetDzien()); // czy samolot bedzie mogl miec 3 godzinna przerwe przed kolejnym wylotem
 
-                if(doesDayOverlap && isOnTime || canHaveBreak){
+                if(!doesDayOverlap && isOnTime || !canHaveBreak){
                     return true;
                 }
             }
